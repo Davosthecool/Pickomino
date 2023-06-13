@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-06-13T13:50:37.662Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="PUNwMn6Fyw_b9lAgeGi8" version="21.2.8" type="device">
+<mxfile host="Electron" modified="2023-06-13T14:05:24.063Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="OEzWxw4BvKOAFFrGbDLP" version="21.2.8" type="device">
   <diagram name="Page-1" id="CsCzBUhraF9fQvseMStz">
     <mxGraphModel dx="1877" dy="1798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -150,9 +150,6 @@
         <mxCell id="BlIG-PN_yFB8hyHtCrtW-61" value="le joueur actif le récupère" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1241" y="70" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BlIG-PN_yFB8hyHtCrtW-63" value="le dé à :&lt;br&gt;- une face 1&lt;br&gt;- une face 2&lt;br&gt;- une face 3&lt;br&gt;- une face 4&lt;br&gt;- une face 5&lt;br&gt;- une face ver" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;" parent="1" vertex="1">
-          <mxGeometry x="-240" y="310" width="120" height="140" as="geometry" />
-        </mxCell>
         <mxCell id="BlIG-PN_yFB8hyHtCrtW-64" value="&lt;b&gt;&lt;u&gt;poule commune&lt;/u&gt;&lt;/b&gt;&lt;br&gt;les pickomino n&#39;appartenant à personne&lt;br&gt;&lt;b&gt;&lt;u&gt;pile inactive&lt;br&gt;&lt;/u&gt;&lt;/b&gt;les pickomino qui ont soit été récupérer d&#39;un joueur soit qui ont été récupérer il y a plus d&#39;un tour&lt;br&gt;&lt;b style=&quot;text-decoration-line: underline;&quot;&gt;pile active&lt;/b&gt;&lt;br&gt;les pickomino pioché au tour d&#39;avant&lt;br&gt;&lt;b&gt;&lt;u&gt;dé actif&lt;/u&gt;&lt;/b&gt;&lt;br&gt;dé qui peut être lancer&lt;br&gt;&lt;b&gt;&lt;u&gt;dé inactif&lt;/u&gt;&lt;/b&gt;&lt;br&gt;dé qui compte pour le score&lt;br&gt;&lt;b&gt;&lt;u&gt;cimetière commun&lt;/u&gt;&lt;/b&gt;&lt;br&gt;les pickomino pas sélectionnables par les deux joueurs&lt;br&gt;&lt;b&gt;&lt;u&gt;cimetière du joueur&lt;/u&gt;&lt;/b&gt;&lt;br&gt;les pickomino que le joueur ne pas pas prendre" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;" parent="1" vertex="1">
           <mxGeometry x="-413" y="-110" width="300" height="260" as="geometry" />
         </mxCell>
@@ -250,11 +247,8 @@
             <mxPoint x="758" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BlIG-PN_yFB8hyHtCrtW-103" value="&lt;b&gt;&lt;u&gt;condition de fin du jeu&lt;/u&gt;&lt;/b&gt;&lt;br&gt;plus de pickomino dans la poule commune&lt;br&gt;&lt;b&gt;&lt;u&gt;score fin du jeu&lt;/u&gt;&lt;/b&gt;&lt;br&gt;somme des vers sur les pickomino que le joueur possède (pile active + pile inactive)" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;" parent="1" vertex="1">
+        <mxCell id="BlIG-PN_yFB8hyHtCrtW-103" value="&lt;b&gt;&lt;u&gt;condition de fin du jeu&lt;/u&gt;&lt;/b&gt;&lt;br&gt;plus de pickomino dans la poule commune&lt;br&gt;&lt;b&gt;&lt;u&gt;score fin du jeu&lt;/u&gt;&lt;/b&gt;&lt;br&gt;somme des vers sur les pickomino que le joueur possède (pile)" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;" parent="1" vertex="1">
           <mxGeometry x="-413" y="170" width="250" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="BlIG-PN_yFB8hyHtCrtW-104" value="&lt;u style=&quot;&quot;&gt;&lt;b&gt;variable par joueurs&lt;br&gt;&lt;/b&gt;&lt;/u&gt;- blacklist du joueurs&lt;br&gt;- pile&lt;br&gt;- dés actifs&lt;br&gt;- dés&amp;nbsp;choisi" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;" parent="1" vertex="1">
-          <mxGeometry x="-413" y="460" width="133" height="130" as="geometry" />
         </mxCell>
         <mxCell id="BlIG-PN_yFB8hyHtCrtW-107" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="BlIG-PN_yFB8hyHtCrtW-105" target="BlIG-PN_yFB8hyHtCrtW-69" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -274,7 +268,7 @@
           <mxGeometry x="1030" y="30" width="40" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BlIG-PN_yFB8hyHtCrtW-112" value="&lt;u style=&quot;&quot;&gt;&lt;b&gt;pickomino&lt;br&gt;&lt;/b&gt;&lt;/u&gt;un domino avec un nombre:&lt;br&gt;21-36&lt;br&gt;et un nombre de vers :&lt;br&gt;1 pour 21-24&lt;br&gt;2 pour 25-28&lt;br&gt;3 pour 29-32&lt;br&gt;4 pour 33-36" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;" parent="1" vertex="1">
-          <mxGeometry x="-413" y="305" width="163" height="145" as="geometry" />
+          <mxGeometry x="-413" y="305" width="163" height="155" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
