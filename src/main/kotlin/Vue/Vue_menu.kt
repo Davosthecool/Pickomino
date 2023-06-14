@@ -9,10 +9,13 @@ import javafx.scene.control.*
 
 import javafx.scene.control.RadioButton
 import javafx.scene.control.ToggleGroup
+import javafx.scene.image.Image
+import javafx.scene.image.ImageView
 import javafx.scene.text.TextAlignment
+import java.io.FileInputStream
 
 class Vue_menu():VBox() {
-    val titre : Label
+    val titre : ImageView
     val partie : HBox
     val creation_menu : VBox
     val create_game : Button
@@ -35,7 +38,8 @@ class Vue_menu():VBox() {
     val number_key : TextField
     val options : ObservableList<Int>
     init {
-        titre = Label("PICKOMINO")
+        val im = Image(FileInputStream("ressources/Logo.png"),960.0, 256.0, true, true)
+        titre = ImageView(im)
         partie = HBox()
         //dans partie
         creation_menu = VBox()
@@ -89,10 +93,7 @@ class Vue_menu():VBox() {
             i.style = "-fx-border-color : black"
         }
         //titre
-        titre.textAlignment = TextAlignment.CENTER // |
-        titre.alignment = Pos.CENTER // -
-        titre.prefWidthProperty().bind(this.widthProperty())
-        titre.style = "-fx-font-size : 100"
+        titre.minWidth(this.width)
         //partie
         partie.alignment = Pos.BOTTOM_CENTER
         //creation_menu
