@@ -1,4 +1,5 @@
 package Vue
+import Modele.Modele_menu
 import javafx.collections.FXCollections
 import javafx.collections.ObservableArray
 import javafx.collections.ObservableList
@@ -8,8 +9,9 @@ import javafx.scene.control.*
 
 import javafx.scene.control.RadioButton
 import javafx.scene.control.ToggleGroup
+import javafx.scene.text.TextAlignment
 
-class Vue_menu:VBox() {
+class Vue_menu():VBox() {
     val titre : Label
     val partie : HBox
     val creation_menu : VBox
@@ -33,7 +35,7 @@ class Vue_menu:VBox() {
     val number_key : TextField
     val options : ObservableList<Int>
     init {
-        titre = Label("Pickomino")
+        titre = Label("PICKOMINO")
         partie = HBox()
         //dans partie
         creation_menu = VBox()
@@ -46,7 +48,6 @@ class Vue_menu:VBox() {
         number_label = Label("Nombre de joueurs")
         options = FXCollections.observableArrayList(2,3,4)
         player_number_game = ChoiceBox(options)
-        player_number_game.selectionModel.selectFirst()
 
         type_game = VBox()
             //dans type_game
@@ -84,13 +85,14 @@ class Vue_menu:VBox() {
         join_menu.children.addAll(join_game,join_setting_game)
         this.children.addAll(titre,partie)
         //propriétées
-        this.prefWidth(100.0)
-        this.prefHeight(50.0)
         for (i in this.lookupAll("*")) {
             i.style = "-fx-border-color : black"
         }
         //titre
-        titre.alignment = Pos.CENTER
+        titre.textAlignment = TextAlignment.CENTER // |
+        titre.alignment = Pos.CENTER // -
+        titre.prefWidthProperty().bind(this.widthProperty())
+        titre.style = "-fx-font-size : 100"
         //partie
         partie.alignment = Pos.BOTTOM_CENTER
         //creation_menu

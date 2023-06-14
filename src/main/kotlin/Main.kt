@@ -15,14 +15,28 @@ class Pickomino: Application() {
         val mod = Modele_menu(vue) //à gerer
         val scene = Scene(vue,960.0, 540.0)
         //binding
-        val controlResponsive = ControleurResponsive(vue,mod)
-        controlResponsive.bind()
+        vue.local_game.setOnAction {
+            mod.isLocal=true
+            println("la partie sera en local: ${mod.isLocal}")
+        }
+        vue.online_game.setOnAction {
+            mod.isLocal=false
+            println("la partie sera en local: ${mod.isLocal}")
+        }
+
+        vue.player_number_game.setOnAction {
+            mod.nbjoueur=vue.player_number_game.value
+            println("la partie aura ${mod.nbjoueur} joueurs")
+        }
+        //default
+        vue.local_game.isSelected = true
+        mod.isLocal=true
+        vue.player_number_game.selectionModel.selectFirst()
         //lancement application
         stage.title="Pickomino"
         stage.scene=scene
         stage.isResizable = false
-        stage.isMaximized = true
-        println(scene.widthProperty().value)
+        //stage.isMaximized = true
         stage.show()
     }
 }
@@ -30,10 +44,10 @@ class Pickomino: Application() {
 fun main() {
     val connect = Connector.factory("172.26.82.76", "8080")
     println("Parties actives sur le serveur = ${connect.listOfGameIds()}")
-    //val identification = connect.newGame(3)
-    //val id = identification.first
-    //val key = identification.second
-    //val currentGame = connect.gameState(id, key)
-    //println("Nouvelle partie = $currentGame")
+    val identification = connect.newGame(3)
+    val id = identification.first
+    val key = identification.second
+    val currentGame = connect.gameState(id, key)
+    println("Nouvelle partie = $currentGame")
     Application.launch(Pickomino::class.java)
 }

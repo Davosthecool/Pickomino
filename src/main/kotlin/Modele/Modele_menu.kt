@@ -1,10 +1,10 @@
 package Modele
 
 import Vue.Vue_menu
+import javafx.beans.property.BooleanProperty
 
 class Modele_menu(vue: Vue_menu) {
-    val vue = vue
-    var scenesize = arrayOf(0.0,0.0)
+    var scenewidth = arrayOf(0.0,0.0)
     var nbjoueur = 0
-    val isLocal = false
+    var isLocal = false
 }
