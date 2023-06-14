@@ -8,7 +8,6 @@ class TD2_1: Application() {
     override fun start(stage: Stage) {
         val vue = Vue_menu()
         stage.title="Pickomino"
-
         val scene = Scene(vue,900.0, 300.0)
         stage.scene=scene
         stage.show()
