@@ -3,7 +3,7 @@ import javafx.application.Application
 import javafx.scene.Scene
 import javafx.stage.Stage
 
-class TD2_1: Application() {
+class Pickomino: Application() {
 
     override fun start(stage: Stage) {
         val vue = Vue_menu()
@@ -22,5 +22,5 @@ fun main() {
     val key = identification.second
     val currentGame = connect.gameState(id, key)
     println("Nouvelle partie = $currentGame")
-    Application.launch(MainConcateneur::class.java)
+    Application.launch(Pickomino::class.java)
 }
