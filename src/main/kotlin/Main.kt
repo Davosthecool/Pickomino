@@ -6,7 +6,7 @@ import javafx.stage.Stage
 class Pickomino: Application() {
 
     override fun start(stage: Stage) {
-        val vue = Vue_menu()
+        val vue = Vue_menu() //à gerer
         stage.title="Pickomino"
         val scene = Scene(vue,900.0, 300.0)
         stage.scene=scene
@@ -17,10 +17,10 @@ class Pickomino: Application() {
 fun main() {
     val connect = Connector.factory("172.26.82.76", "8080")
     println("Parties actives sur le serveur = ${connect.listOfGameIds()}")
-    val identification = connect.newGame(3)
-    val id = identification.first
-    val key = identification.second
-    val currentGame = connect.gameState(id, key)
-    println("Nouvelle partie = $currentGame")
+    //val identification = connect.newGame(3)
+    //val id = identification.first
+    //val key = identification.second
+    //val currentGame = connect.gameState(id, key)
+    //println("Nouvelle partie = $currentGame")
     Application.launch(Pickomino::class.java)
 }

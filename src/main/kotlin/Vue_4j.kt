@@ -1,13 +1,14 @@
 import javafx.application.Application
 import javafx.geometry.Insets
 import javafx.scene.Scene
-import javafx.scene.control.Button
+import javafx.scene.control.*
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
 import javafx.stage.Stage
 
 class Vue_4j: BorderPane() {
     init {
+        this.stylesheets.add("vue_3-4.css")
         val jeu = BorderPane()
         val joueur1 = GridPane()
         val joueur2 = GridPane()
