@@ -1,2 +1,0 @@
-class Modele_menu {
-}
