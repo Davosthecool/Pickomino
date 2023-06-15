@@ -4,12 +4,9 @@ import Modele.Modele_jeu
 import Modele.Modele_menu
 import Vue.Vue_2j
 import Vue.Vue_3j
-import Vue.Vue_4j
 import Vue.Vue_menu
-import iut.info1.pickomino.Connector
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
-import javafx.scene.Scene
 import javafx.stage.Stage
 
 class ControleurJoinGame(vue:Vue_menu,modmenu:Modele_menu,stage: Stage,modjeu : Modele_jeu):EventHandler<ActionEvent> {

@@ -4,7 +4,6 @@ import Modele.Modele_jeu
 import Modele.Modele_menu
 import Vue.Vue_2j
 import Vue.Vue_3j
-import Vue.Vue_4j
 import Vue.Vue_menu
 import iut.info1.pickomino.Connector
 import javafx.event.ActionEvent
