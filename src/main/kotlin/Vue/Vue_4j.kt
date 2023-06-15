@@ -143,4 +143,17 @@ class Vue_4j: BorderPane() {
 
     }
 
+
+
+
+    //prendre_joueur domino
+    //prendre_centre domino
+    //remettre_centre domino
+
+    //choisir dé
+    //gardé dé
+    //lancé dé
+
+    //debut partie
+    //fin partie
 }

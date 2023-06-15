@@ -11,6 +11,7 @@ import javafx.scene.control.RadioButton
 import javafx.scene.control.ToggleGroup
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
+import javafx.scene.input.KeyEvent
 import javafx.scene.text.TextAlignment
 import java.io.FileInputStream
 
@@ -33,9 +34,9 @@ class Vue_menu():VBox() {
     val container_id : HBox
     val container_key : HBox
     val label_id : Label
-    val number_id : TextField
+    val number_id : Spinner<Int>
     val label_key: Label
-    val number_key : TextField
+    val number_key : Spinner<Int>
     val options : ObservableList<Int>
     init {
         val im = Image(FileInputStream("ressources/Logo.png"),960.0, 256.0, true, true)
@@ -70,12 +71,16 @@ class Vue_menu():VBox() {
 
             //dans id
         label_id = Label("numéro du salon")
-        number_id = TextField()
+        val valueFactoryid = SpinnerValueFactory.IntegerSpinnerValueFactory(0, Int.MAX_VALUE, 0)
+        number_id = Spinner<Int>()
+        number_id.valueFactory = valueFactoryid
 
         container_key = HBox()
             //dans key
         label_key = Label("clé du salon")
-        number_key = TextField()
+        val valueFactorykey = SpinnerValueFactory.IntegerSpinnerValueFactory(0, Int.MAX_VALUE, 0)
+        number_key = Spinner<Int>()
+        number_key.valueFactory = valueFactorykey
 
         //ajout elements
         type_game.children.addAll(local_game,online_game)
@@ -128,10 +133,8 @@ class Vue_menu():VBox() {
         //label_id
         label_id.alignment = Pos.CENTER
         //number_id
-        number_id.alignment = Pos.CENTER
         //label_key
         label_key.alignment = Pos.CENTER
         //number_key
-        number_key.alignment = Pos.CENTER
     }
 }

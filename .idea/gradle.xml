@@ -8,7 +8,7 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../../nmt_iut/BUT1/S2/31-sae-201-2023" />
           </set>
         </option>
       </GradleProjectSettings>
