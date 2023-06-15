@@ -3,6 +3,7 @@ import Modele.Modele_menu
 import javafx.collections.FXCollections
 import javafx.collections.ObservableArray
 import javafx.collections.ObservableList
+import javafx.css.converter.StringConverter
 import javafx.geometry.Pos
 import javafx.scene.layout.*
 import javafx.scene.control.*
@@ -34,9 +35,9 @@ class Vue_menu():VBox() {
     val container_id : HBox
     val container_key : HBox
     val label_id : Label
-    val number_id : Spinner<Int>
+    val number_id : TextField
     val label_key: Label
-    val number_key : Spinner<Int>
+    val number_key : TextField
     val options : ObservableList<Int>
     init {
         val im = Image(FileInputStream("ressources/Logo.png"),960.0, 256.0, true, true)
@@ -71,16 +72,12 @@ class Vue_menu():VBox() {
 
             //dans id
         label_id = Label("numéro du salon")
-        val valueFactoryid = SpinnerValueFactory.IntegerSpinnerValueFactory(0, Int.MAX_VALUE, 0)
-        number_id = Spinner<Int>()
-        number_id.valueFactory = valueFactoryid
+        number_id = TextField()
 
         container_key = HBox()
             //dans key
         label_key = Label("clé du salon")
-        val valueFactorykey = SpinnerValueFactory.IntegerSpinnerValueFactory(0, Int.MAX_VALUE, 0)
-        number_key = Spinner<Int>()
-        number_key.valueFactory = valueFactorykey
+        number_key = TextField()
 
         //ajout elements
         type_game.children.addAll(local_game,online_game)
