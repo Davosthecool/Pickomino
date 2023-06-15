@@ -256,18 +256,4 @@ class Vue_4j: BorderPane() {
         setMargin(hbox, Insets(10.0)) // Appliquer les marges à la HBox
 
     }
-
-
-
-
-    //prendre_joueur domino
-    //prendre_centre domino
-    //remettre_centre domino
-
-    //choisir dé
-    //gardé dé
-    //lancé dé
-
-    //debut partie
-    //fin partie
 }

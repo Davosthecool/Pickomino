@@ -17,7 +17,7 @@ class Pickomino: Application() {
         val vue = Vue_menu() //à gerer
         val modmenu = Modele_menu(vue) //à gerer
         val scene = Scene(vue,960.0, 540.0)
-        val modjeu = Modele_jeu(vue,modmenu)
+        val modjeu = Modele_jeu(vue)
         //binding
         //radio local
         vue.local_game.setOnAction {
@@ -33,7 +33,6 @@ class Pickomino: Application() {
             println("la partie sera en local: ${modmenu.isLocal}")
             vue.join_game.isDisable = true
             vue.create_game.isDisable = false
-
         }
         //nbjoueur
         vue.player_number_game.setOnAction {
@@ -41,6 +40,8 @@ class Pickomino: Application() {
             println("la partie aura ${modmenu.nbjoueur} joueurs")
             vue.join_game.isDisable = true
             vue.create_game.isDisable = false
+            //get which radio is selected
+            modmenu.isLocal=vue.local_game.isSelected
         }
         //salon clé et id////////////////////////
         //formatters
@@ -66,6 +67,7 @@ class Pickomino: Application() {
             // This event will be triggered whenever the text in the TextField changes
             vue.join_game.isDisable = false
             vue.create_game.isDisable = true
+            modmenu.isLocal=false
         }
         vue.number_key.textFormatter = textFormatterkey
         vue.number_key.textProperty().bindBidirectional(modmenu.inputkey, converter)
@@ -73,6 +75,7 @@ class Pickomino: Application() {
             // This event will be triggered whenever the text in the TextField changes
             vue.join_game.isDisable = false
             vue.create_game.isDisable = true
+            modmenu.isLocal=false
         }
         /////////////////////////////////////////
         //bouton launch
@@ -86,8 +89,6 @@ class Pickomino: Application() {
         vue.local_game.isSelected = true
         modmenu.isLocal=true
         vue.join_game.isDisable = true
-        vue.number_id.isDisable = true
-        vue.number_key.isDisable = true
         vue.player_number_game.selectionModel.selectFirst()
         //lancement application
         stage.title="Pickomino"

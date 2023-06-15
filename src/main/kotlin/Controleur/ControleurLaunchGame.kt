@@ -4,6 +4,7 @@ import Modele.Modele_jeu
 import Modele.Modele_menu
 import Vue.Vue_2j
 import Vue.Vue_3j
+import Vue.Vue_4j
 import Vue.Vue_menu
 import iut.info1.pickomino.Connector
 import javafx.event.ActionEvent
@@ -24,7 +25,9 @@ class ControleurLaunchGame(vue:Vue_menu,modmenu:Modele_menu,stage: Stage,modjeu 
         val id = identification.first
         val key = identification.second
         val currentGame = connect.gameState(id, key)
-        println("Nouvelle partie : $currentGame | clé : ${key} id : ${id}")
+        println("Nouvelle partie : $currentGame")
+        //115 key 5058 id
+        println("id : ${id} clé : ${key}")
         if (modmenu.isLocal==false) {
             println("Lancement de la partie en ligne pour ${modmenu.nbjoueur} joueurs")
         } else {
