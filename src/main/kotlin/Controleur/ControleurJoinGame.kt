@@ -11,13 +11,12 @@ import javafx.event.EventHandler
 import javafx.scene.Scene
 import javafx.stage.Stage
 
-class ControleurLaunchGame(vue:Vue_menu,mod:Modele_menu,stage: Stage):EventHandler<ActionEvent> {
+class ControleurJoinGame(vue:Vue_menu, mod:Modele_menu, stage: Stage):EventHandler<ActionEvent> {
     val mod = mod
     val vue = vue
     val stage = stage
     override fun handle(event: ActionEvent?) {
-        if (mod.isLocal==false) {
-            println("Lancement de la partie en ligne pour ${mod.nbjoueur} joueurs\"")
+        if (mod.isLocal==false) { //its online
             val connect = Connector.factory("172.26.82.76", "8080")
             println("Parties actives sur le serveur = ${connect.listOfGameIds()}")
             val identification = connect.newGame(mod.nbjoueur)
@@ -25,16 +24,17 @@ class ControleurLaunchGame(vue:Vue_menu,mod:Modele_menu,stage: Stage):EventHandl
             val key = identification.second
             val currentGame = connect.gameState(id, key)
             println("Nouvelle partie : $currentGame | clé : ${key} id : ${id}")
-        } else {
-            println("Lancement de la partie en local pour ${mod.nbjoueur} joueurs")
         }
-        //changement vue
+        //changing view
         if (mod.nbjoueur==4) {
             stage.scene.root=Vue_4j()
+            stage.isMaximized = true
         } else if (mod.nbjoueur==3) {
             stage.scene.root= Vue_3j()
+            stage.isMaximized = true
         } else if (mod.nbjoueur==2) {
             stage.scene.root= Vue_2j()
+            stage.isMaximized = true
         }
     }
 }

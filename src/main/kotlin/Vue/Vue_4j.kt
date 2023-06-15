@@ -10,7 +10,6 @@ import javafx.stage.Stage
 
 class Vue_4j: BorderPane() {
     init {
-        this.stylesheets.add("vue_3-4.css")
         val jeu = BorderPane()
         val joueur1 = GridPane()
         val joueur2 = GridPane()

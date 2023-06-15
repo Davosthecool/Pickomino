@@ -28,6 +28,12 @@ class Pickomino: Application() {
             mod.nbjoueur=vue.player_number_game.value
             println("la partie aura ${mod.nbjoueur} joueurs")
         }
+
+        val contlaunch = ControleurLaunchGame(vue,mod,stage)
+        vue.create_game.onAction = contlaunch
+
+        val contjoin = ControleurJoinGame(vue,mod,stage)
+        vue.join_game.onAction = contjoin
         //default
         vue.local_game.isSelected = true
         mod.isLocal=true
