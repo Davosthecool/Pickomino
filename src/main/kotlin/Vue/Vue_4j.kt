@@ -30,18 +30,12 @@ class Vue_4j: BorderPane() {
         val dominoj2 = Label("JOUEUR 2")
         val dominoj3 = Label("JOUEUR 3")
         val dominoj4 = Label("JOUEUR 4")
-        val des1L = Label("DÉS CHOISIS")
-        val des2L = Label("DÉS ACTIFS")
-        val poule = Label("POULE COMMUNE")
 
         val joueurLabelFontSize = 20.0
         dominoj1.style = "-fx-font-weight: bold; -fx-font-size: ${joueurLabelFontSize}px"
         dominoj2.style = "-fx-font-weight: bold; -fx-font-size: ${joueurLabelFontSize}px"
         dominoj3.style = "-fx-font-weight: bold; -fx-font-size: ${joueurLabelFontSize}px"
         dominoj4.style = "-fx-font-weight: bold; -fx-font-size: ${joueurLabelFontSize}px"
-        des1L.style = "-fx-font-weight: bold;"
-        des2L.style = "-fx-font-weight: bold;"
-        poule.style = "-fx-font-weight: bold;"
 
 
 
@@ -49,21 +43,17 @@ class Vue_4j: BorderPane() {
         joueur2.children.add(dominoj2)
         joueur3.children.add(dominoj3)
         joueur4.children.add(dominoj4)
-        des1.children.add(des1L)
-        des2.children.add(des2L)
-        pouleCommune.children.add(poule)
 
 
         jeu.left = des1
         jeu.center = pouleCommune
         jeu.right = des2
 
-        des1.prefWidth = 150.0
-        des2.prefWidth = 150.0
+        des1.prefWidth = 200.0
+        des2.prefWidth = 200.0
 
 
         val RC_joueur1 = RowConstraints()
-        val CC_joueur1 = ColumnConstraints()
 
         RC_joueur1.minHeight = 200.0
         joueur1.rowConstraints.add(RC_joueur1)
@@ -79,13 +69,11 @@ class Vue_4j: BorderPane() {
 
 
         val RC_joueur3 = RowConstraints()
-        val CC_joueur3 = ColumnConstraints()
 
         RC_joueur3.minHeight = 200.0
         joueur3.rowConstraints.add(RC_joueur3)
 
 
-        val RC_joueur4 = RowConstraints()
         val CC_joueur4 = ColumnConstraints()
 
         CC_joueur4.minWidth = 200.0
@@ -126,26 +114,137 @@ class Vue_4j: BorderPane() {
         setMargin(joueur4, margins)
         setMargin(jeu, margins)
 
-        val input = FileInputStream("ressources/Pickominos/21.png")
-        val image = Image(input)
-        val imageView = ImageView(image)
 
-        imageView.fitWidth = 100.0 // Définir la largeur souhaitée
-        imageView.fitHeight = 200.0
-        imageView.style = "-fx-border-color: black; -fx-border-width: 20px;"
-        pouleCommune.add(imageView, 0, 0)
+        pouleCommune.hgap = 10.0
+        pouleCommune.vgap = 10.0
+
+        val imagePathsPickominos = listOf(
+            "image/Pickominos/21.png",
+            "image/Pickominos/22.png",
+            "image/Pickominos/23.png",
+            "image/Pickominos/24.png",
+            "image/Pickominos/25.png",
+            "image/Pickominos/26.png",
+            "image/Pickominos/27.png",
+            "image/Pickominos/28.png",
+            "image/Pickominos/29.png",
+            "image/Pickominos/30.png",
+            "image/Pickominos/31.png",
+            "image/Pickominos/32.png",
+            "image/Pickominos/33.png",
+            "image/Pickominos/34.png",
+            "image/Pickominos/35.png",
+            "image/Pickominos/36.png"
+
+            // Add more image paths as needed
+        )
 
 
+        var columnIndexPickominos = 0
+        var rowIndexPickominos = 0
+
+        for (i in imagePathsPickominos.indices) {
+            val input = FileInputStream(imagePathsPickominos[i])
+            val image = Image(input)
+            val imageView = ImageView(image)
+
+            imageView.fitWidth = 100.0 // Set the desired width
+            imageView.fitHeight = 200.0
+            imageView.style = "-fx-border-color: black; -fx-border-width: 20px;"
+
+            pouleCommune.add(imageView, columnIndexPickominos, rowIndexPickominos) // Add the image to the pouleCommune GridPane
+
+            columnIndexPickominos++
+            if (columnIndexPickominos == 8) {
+                rowIndexPickominos++
+                columnIndexPickominos = 0
+            }
+        }
+
+        des2.hgap = 10.0
+        des2.vgap = 10.0
+
+        des1.hgap = 10.0
+        des1.vgap = 10.0
+
+        val imagePathsDice = listOf(
+            "image/Dice/worm.png",
+            "image/Dice/worm.png",
+            "image/Dice/worm.png",
+            "image/Dice/worm.png",
+            "image/Dice/worm.png",
+            "image/Dice/worm.png",
+            "image/Dice/worm.png",
+            "image/Dice/worm.png",
+        )
+
+
+        var columnIndexDice = 0
+        var rowIndexDice = 0
+
+        for (i in imagePathsDice.indices) {
+            val input = FileInputStream(imagePathsDice[i])
+            val image = Image(input)
+            val imageView1 = ImageView(image)
+
+            imageView1.fitWidth = 90.0 // Set the desired width
+            imageView1.fitHeight = 90.0
+            imageView1.style = "-fx-border-color: black; -fx-border-width: 20px;"
+
+            des2.add(imageView1, columnIndexDice, rowIndexDice) // Add the image to the des2 GridPane
+
+            rowIndexDice++
+            if (rowIndexDice == 4) {
+                columnIndexDice++
+                rowIndexDice = 0
+            }
+
+            val imageView2 = ImageView(imageView1.image)
+
+            imageView2.fitWidth = 90.0 // Set the desired width
+            imageView2.fitHeight = 90.0
+            imageView2.style = "-fx-border-color: black; -fx-border-width: 20px;"
+
+            imageView1.setOnMouseClicked { event ->
+
+                // Add the cloned image to des1 GridPane
+                des1.add(imageView2, columnIndexDice, rowIndexDice)
+
+                // Remove the selected image from des2 GridPane
+                des2.children.remove(imageView1)
+
+                // Adjust the column and row indices
+                rowIndexDice++
+                if (rowIndexDice == 4) {
+                    columnIndexDice++
+                    rowIndexDice = 0
+                }
+            }
+
+            imageView2.setOnMouseClicked { event ->
+
+                // Add the cloned image to des1 GridPane
+                des2.add(imageView1, columnIndexDice, rowIndexDice)
+
+                // Remove the selected image from des2 GridPane
+                des1.children.remove(imageView2)
+
+                // Adjust the column and row indices
+                rowIndexDice++
+                if (rowIndexDice == 4) {
+                    columnIndexDice++
+                    rowIndexDice = 0
+                }
+            }
+
+
+        }
 
         // Personnalisation des styles et marges
         hbox.alignment = Pos.CENTER // Centrer les composants dans la HBox
         setMargin(hbox, Insets(10.0)) // Appliquer les marges à la HBox
 
     }
-
-
-
-
     //prendre_joueur domino
     //prendre_centre domino
     //remettre_centre domino
