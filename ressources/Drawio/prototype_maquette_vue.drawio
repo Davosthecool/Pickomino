@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-16T09:20:57.349Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0" etag="GNVpFE3RjbfbCWcNb05Q" version="21.4.0" type="device" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-06-16T12:13:39.078Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0" etag="tGI4iz1xVtYIQNfPsOvy" version="21.4.0" type="device" pages="2">
   <diagram name="Maquette Vue" id="3M1TjJazwjPzEaw1W7R8">
-    <mxGraphModel dx="2336" dy="799" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2514" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -32,7 +32,7 @@
           <mxGeometry x="935.94" y="1060" width="384.06" height="150" as="geometry" />
         </mxCell>
         <mxCell id="v5ZEcVacr4wvUuhDVwqR-26" value="logo du jeu" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="111.47999999999999" y="162" width="391.52" height="70" as="geometry" />
+          <mxGeometry x="111.48" y="162" width="391.52" height="58" as="geometry" />
         </mxCell>
         <mxCell id="v5ZEcVacr4wvUuhDVwqR-44" value="différentes vues de la partie&lt;br&gt;(selon nombre de joueurs)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="925.62" y="20" width="400" height="40" as="geometry" />
@@ -178,146 +178,149 @@
             <mxPoint x="1122" y="180" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-2" value="" style="rounded=0;whiteSpace=wrap;html=1;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="171.48000000000002" y="242" width="271.52" height="110" as="geometry" />
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-2" value="" style="rounded=0;whiteSpace=wrap;html=1;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="172.1" y="230" width="271.52" height="100" as="geometry" />
         </mxCell>
         <mxCell id="v5ZEcVacr4wvUuhDVwqR-27" value="créer la partie" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="229.10000000000002" y="249.5" width="153.14" height="30" as="geometry" />
+          <mxGeometry x="231.29000000000002" y="235" width="153.14" height="30" as="geometry" />
         </mxCell>
         <mxCell id="pdLSeoJ-_JyIxWy87kaF-5" value="○ En local&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; ● En ligne" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="181.48000000000002" y="290.75" width="251.52" height="21.25" as="geometry" />
+          <mxGeometry x="182.10000000000002" y="271.38" width="251.52" height="21.25" as="geometry" />
         </mxCell>
         <mxCell id="GEZhoIakjSCVFqgkyEvL-9" value="nombre de joueurs" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="181.48000000000002" y="322" width="251.52" height="23.75" as="geometry" />
+          <mxGeometry x="182.10000000000002" y="298.25" width="251.52" height="23.75" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-3" value="" style="rounded=0;whiteSpace=wrap;html=1;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="170.24" y="362" width="272.76" height="110" as="geometry" />
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-3" value="" style="rounded=0;whiteSpace=wrap;html=1;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="172.10000000000002" y="340" width="272.76" height="100" as="geometry" />
         </mxCell>
         <mxCell id="GEZhoIakjSCVFqgkyEvL-15" value="rejoindre la partie en ligne" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="230.05" y="372" width="150" height="30" as="geometry" />
+          <mxGeometry x="234.10000000000002" y="350" width="150" height="30" as="geometry" />
         </mxCell>
         <mxCell id="GEZhoIakjSCVFqgkyEvL-16" value="numéro du salon" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="180.24" y="442" width="252.76" height="20" as="geometry" />
+          <mxGeometry x="181.48000000000002" y="410" width="252.76" height="20" as="geometry" />
         </mxCell>
         <mxCell id="GEZhoIakjSCVFqgkyEvL-17" value="clé du salon" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="180.24" y="412" width="252.76" height="20" as="geometry" />
+          <mxGeometry x="182.72000000000003" y="385" width="252.76" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-5" value="action joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-5" value="action joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="865.62" y="726" width="60" height="98" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-6" value="premier domino joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-6" value="action joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1061" y="860" width="128" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-7" value="score joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-7" value="score joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="1189" y="990" width="126" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-8" value="premier domino joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-8" value="premier domino joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="937.5" y="990" width="126" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-9" value="premier domino joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-9" value="action joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="1063.5" y="990" width="126.5" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-13" value="score joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-13" value="score joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1188.37" y="1220" width="126" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-14" value="premier domino joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-14" value="premier domino joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="936.87" y="1220" width="126" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-15" value="premier domino joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-15" value="action joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1062.87" y="1220" width="126.5" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-16" value="score joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-16" value="score joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1190.56" y="500" width="126" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-17" value="premier domino joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-17" value="premier domino joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="935.62" y="500" width="126" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-18" value="premier domino joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-18" value="action joueur 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1061.62" y="500" width="128" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-19" value="score joueur 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-19" value="score joueur 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1190" y="270" width="125" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-20" value="premier domino joueur 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-20" value="premier domino joueur 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="939.0600000000001" y="270" width="126" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-21" value="premier domino joueur 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-21" value="action joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1065.06" y="270" width="128" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-22" value="premier domino joueur 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-22" value="premier domino joueur 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1325.62" y="630" width="60" height="96" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-23" value="score joueur 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-23" value="score joueur 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1325.62" y="824" width="60" height="96" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-24" value="action joueur 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-24" value="action joueur 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1325.62" y="726" width="60" height="98" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-25" value="premier domino joueur 4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-25" value="premier domino joueur 4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="1325" y="270" width="60" height="96" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-26" value="score joueur 4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-26" value="score joueur 4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="1325" y="464" width="60" height="96" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-27" value="action joueur 4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-27" value="action joueur 4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="1325" y="366" width="60" height="98" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-28" value="premier domino joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-28" value="premier domino joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="865.62" y="270" width="60" height="96" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-29" value="score joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-29" value="score joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="865.62" y="464" width="60" height="96" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-30" value="action joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-30" value="action joueur 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="865.62" y="366" width="60" height="98" as="geometry" />
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-32" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=163;entryDy=57.5;entryPerimeter=0;" edge="1" parent="1" source="v5ZEcVacr4wvUuhDVwqR-27" target="GEZhoIakjSCVFqgkyEvL-28">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-32" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=163;entryDy=57.5;entryPerimeter=0;" parent="1" source="v5ZEcVacr4wvUuhDVwqR-27" target="GEZhoIakjSCVFqgkyEvL-28" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-287" y="262" as="sourcePoint" />
             <mxPoint x="-237" y="212" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-33" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GEZhoIakjSCVFqgkyEvL-29" target="GEZhoIakjSCVFqgkyEvL-15">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-33" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="GEZhoIakjSCVFqgkyEvL-29" target="GEZhoIakjSCVFqgkyEvL-15" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-287" y="262" as="sourcePoint" />
             <mxPoint x="-237" y="222" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-34" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GEZhoIakjSCVFqgkyEvL-19" target="GEZhoIakjSCVFqgkyEvL-17">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-34" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="GEZhoIakjSCVFqgkyEvL-19" target="GEZhoIakjSCVFqgkyEvL-17" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-120.5" y="552" as="sourcePoint" />
             <mxPoint x="-70.5" y="512" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-35" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="GEZhoIakjSCVFqgkyEvL-16" target="GEZhoIakjSCVFqgkyEvL-8">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-35" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="GEZhoIakjSCVFqgkyEvL-16" target="GEZhoIakjSCVFqgkyEvL-8" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-287" y="262" as="sourcePoint" />
             <mxPoint x="-237" y="222" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-36" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="GEZhoIakjSCVFqgkyEvL-23" target="zNBf-Oi2fR06n1UITZC3-2">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-36" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="GEZhoIakjSCVFqgkyEvL-23" target="zNBf-Oi2fR06n1UITZC3-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-287" y="262" as="sourcePoint" />
             <mxPoint x="-237" y="222" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-37" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="GEZhoIakjSCVFqgkyEvL-23" target="zNBf-Oi2fR06n1UITZC3-3">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-37" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="GEZhoIakjSCVFqgkyEvL-23" target="zNBf-Oi2fR06n1UITZC3-3" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-287" y="262" as="sourcePoint" />
             <mxPoint x="-237" y="222" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-38" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GEZhoIakjSCVFqgkyEvL-1" target="GEZhoIakjSCVFqgkyEvL-9">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-38" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="GEZhoIakjSCVFqgkyEvL-1" target="GEZhoIakjSCVFqgkyEvL-9" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-287" y="262" as="sourcePoint" />
             <mxPoint x="-237" y="222" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-39" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="zNBf-Oi2fR06n1UITZC3-2" target="pdLSeoJ-_JyIxWy87kaF-46">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-39" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="zNBf-Oi2fR06n1UITZC3-2" target="pdLSeoJ-_JyIxWy87kaF-46" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-287" y="262" as="sourcePoint" />
             <mxPoint x="-237" y="222" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="9jdPGaZ8rIw836KiBpKW-1" value="règles" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="450" width="154.48" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
