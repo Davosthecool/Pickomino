@@ -21,3 +21,22 @@
 .dominojoueur{
     -fx-border-color : black
 }
+
+.button-action {
+    -fx-text-alignment: center;
+    -fx-border-color: white;
+    -fx-border-radius: 20.0;
+
+    -fx-background-radius : 20.0;
+    -fx-background-color: linear-gradient(to top, rgba(255,165,0,1), rgba(255,218,0,1));
+    -fx-font-size: 20.0;
+    -fx-max-width: 200.0;
+}
+
+.button-action:hover {
+    -fx-background-color: linear-gradient(to top, rgba(219, 142, 1), rgba(255,218,0,1));
+}
+
+.action {
+    -fx-alignment: center;
+}

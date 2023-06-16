@@ -29,21 +29,18 @@ class Pickomino: Application() {
         //radio local
         vue.local_game.setOnAction {
             modmenu.isLocal=true
-            println("la partie sera en local: ${modmenu.isLocal}")
             vue.join_game.isDisable = true
             vue.create_game.isDisable = false
         }
         //radio online
         vue.online_game.setOnAction {
             modmenu.isLocal=false
-            println("la partie sera en local: ${modmenu.isLocal}")
             vue.join_game.isDisable = true
             vue.create_game.isDisable = false
         }
         //nbjoueur
         vue.player_number_game.setOnAction {
             modmenu.nbjoueur=vue.player_number_game.value
-            println("la partie aura ${modmenu.nbjoueur} joueurs")
             vue.join_game.isDisable = true
             vue.create_game.isDisable = false
             //get which radio is selected

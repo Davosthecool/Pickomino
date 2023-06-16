@@ -37,13 +37,13 @@ class Vue_3j(theme:String): BorderPane() {
     var actionJ3 = GridPane()
 
     val lancerDes1 = Button("Lancer les dés")
-    val validerChoixDes1 = Button("Valider le choix des dés")
+    val validerChoixDes1 = Button("Valider le choix\n des dés")
 
     val lancerDes2 = Button("Lancer les dés")
-    val validerChoixDes2 = Button("Valider le choix des dés")
+    val validerChoixDes2 = Button("Valider le choix\n des dés")
 
     val lancerDes3 = Button("Lancer les dés")
-    val validerChoixDes3 = Button("Valider le choix des dés")
+    val validerChoixDes3 = Button("Valider le choix\n des dés")
 
     init {
 
@@ -134,6 +134,15 @@ class Vue_3j(theme:String): BorderPane() {
         actionJ3.add(lancerDes3, 0, 0)
         actionJ3.add(validerChoixDes3, 0, 1)
 
+        lancerDes1.styleClass.addAll("button-action")
+        validerChoixDes1.styleClass.addAll("button-action")
+
+        lancerDes2.styleClass.addAll("button-action")
+        validerChoixDes2.styleClass.addAll("button-action")
+
+        lancerDes3.styleClass.addAll("button-action")
+        validerChoixDes3.styleClass.addAll("button-action")
+
         dominoJ1.styleClass.addAll("joueur1", "joueur", "bordure")
         dominoJ2.styleClass.addAll("joueur2", "joueur", "bordure")
         dominoJ3.styleClass.addAll("joueur3", "joueur", "bordure")
@@ -142,9 +151,9 @@ class Vue_3j(theme:String): BorderPane() {
         scoreJ2.styleClass.addAll("joueur2", "joueur", "bordure")
         scoreJ3.styleClass.addAll("joueur3", "joueur", "bordure")
 
-        actionJ1.styleClass.addAll("joueur1", "joueur", "bordure")
-        actionJ2.styleClass.addAll("joueur2", "joueur", "bordure")
-        actionJ3.styleClass.addAll("joueur3", "joueur", "bordure")
+        actionJ1.styleClass.addAll("joueur1", "joueur", "bordure","action")
+        actionJ2.styleClass.addAll("joueur2", "joueur", "bordure","action")
+        actionJ3.styleClass.addAll("joueur3", "joueur", "bordure","action")
 
         pouleCommune.styleClass.add("bordure",)
         des1.styleClass.add("bordure",)

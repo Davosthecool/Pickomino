@@ -17,12 +17,10 @@ class ControleurTheme(vue:Vue_menu):EventHandler<ActionEvent> {
     val vue = vue
     override fun handle(event: ActionEvent) {
         val txt = event.source as ChoiceBox<String>
-        println(txt.value)
         if (txt.value == "Sombre") { //dark
             vue.theme_value="Dark"
         } else { //dark
             vue.theme_value="Light"
         }
-        println(vue.theme_value)
     }
 }

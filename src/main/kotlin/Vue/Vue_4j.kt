@@ -40,16 +40,16 @@ class Vue_4j(theme:String): BorderPane() {
     val actionJ4 = GridPane()
 
     val lancerDes1 = Button("Lancer les dés")
-    val validerChoixDes1 = Button("Valider le choix des dés")
+    val validerChoixDes1 = Button("Valider le choix\n des dés")
 
     val lancerDes2 = Button("Lancer les dés")
-    val validerChoixDes2 = Button("Valider le choix des dés")
+    val validerChoixDes2 = Button("Valider le choix\n des dés")
 
     val lancerDes3 = Button("Lancer les dés")
-    val validerChoixDes3 = Button("Valider le choix des dés")
+    val validerChoixDes3 = Button("Valider le choix\n des dés")
 
     val lancerDes4 = Button("Lancer les dés")
-    val validerChoixDes4 = Button("Valider le choix des dés")
+    val validerChoixDes4 = Button("Valider le choix\n des dés")
 
     init {
 
@@ -149,6 +149,18 @@ class Vue_4j(theme:String): BorderPane() {
         actionJ4.add(lancerDes4, 0, 0)
         actionJ4.add(validerChoixDes4, 0, 1)
 
+        lancerDes1.styleClass.addAll("button-action")
+        validerChoixDes1.styleClass.addAll("button-action")
+
+        lancerDes2.styleClass.addAll("button-action")
+        validerChoixDes2.styleClass.addAll("button-action")
+
+        lancerDes3.styleClass.addAll("button-action")
+        validerChoixDes3.styleClass.addAll("button-action")
+
+        lancerDes4.styleClass.addAll("button-action")
+        validerChoixDes4.styleClass.addAll("button-action")
+
         dominoJ1.styleClass.addAll("joueur1", "joueur", "bordure")
         dominoJ2.styleClass.addAll("joueur2", "joueur", "bordure")
         dominoJ3.styleClass.addAll("joueur3", "joueur", "bordure")
@@ -159,10 +171,10 @@ class Vue_4j(theme:String): BorderPane() {
         scoreJ3.styleClass.addAll("joueur3", "joueur", "bordure")
         scoreJ4.styleClass.addAll("joueur4", "joueur", "bordure")
 
-        actionJ1.styleClass.addAll("joueur1", "joueur", "bordure")
-        actionJ2.styleClass.addAll("joueur2", "joueur", "bordure")
-        actionJ3.styleClass.addAll("joueur3", "joueur", "bordure")
-        actionJ4.styleClass.addAll("joueur4", "joueur", "bordure")
+        actionJ1.styleClass.addAll("joueur1", "joueur", "bordure","action")
+        actionJ2.styleClass.addAll("joueur2", "joueur", "bordure","action")
+        actionJ3.styleClass.addAll("joueur3", "joueur", "bordure","action")
+        actionJ4.styleClass.addAll("joueur4", "joueur", "bordure","action")
 
         pouleCommune.styleClass.add("bordure")
         des1.styleClass.add("bordure")
