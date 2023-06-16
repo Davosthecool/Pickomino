@@ -8,7 +8,9 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import java.io.FileInputStream
 
-class Vue_4j(theme:String): BorderPane() {
+class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
+    val id = id
+    val key = key
     var theme = theme
     val jeu = BorderPane()
     val des1 = GridPane()
@@ -53,8 +55,8 @@ class Vue_4j(theme:String): BorderPane() {
 
     init {
 
-        val numSalon = Label("Numéro du Salon : XXXXXX")
-        val clSalon = Label("Clé du Salon : XXXXXX")
+        val numSalon = Label("Numéro du Salon : ${this.id}")
+        val clSalon = Label("Clé du Salon : ${this.key}")
 
         numeroSalon.children.add(numSalon)
         cleSalon.children.add(clSalon)
@@ -148,6 +150,11 @@ class Vue_4j(theme:String): BorderPane() {
 
         actionJ4.add(lancerDes4, 0, 0)
         actionJ4.add(validerChoixDes4, 0, 1)
+
+        joueur4.styleClass.addAll("joueurv")
+        joueur3.styleClass.addAll("joueurh")
+        joueur2.styleClass.addAll("joueurv")
+        joueur1.styleClass.addAll("joueurh")
 
         lancerDes1.styleClass.addAll("button-action")
         validerChoixDes1.styleClass.addAll("button-action")

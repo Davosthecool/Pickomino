@@ -35,11 +35,11 @@ class ControleurLaunchGame(vue:Vue_menu,modmenu:Modele_menu,stage: Stage,modjeu 
         }
         //changement vue
         if (modmenu.nbjoueur==4) {
-            stage.scene.root=Vue_4j(vue.theme_value)
+            stage.scene.root=Vue_4j(vue.theme_value,modjeu.id,modjeu.key)
         } else if (modmenu.nbjoueur==3) {
-            stage.scene.root= Vue_3j(vue.theme_value)
+            stage.scene.root= Vue_3j(vue.theme_value,modjeu.id,modjeu.key)
         } else if (modmenu.nbjoueur==2) {
-            stage.scene.root= Vue_2j(vue.theme_value)
+            stage.scene.root= Vue_2j(vue.theme_value,modjeu.id,modjeu.key)
         }
         //update Modele_Jeu
         modjeu.key=key

@@ -1,10 +1,18 @@
 .joueur{
     -fx-background-radius: 30px;
 }
-.joueur1{-fx-background-color : #FF3D3D;}
-.joueur2{-fx-background-color : #4FB6F0;}
-.joueur3{-fx-background-color : #FFE159;}
-.joueur4{-fx-background-color : #58C24A;}
+.joueur1{
+    -fx-background-color : #FF3D3D;
+}
+.joueur2{
+    -fx-background-color : #4FB6F0;
+}
+.joueur3{
+    -fx-background-color : #FFE159;
+}
+.joueur4{
+    -fx-background-color : #58C24A;
+}
 
 .bordure{-fx-border-color : black; -fx-border-radius: 30px}
 
@@ -13,7 +21,7 @@
 }
 .domino{
     -fx-font-weight: bold;
-     -fx-font-size:20px;
+    -fx-font-size:20px;
 }
 .score{
     -fx-border-color : black
@@ -39,4 +47,13 @@
 
 .action {
     -fx-alignment: center;
+    -fx-hgap : 40.0
+}
+
+.joueurh {
+    -fx-hgap : 20.0
+}
+
+.joueurv {
+    -fx-vgap : 20.0
 }

@@ -7,9 +7,10 @@ import javafx.geometry.Pos
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import java.io.FileInputStream
-import javax.swing.border.Border
 
-class Vue_3j(theme:String): BorderPane() {
+class Vue_3j(theme:String,id:Int,key:Int): BorderPane() {
+    val id = id
+    val key = key
     var theme = theme
     var jeu = BorderPane()
     var des = GridPane()
@@ -47,8 +48,8 @@ class Vue_3j(theme:String): BorderPane() {
 
     init {
 
-        val numSalon = Label("Numéro du Salon : XXXXXX")
-        val clSalon = Label("Clé du Salon : XXXXXX")
+        val numSalon = Label("Numéro du Salon : ${this.id}")
+        val clSalon = Label("Clé du Salon : ${this.key}")
 
         numeroSalon.children.add(numSalon)
         cleSalon.children.add(clSalon)
@@ -133,6 +134,10 @@ class Vue_3j(theme:String): BorderPane() {
 
         actionJ3.add(lancerDes3, 0, 0)
         actionJ3.add(validerChoixDes3, 0, 1)
+
+        joueur3.styleClass.addAll("joueurv")
+        joueur2.styleClass.addAll("joueurv")
+        joueur1.styleClass.addAll("joueurh")
 
         lancerDes1.styleClass.addAll("button-action")
         validerChoixDes1.styleClass.addAll("button-action")
