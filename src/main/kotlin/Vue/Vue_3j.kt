@@ -25,22 +25,18 @@ class Vue_3j:BorderPane() {
         val dominoj2 = Label("JOUEUR 2")
         val dominoj3 = Label("JOUEUR 3")
 
-        val joueurLabelFontSize = 20.0
-        dominoj1.style = "-fx-font-weight: bold; -fx-font-size: ${joueurLabelFontSize}px"
-        dominoj2.style = "-fx-font-weight: bold; -fx-font-size: ${joueurLabelFontSize}px"
-        dominoj3.style = "-fx-font-weight: bold; -fx-font-size: ${joueurLabelFontSize}px"
+        dominoj1.styleClass.add("domino")
+        dominoj2.styleClass.add("domino")
+        dominoj3.styleClass.add("domino")
 
         joueur1.children.add(dominoj1)
         joueur2.children.add(dominoj2)
         joueur3.children.add(dominoj3)
 
-
-
         jeu.bottom = joueur1
         jeu.top = des1
         jeu.top = des2
         jeu.center = pouleCommune
-
 
         des1.prefWidth = 730.0
         des2.prefWidth = 730.0
@@ -50,23 +46,15 @@ class Vue_3j:BorderPane() {
         des2.prefHeight = 250.0
 
 
-
-        val RC_joueur1 = RowConstraints()
-
-        RC_joueur1.minHeight = 200.0
-        joueur1.rowConstraints.add(RC_joueur1)
+        val RC_joueur = RowConstraints()
+        RC_joueur.minHeight = 200.0
+        joueur1.rowConstraints.add(RC_joueur)
 
 
-        val RC_joueur2 = RowConstraints()
-        val CC_joueur2 = ColumnConstraints()
-
-        CC_joueur2.minWidth = 200.0
-        joueur2.columnConstraints.add(CC_joueur2)
-
-        val CC_joueur3 = ColumnConstraints()
-
-        CC_joueur3.minWidth = 200.0
-        joueur3.columnConstraints.add(CC_joueur3)
+        val CC_joueur = ColumnConstraints()
+        CC_joueur.minWidth = 200.0
+        joueur2.columnConstraints.add(CC_joueur)
+        joueur3.columnConstraints.add(CC_joueur)
 
         joueur1.alignment = Pos.CENTER
         joueur3.alignment = Pos.CENTER
@@ -78,12 +66,12 @@ class Vue_3j:BorderPane() {
         left = joueur2
         right = joueur3
 
-        joueur1.style = "-fx-background-color : #FF3D3D; -fx-background-radius : 30px"
-        joueur2.style = "-fx-background-color : #4FB6F0; -fx-background-radius : 30px"
-        joueur3.style = "-fx-background-color : #FFE159; -fx-background-radius : 30px"
-        pouleCommune.style = "-fx-border-color : black; -fx-border-radius : 30px"
-        des1.style = "-fx-border-color : black; -fx-border-radius : 30px"
-        des2.style = "-fx-border-color : black; -fx-border-radius : 30px"
+        joueur1.styleClass.addAll("joueur1","joueur")
+        joueur2.styleClass.addAll("joueur2","joueur")
+        joueur3.styleClass.addAll("joueur3","joueur")
+        pouleCommune.styleClass.add("bordure",)
+        des1.styleClass.add("bordure",)
+        des2.styleClass.add("bordure",)
 
         val margins = Insets(10.0)
         setMargin(des1, margins)
@@ -109,7 +97,6 @@ class Vue_3j:BorderPane() {
             imagePathsPickominos.add(imagePath)
         }
 
-
         var columnIndexPickominos = 0
         var rowIndexPickominos = 0
 
@@ -118,10 +105,10 @@ class Vue_3j:BorderPane() {
             val image = Image(input)
             val imageView = ImageView(image)
 
-            imageView.fitWidth = 100.0 // Set the desired width
+            imageView.fitWidth = 100.0
             imageView.fitHeight = 200.0
 
-            pouleCommune.add(imageView, columnIndexPickominos, rowIndexPickominos) // Add the image to the pouleCommune GridPane
+            pouleCommune.add(imageView, columnIndexPickominos, rowIndexPickominos) // ajoute pouleCommune au GridPane
 
             columnIndexPickominos++
             if (columnIndexPickominos == 8) {
@@ -157,11 +144,11 @@ class Vue_3j:BorderPane() {
             val image = Image(input)
             val imageView1 = ImageView(image)
 
-            imageView1.fitWidth = 90.0 // Set the desired width
+            imageView1.styleClass.add("imageView")
+            imageView1.fitWidth = 90.0
             imageView1.fitHeight = 90.0
-            imageView1.style = "-fx-border-color: black; -fx-border-width: 20px;"
 
-            des2.add(imageView1, columnIndexDice2, rowIndexDice2) // Add the image to the des2 GridPane
+            des2.add(imageView1, columnIndexDice2, rowIndexDice2) // ajoute les image de des dans des2 colonne ou les des sont lancés
 
             col_coordonee[i] = columnIndexDice2
             row_coordonee[i] = rowIndexDice2
@@ -172,33 +159,20 @@ class Vue_3j:BorderPane() {
                 columnIndexDice2 = 0
             }
 
-
             val imageView2 = ImageView(imageView1.image)
 
-            imageView2.fitWidth = 90.0 // Set the desired width
+            imageView2.styleClass.add("imageView")
+            imageView2.fitWidth = 90.0
             imageView2.fitHeight = 90.0
-            imageView2.style = "-fx-border-color: black; -fx-border-width: 20px;"
 
             imageView1.setOnMouseClicked { event ->
-
-                // Add the cloned image to des1 GridPane
-                des1.add(imageView2, col_coordonee[i]!!.toInt(), row_coordonee[i]!!.toInt())
-
-                // Remove the selected image from des2 GridPane
-                des2.children.remove(imageView1)
-
-                // Adjust the column and row indices
+                des1.add(imageView2, col_coordonee[i]!!.toInt(), row_coordonee[i]!!.toInt()) //ajoute l'image clonée depuis la colonne de droite dans la colonne de gauche qui est celle des dés choisis
+                des2.children.remove(imageView1) //
             }
 
             imageView2.setOnMouseClicked { event ->
-
-                // Add the cloned image to des1 GridPane
-                des2.add(imageView1, col_coordonee[i]!!.toInt(), row_coordonee[i]!!.toInt())
-
-                // Remove the selected image from des2 GridPane
+                des2.add(imageView1, col_coordonee[i]!!.toInt(), row_coordonee[i]!!.toInt()) //ajoute l'image clonée depuis la colonne de gauche dans celle de droite
                 des1.children.remove(imageView2)
-
-                // Adjust the column and row indices
             }
         }
     }

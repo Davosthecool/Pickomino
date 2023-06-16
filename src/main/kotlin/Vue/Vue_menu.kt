@@ -51,7 +51,7 @@ class Vue_menu():VBox() {
 
 
 
-        val im = Image(FileInputStream("ressources/Logo.png"),960.0, 256.0, true, true)
+        val im = Image(FileInputStream("ressources/GameAssets/Logo.png"),960.0, 256.0, true, true)
         titre = ImageView(im)
         titre_container = VBox()
         partie = VBox()
