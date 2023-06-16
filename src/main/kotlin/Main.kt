@@ -20,6 +20,7 @@ class Pickomino: Application() {
         val modjeu = Modele_jeu(vue)
         //CSS
         scene.stylesheets.add("/CSS/menu.css")
+        scene.stylesheets.add("/CSS/Vue.css")
 
         //binding
         //radio local

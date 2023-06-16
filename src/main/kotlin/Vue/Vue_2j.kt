@@ -79,7 +79,7 @@ class Vue_2j:BorderPane() {
         val imagePathsPickominos = mutableListOf<String>()
 
         for (i in 21..36) {
-            val imagePath = "ressources/Pickominos/$i.png"
+            val imagePath = "ressources/GameAssets/Light/Pickomino/$i.png"
             imagePathsPickominos.add(imagePath)
         }
 
@@ -108,15 +108,15 @@ class Vue_2j:BorderPane() {
 
         des1.hgap = 10.0
         des1.vgap = 10.0
-        val imagePathsDice = listOf(
-            "ressources/Dice/one.png",
-            "ressources/Dice/two.png",
-            "ressources/Dice/three.png",
-            "ressources/Dice/four.png",
-            "ressources/Dice/five.png",
-            "ressources/Dice/five.png",
-            "ressources/Dice/worm.png",
-            "ressources/Dice/worm.png",
+        val lance_de_des = intArrayOf(
+            (1..6).random(),
+            (1..6).random(),
+            (1..6).random(),
+            (1..6).random(),
+            (1..6).random(),
+            (1..6).random(),
+            (1..6).random(),
+            (1..6).random(),
         )
         val row_coordonee = arrayOfNulls<Int>(8)
         val col_coordonee = arrayOfNulls<Int>(8)
@@ -124,8 +124,8 @@ class Vue_2j:BorderPane() {
         var columnIndexDice2 = 0
         var rowIndexDice2 = 0
 
-        for (i in imagePathsDice.indices) {
-            val input = FileInputStream(imagePathsDice[i])
+        for (i in lance_de_des.indices) {
+            val input = FileInputStream("ressources/GameAssets/Light/Dice/"+lance_de_des[i]+".png")
             val image = Image(input)
             val imageView1 = ImageView(image)
 
