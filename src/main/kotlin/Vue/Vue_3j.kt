@@ -9,82 +9,169 @@ import javafx.scene.image.ImageView
 import java.io.FileInputStream
 import javax.swing.border.Border
 
-class Vue_3j:BorderPane() {
+class Vue_3j(theme:String): BorderPane() {
+    var theme = theme
+    var jeu = BorderPane()
+    var des = GridPane()
+    var des1 = GridPane()
+    var des2 = GridPane()
+    var pouleCommune = GridPane()
+    var joueur1 = BorderPane()
+    var joueur2 = BorderPane()
+    var joueur3 = BorderPane()
 
-    val jeu = BorderPane()
-    val des1 = GridPane()
-    val des2 = GridPane()
-    val pouleCommune = GridPane()
-    val joueur1 = GridPane()
-    var joueur2 = GridPane()
-    var joueur3 = GridPane()
+    val infoSalon = GridPane()
+    val numeroSalon = GridPane()
+    val cleSalon = GridPane()
+
+    var dominoJ1 = GridPane()
+    var scoreJ1 = GridPane()
+    var actionJ1 = GridPane()
+
+    var dominoJ2 = GridPane()
+    var scoreJ2 = GridPane()
+    var actionJ2 = GridPane()
+
+    var dominoJ3 = GridPane()
+    var scoreJ3 = GridPane()
+    var actionJ3 = GridPane()
+
+    val lancerDes1 = Button("Lancer les dés")
+    val validerChoixDes1 = Button("Valider le choix des dés")
+
+    val lancerDes2 = Button("Lancer les dés")
+    val validerChoixDes2 = Button("Valider le choix des dés")
+
+    val lancerDes3 = Button("Lancer les dés")
+    val validerChoixDes3 = Button("Valider le choix des dés")
 
     init {
 
-        val dominoj1 = Label("JOUEUR 1")
-        val dominoj2 = Label("JOUEUR 2")
-        val dominoj3 = Label("JOUEUR 3")
+        val numSalon = Label("Numéro du Salon : XXXXXX")
+        val clSalon = Label("Clé du Salon : XXXXXX")
 
-        dominoj1.styleClass.add("domino")
-        dominoj2.styleClass.add("domino")
-        dominoj3.styleClass.add("domino")
+        numeroSalon.children.add(numSalon)
+        cleSalon.children.add(clSalon)
 
-        joueur1.children.add(dominoj1)
-        joueur2.children.add(dominoj2)
-        joueur3.children.add(dominoj3)
+        infoSalon.prefHeight = 40.0
+
+        numeroSalon.prefWidth = 1000.0
+        cleSalon.prefWidth = 1000.0
+
+        numeroSalon.prefHeight = 40.0
+        cleSalon.prefHeight = 40.0
+
+        des1.prefWidth = 750.0
+        des2.prefWidth = 750.0
+
+        des2.prefHeight = 250.0
+        des2.prefHeight = 250.0
+
+        joueur1.prefHeight = 200.0
+        joueur2.prefWidth = 200.0
+        joueur3.prefWidth = 200.0
 
         jeu.bottom = joueur1
-        jeu.top = des1
-        jeu.top = des2
+        jeu.top = des
         jeu.center = pouleCommune
 
-        des1.prefWidth = 730.0
-        des2.prefWidth = 730.0
+        joueur1.left = dominoJ1
+        joueur1.right = scoreJ1
+        joueur1.center = actionJ1
 
-        pouleCommune.prefHeight = 550.0
-        des2.prefHeight = 250.0
-        des2.prefHeight = 250.0
+        joueur2.top = dominoJ2
+        joueur2.bottom = scoreJ2
+        joueur2.center = actionJ2
 
+        joueur3.top = dominoJ3
+        joueur3.bottom = scoreJ3
+        joueur3.center = actionJ3
 
-        val RC_joueur = RowConstraints()
-        RC_joueur.minHeight = 200.0
-        joueur1.rowConstraints.add(RC_joueur)
+        des.add(des1, 0, 0)
+        des.add(des2, 2, 0)
 
+        dominoJ1.prefWidth = 300.0
+        scoreJ1.prefWidth = 300.0
 
-        val CC_joueur = ColumnConstraints()
-        CC_joueur.minWidth = 200.0
-        joueur2.columnConstraints.add(CC_joueur)
-        joueur3.columnConstraints.add(CC_joueur)
+        dominoJ2.prefHeight = 300.0
+        scoreJ2.prefHeight = 300.0
 
-        joueur1.alignment = Pos.CENTER
-        joueur3.alignment = Pos.CENTER
-        pouleCommune.alignment = Pos.CENTER
-        des1.alignment = Pos.CENTER
-        des2.alignment = Pos.CENTER
+        dominoJ3.prefHeight = 300.0
+        scoreJ3.prefHeight = 300.0
+
+        infoSalon.hgap = 10.0
 
         center = jeu
         left = joueur2
         right = joueur3
+        top = infoSalon
 
-        joueur1.styleClass.addAll("joueur1","joueur")
-        joueur2.styleClass.addAll("joueur2","joueur")
-        joueur3.styleClass.addAll("joueur3","joueur")
+        numeroSalon.alignment = Pos.CENTER
+        cleSalon.alignment = Pos.CENTER
+
+        pouleCommune.alignment = Pos.CENTER
+        des1.alignment = Pos.CENTER
+        des2.alignment = Pos.CENTER
+
+        dominoJ1.alignment = Pos.CENTER
+        dominoJ2.alignment = Pos.CENTER
+        dominoJ3.alignment = Pos.CENTER
+
+        actionJ1.alignment = Pos.CENTER
+        actionJ2.alignment = Pos.CENTER
+        actionJ3.alignment = Pos.CENTER
+
+
+        infoSalon.add(numeroSalon, 0, 0)
+        infoSalon.add(cleSalon, 1, 0)
+
+        actionJ1.add(lancerDes1, 0, 0)
+        actionJ1.add(validerChoixDes1, 0, 1)
+
+        actionJ2.add(lancerDes2, 0, 0)
+        actionJ2.add(validerChoixDes2, 0, 1)
+
+        actionJ3.add(lancerDes3, 0, 0)
+        actionJ3.add(validerChoixDes3, 0, 1)
+
+        dominoJ1.styleClass.addAll("joueur1", "joueur", "bordure")
+        dominoJ2.styleClass.addAll("joueur2", "joueur", "bordure")
+        dominoJ3.styleClass.addAll("joueur3", "joueur", "bordure")
+
+        scoreJ1.styleClass.addAll("joueur1", "joueur", "bordure")
+        scoreJ2.styleClass.addAll("joueur2", "joueur", "bordure")
+        scoreJ3.styleClass.addAll("joueur3", "joueur", "bordure")
+
+        actionJ1.styleClass.addAll("joueur1", "joueur", "bordure")
+        actionJ2.styleClass.addAll("joueur2", "joueur", "bordure")
+        actionJ3.styleClass.addAll("joueur3", "joueur", "bordure")
+
         pouleCommune.styleClass.add("bordure",)
         des1.styleClass.add("bordure",)
         des2.styleClass.add("bordure",)
 
-        val margins = Insets(10.0)
-        setMargin(des1, margins)
-        setMargin(des2, margins)
-        setMargin(pouleCommune, margins)
-        setMargin(joueur1, margins)
-        setMargin(jeu, margins)
+        numeroSalon.styleClass.add("bordure")
+        cleSalon.styleClass.add("bordure")
 
-        val marginsj2 = Insets(20.0, 10.0, 20.0, 20.0)
-        setMargin(joueur2, marginsj2)
+        numSalon.styleClass.add("domino")
+        clSalon.styleClass.add("domino")
 
-        val marginsj3 = Insets(20.0, 20.0, 20.0, 10.0)
-        setMargin(joueur3, marginsj2)
+        val marginJeux = Insets(20.0, 10.0, 20.0, 10.0)
+        setMargin(jeu, marginJeux)
+
+        val marginPoule = Insets(20.0, 0.0, 20.0, 0.0)
+        setMargin(pouleCommune, marginPoule)
+
+        val marginj2 = Insets(20.0, 10.0, 20.0, 20.0)
+        setMargin(joueur2, marginj2)
+
+        val marginj3 = Insets(20.0, 20.0, 20.0, 10.0)
+        setMargin(joueur3, marginj3)
+
+        val marginHaut = Insets(20.0, 20.0, 0.0, 20.0)
+        setMargin(infoSalon, marginHaut)
+
+        des.hgap = 10.0
 
         pouleCommune.hgap = 10.0
         pouleCommune.vgap = 10.0
@@ -93,7 +180,7 @@ class Vue_3j:BorderPane() {
         val imagePathsPickominos = mutableListOf<String>()
 
         for (i in 21..36) {
-            val imagePath = "ressources/GameAssets/Light/Pickomino/$i.png"
+            val imagePath = "src/main/resources/GameAssets/${this.theme}/Pickomino/$i.png"
             imagePathsPickominos.add(imagePath)
         }
 
@@ -140,7 +227,7 @@ class Vue_3j:BorderPane() {
         var rowIndexDice2 = 0
 
         for (i in lance_de_des.indices) {
-            val input = FileInputStream("ressources/GameAssets/Light/Dice/"+lance_de_des[i]+".png")
+            val input = FileInputStream("src/main/resources/GameAssets/${this.theme}/Dice/"+lance_de_des[i]+".png")
             val image = Image(input)
             val imageView1 = ImageView(image)
 
@@ -174,6 +261,33 @@ class Vue_3j:BorderPane() {
                 des2.add(imageView1, col_coordonee[i]!!.toInt(), row_coordonee[i]!!.toInt()) //ajoute l'image clonée depuis la colonne de gauche dans celle de droite
                 des1.children.remove(imageView2)
             }
+        }
+
+        val aleaDominos = List(4) { (21..36).random() }
+
+        for (i in aleaDominos.indices) {
+            val aleaDomino = aleaDominos[i]
+            val input = FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/$aleaDomino.png")
+            val image = Image(input)
+
+            val imageView1 = ImageView(image)
+            imageView1.styleClass.addAll("imageView")
+            imageView1.fitWidth = 100.0
+            imageView1.fitHeight = 200.0
+            dominoJ1.add(imageView1, 0, 0)
+
+            val imageView2 = ImageView(image)
+            imageView2.styleClass.addAll("imageView")
+            imageView2.fitWidth = 100.0
+            imageView2.fitHeight = 200.0
+            dominoJ2.add(imageView2, 0, 0)
+
+            val imageView3 = ImageView(image)
+            imageView3.styleClass.addAll("imageView")
+            imageView3.fitWidth = 100.0
+            imageView3.fitHeight = 200.0
+            dominoJ3.add(imageView3, 0, 0)
+
         }
     }
 }

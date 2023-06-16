@@ -8,32 +8,73 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import java.io.FileInputStream
 
-class Vue_4j: BorderPane() {
+class Vue_4j(theme:String): BorderPane() {
+    var theme = theme
     val jeu = BorderPane()
     val des1 = GridPane()
     val des2 = GridPane()
     val pouleCommune = GridPane()
-    val joueur1 = GridPane()
-    var joueur2 = GridPane()
-    var joueur3 = GridPane()
-    var joueur4 = GridPane()
+    val joueur1 = BorderPane()
+    val joueur2 = BorderPane()
+    val joueur3 = BorderPane()
+    val joueur4 = BorderPane()
+
+    val infoSalon = GridPane()
+    val numeroSalon = GridPane()
+    val cleSalon = GridPane()
+
+    val dominoJ1 = GridPane()
+    val scoreJ1 = GridPane()
+    val actionJ1 = GridPane()
+
+    val dominoJ2 = GridPane()
+    val scoreJ2 = GridPane()
+    val actionJ2 = GridPane()
+
+    val dominoJ3 = GridPane()
+    val scoreJ3 = GridPane()
+    val actionJ3 = GridPane()
+
+    val dominoJ4 = GridPane()
+    val scoreJ4 = GridPane()
+    val actionJ4 = GridPane()
+
+    val lancerDes1 = Button("Lancer les dés")
+    val validerChoixDes1 = Button("Valider le choix des dés")
+
+    val lancerDes2 = Button("Lancer les dés")
+    val validerChoixDes2 = Button("Valider le choix des dés")
+
+    val lancerDes3 = Button("Lancer les dés")
+    val validerChoixDes3 = Button("Valider le choix des dés")
+
+    val lancerDes4 = Button("Lancer les dés")
+    val validerChoixDes4 = Button("Valider le choix des dés")
 
     init {
-        // Configuration du contenu pour chaque joueur
-        val dominoj1 = Label("JOUEUR 1")
-        val dominoj2 = Label("JOUEUR 2")
-        val dominoj3 = Label("JOUEUR 3")
-        val dominoj4 = Label("JOUEUR 4")
 
-        dominoj1.styleClass.add("domino")
-        dominoj2.styleClass.add("domino")
-        dominoj3.styleClass.add("domino")
-        dominoj4.styleClass.add("domino")
+        val numSalon = Label("Numéro du Salon : XXXXXX")
+        val clSalon = Label("Clé du Salon : XXXXXX")
 
-        joueur1.children.add(dominoj1)
-        joueur2.children.add(dominoj2)
-        joueur3.children.add(dominoj3)
-        joueur4.children.add(dominoj4)
+        numeroSalon.children.add(numSalon)
+        cleSalon.children.add(clSalon)
+
+
+        infoSalon.prefHeight = 40.0
+
+        numeroSalon.prefWidth = 1000.0
+        cleSalon.prefWidth = 1000.0
+
+        numeroSalon.prefHeight = 40.0
+        cleSalon.prefHeight = 40.0
+
+        des1.prefWidth = 250.0
+        des2.prefWidth = 250.0
+
+        joueur1.prefHeight = 200.0
+        joueur2.prefWidth = 200.0
+        joueur3.prefHeight = 200.0
+        joueur4.prefWidth = 200.0
 
         jeu.left = des1
         jeu.center = pouleCommune
@@ -41,41 +82,97 @@ class Vue_4j: BorderPane() {
         jeu.bottom = joueur1
         jeu.top = joueur3
 
-        des1.prefWidth = 250.0
-        des2.prefWidth = 250.0
+        joueur1.left = dominoJ1
+        joueur1.right = scoreJ1
+        joueur1.center = actionJ1
 
-        val RC_joueur = RowConstraints()
+        joueur2.top = dominoJ2
+        joueur2.bottom = scoreJ2
+        joueur2.center = actionJ2
 
-        RC_joueur.minHeight = 200.0
-        joueur1.rowConstraints.add(RC_joueur)
-        joueur3.rowConstraints.add(RC_joueur)
+        joueur3.left = dominoJ3
+        joueur3.right = scoreJ3
+        joueur3.center = actionJ3
 
-        val CC_joueur = ColumnConstraints()
+        joueur4.top = dominoJ4
+        joueur4.bottom = scoreJ4
+        joueur4.center = actionJ4
 
-        CC_joueur.minWidth = 200.0
-        joueur2.columnConstraints.add(CC_joueur)
-        joueur4.columnConstraints.add(CC_joueur)
+        dominoJ1.prefWidth = 300.0
+        scoreJ1.prefWidth = 300.0
 
+        dominoJ2.prefHeight = 300.0
+        scoreJ2.prefHeight = 300.0
 
-        joueur1.alignment = Pos.CENTER
-        joueur2.alignment = Pos.CENTER
-        joueur3.alignment = Pos.CENTER
-        joueur4.alignment = Pos.CENTER
-        pouleCommune.alignment = Pos.CENTER
-        des1.alignment = Pos.CENTER
-        des2.alignment = Pos.CENTER
+        dominoJ3.prefWidth = 300.0
+        scoreJ3.prefWidth = 300.0
+
+        dominoJ4.prefHeight = 300.0
+        scoreJ4.prefHeight = 300.0
+
+        infoSalon.hgap = 10.0
 
         center = jeu
         left = joueur2
         right = joueur4
+        top = infoSalon
 
-        joueur1.styleClass.addAll("joueur1","joueur")
-        joueur2.styleClass.addAll("joueur2","joueur")
-        joueur3.styleClass.addAll("joueur3","joueur")
-        joueur4.styleClass.addAll("joueur4","joueur")
-        pouleCommune.styleClass.add("bordure",)
-        des1.styleClass.add("bordure",)
-        des2.styleClass.add("bordure",)
+        numeroSalon.alignment = Pos.CENTER
+        cleSalon.alignment = Pos.CENTER
+
+        pouleCommune.alignment = Pos.CENTER
+        des1.alignment = Pos.CENTER
+        des2.alignment = Pos.CENTER
+
+        dominoJ1.alignment = Pos.CENTER
+        dominoJ2.alignment = Pos.CENTER
+        dominoJ3.alignment = Pos.CENTER
+        dominoJ4.alignment = Pos.CENTER
+
+        actionJ1.alignment = Pos.CENTER
+        actionJ2.alignment = Pos.CENTER
+        actionJ3.alignment = Pos.CENTER
+        actionJ4.alignment = Pos.CENTER
+
+        infoSalon.add(numeroSalon, 0, 0)
+        infoSalon.add(cleSalon, 1, 0)
+
+        actionJ1.add(lancerDes1, 0, 0)
+        actionJ1.add(validerChoixDes1, 0, 1)
+
+        actionJ2.add(lancerDes2, 0, 0)
+        actionJ2.add(validerChoixDes2, 0, 1)
+
+        actionJ3.add(lancerDes3, 0, 0)
+        actionJ3.add(validerChoixDes3, 0, 1)
+
+        actionJ4.add(lancerDes4, 0, 0)
+        actionJ4.add(validerChoixDes4, 0, 1)
+
+        dominoJ1.styleClass.addAll("joueur1", "joueur", "bordure")
+        dominoJ2.styleClass.addAll("joueur2", "joueur", "bordure")
+        dominoJ3.styleClass.addAll("joueur3", "joueur", "bordure")
+        dominoJ4.styleClass.addAll("joueur4", "joueur", "bordure")
+
+        scoreJ1.styleClass.addAll("joueur1", "joueur", "bordure")
+        scoreJ2.styleClass.addAll("joueur2", "joueur", "bordure")
+        scoreJ3.styleClass.addAll("joueur3", "joueur", "bordure")
+        scoreJ4.styleClass.addAll("joueur4", "joueur", "bordure")
+
+        actionJ1.styleClass.addAll("joueur1", "joueur", "bordure")
+        actionJ2.styleClass.addAll("joueur2", "joueur", "bordure")
+        actionJ3.styleClass.addAll("joueur3", "joueur", "bordure")
+        actionJ4.styleClass.addAll("joueur4", "joueur", "bordure")
+
+        pouleCommune.styleClass.add("bordure")
+        des1.styleClass.add("bordure")
+        des2.styleClass.add("bordure")
+
+        numeroSalon.styleClass.add("bordure")
+        cleSalon.styleClass.add("bordure")
+
+        numSalon.styleClass.add("domino")
+        clSalon.styleClass.add("domino")
 
         val margins = Insets(10.0)
         setMargin(jeu, margins)
@@ -91,13 +188,16 @@ class Vue_4j: BorderPane() {
         val marginsJoueur4 = Insets(20.0, 20.0, 20.0, 10.0)
         setMargin(joueur4, marginsJoueur4)
 
+        val marginHaut = Insets(20.0, 20.0, 0.0, 20.0)
+        setMargin(infoSalon, marginHaut)
+
         pouleCommune.hgap = 10.0
         pouleCommune.vgap = 10.0
 
         val imagePathsPickominos = mutableListOf<String>()
 
         for (i in 21..36) {
-            val imagePath = "ressources/GameAssets/Light/Pickomino/$i.png"
+            val imagePath = "src/main/resources/GameAssets/${this.theme}/Pickomino/$i.png"
             imagePathsPickominos.add(imagePath)
         }
 
@@ -144,7 +244,7 @@ class Vue_4j: BorderPane() {
         var rowIndexDice2 = 0
 
         for (i in lance_de_des.indices) {
-            val input = FileInputStream("ressources/GameAssets/Light/Dice/"+lance_de_des[i]+".png")
+            val input = FileInputStream("src/main/resources/GameAssets/${this.theme}/Dice/"+lance_de_des[i]+".png")
             val image = Image(input)
             val imageView1 = ImageView(image)
 
@@ -172,6 +272,7 @@ class Vue_4j: BorderPane() {
             imageView1.setOnMouseClicked { event ->
                 des1.add(imageView2, col_coordonee[i]!!.toInt(), row_coordonee[i]!!.toInt()) //ajoute l'image clonée depuis la colonne de droite dans la colonne de gauche qui est celle des dés choisis
                 des2.children.remove(imageView1)
+                println("$des1")
             }
 
             imageView2.setOnMouseClicked { event ->
@@ -179,5 +280,39 @@ class Vue_4j: BorderPane() {
                 des1.children.remove(imageView2)
             }
         }
+
+        val aleaDominos = List(4) { (21..36).random() }
+
+        for (i in aleaDominos.indices) {
+            val aleaDomino = aleaDominos[i]
+            val input = FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/$aleaDomino.png")
+            val image = Image(input)
+
+            val imageView1 = ImageView(image)
+            imageView1.styleClass.addAll("imageView")
+            imageView1.fitWidth = 100.0
+            imageView1.fitHeight = 200.0
+            dominoJ1.add(imageView1, 0, 0)
+
+            val imageView2 = ImageView(image)
+            imageView2.styleClass.addAll("imageView")
+            imageView2.fitWidth = 100.0
+            imageView2.fitHeight = 200.0
+            dominoJ2.add(imageView2, 0, 0)
+
+            val imageView3 = ImageView(image)
+            imageView3.styleClass.addAll("imageView")
+            imageView3.fitWidth = 100.0
+            imageView3.fitHeight = 200.0
+            dominoJ3.add(imageView3, 0, 0)
+
+            val imageView4 = ImageView(image)
+            imageView4.styleClass.addAll("imageView")
+            imageView4.fitWidth = 100.0
+            imageView4.fitHeight = 200.0
+            dominoJ4.add(imageView4, 0, 0)
+        }
+
+
     }
 }

@@ -6,14 +6,17 @@ import javafx.stage.Stage
 import Controleur.*
 import Vue.*
 import Modele.*
-import javafx.beans.binding.Bindings
-import javafx.css.converter.StringConverter
+import javafx.application.Platform
 import javafx.scene.control.TextFormatter
 import javafx.util.converter.NumberStringConverter
+import javafx.scene.*
+
 
 class Pickomino: Application() {
 
     override fun start(stage: Stage) {
+
+
         val vue = Vue_menu() //à gerer
         val modmenu = Modele_menu(vue) //à gerer
         val scene = Scene(vue,960.0, 540.0)
@@ -21,7 +24,7 @@ class Pickomino: Application() {
         //CSS
         scene.stylesheets.add("/CSS/menu.css")
         scene.stylesheets.add("/CSS/Vue.css")
-
+        //music
         //binding
         //radio local
         vue.local_game.setOnAction {
@@ -62,7 +65,6 @@ class Pickomino: Application() {
                 null
             }
         }
-        //binding
         val converter = NumberStringConverter()
         vue.number_id.textFormatter = textFormatterid
         vue.number_id.textProperty().bindBidirectional(modmenu.inputid, converter)
@@ -80,6 +82,14 @@ class Pickomino: Application() {
             vue.create_game.isDisable = true
             modmenu.isLocal=false
         }
+
+        //theme
+        val conttheme = ControleurTheme(vue)
+        vue.theme.onAction = conttheme
+        //regle
+        vue.regle.setOnAction {
+            this.hostServices.showDocument("https://docs.google.com/document/d/1wdcjL6ybM8hpasGdlTt_XzmB-nY_6P21ZzBy5xoNgBI/edit?usp=sharing")
+        }
         /////////////////////////////////////////
         //bouton launch
         val contlaunch = ControleurLaunchGame(vue,modmenu,stage,modjeu)
@@ -93,6 +103,7 @@ class Pickomino: Application() {
         modmenu.isLocal=true
         vue.join_game.isDisable = true
         vue.player_number_game.selectionModel.selectFirst()
+        vue.theme.selectionModel.selectFirst()
         //lancement application
         stage.title="Pickomino"
         stage.scene=scene

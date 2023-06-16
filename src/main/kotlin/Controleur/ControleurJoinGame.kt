@@ -13,7 +13,7 @@ import javafx.stage.Stage
 
 class ControleurJoinGame(vue:Vue_menu,modmenu:Modele_menu,stage: Stage,modjeu : Modele_jeu):EventHandler<ActionEvent> {
     val modmenu = modmenu
-    val vue = vue
+    var vue = vue
     val stage = stage
     val modjeu = modjeu
     override fun handle(event: ActionEvent?) {
@@ -24,19 +24,13 @@ class ControleurJoinGame(vue:Vue_menu,modmenu:Modele_menu,stage: Stage,modjeu : 
             modjeu.key = modmenu.inputkey.value
             modjeu.id = modmenu.inputid.value
             modjeu.isLocal = modmenu.isLocal
-            //get the game and update player number
-            val currentGame = connect.gameState(modjeu.id,modjeu.key)
-            //set the player size
-            println(currentGame)
-            modjeu.nbjoueur = currentGame.current.player+1
-            println("il y a ${modjeu.nbjoueur } joueurs")
             //set view
             if (modmenu.nbjoueur==4) {
-                stage.scene.root=Vue_4j()
+                stage.scene.root=Vue_4j(vue.theme_value)
             } else if (modmenu.nbjoueur==3) {
-                stage.scene.root= Vue_3j()
+                stage.scene.root= Vue_3j(vue.theme_value)
             } else if (modmenu.nbjoueur==2) {
-                stage.scene.root= Vue_2j()
+                stage.scene.root= Vue_2j(vue.theme_value)
             }
             modjeu.vue=stage.scene.root
             stage.isMaximized=true

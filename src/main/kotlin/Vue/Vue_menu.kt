@@ -23,6 +23,7 @@ import javafx.scene.text.TextAlignment
 import java.io.FileInputStream
 
 class Vue_menu():VBox() {
+    var theme_value = "Light"
     val titre : ImageView
     val titre_container : VBox
     val partie : VBox
@@ -45,13 +46,17 @@ class Vue_menu():VBox() {
     val number_id : TextField
     val label_key: Label
     val number_key : TextField
-    val options : ObservableList<Int>
+    var optionspl : ObservableList<Int>
+    val optionsth : ObservableList<String>
+    val regle : Button
+    val theme : ChoiceBox<String>
+    val theme_label : Label
+    val theme_container : HBox
+    val plus_setting : HBox
+    val plus_container : HBox
+
     init {
-        //style
-
-
-
-        val im = Image(FileInputStream("ressources/GameAssets/Logo.png"),960.0, 256.0, true, true)
+        val im = Image(FileInputStream("src/main/resources/GameAssets/Logo.png"),960.0, 256.0, true, true)
         titre = ImageView(im)
         titre_container = VBox()
         partie = VBox()
@@ -63,9 +68,9 @@ class Vue_menu():VBox() {
         //dans setting_game
             //dans player_number_container
         player_number_container = HBox()
-        number_label = Label("Nombre de joueurs")
-        options = FXCollections.observableArrayList(2,3,4)
-        player_number_game = ChoiceBox(options)
+        number_label = Label("Nombre de joueurs :")
+        optionspl = FXCollections.observableArrayList(2,3,4)
+        player_number_game = ChoiceBox(optionspl)
 
         type_game = HBox()
             //dans type_game
@@ -77,54 +82,70 @@ class Vue_menu():VBox() {
 
         join_menu = VBox()
         //dans join_menu
-        join_game = Button("Rejoindre la partie en ligne")
+        join_game = Button("Rejoindre la partie en ligne :")
         join_setting_game = VBox()
         //dans join_setting_game
         container_id = HBox()
 
             //dans id
-        label_id = Label("numéro du salon")
+        label_id = Label("Numéro du salon :")
         number_id = TextField()
 
         container_key = HBox()
             //dans key
-        label_key = Label("clé du salon")
+        label_key = Label("Clé du salon :")
         number_key = TextField()
 
+        regle = Button("Règles du jeu")
+        optionsth = FXCollections.observableArrayList("Clair️","Sombre")
+        theme = ChoiceBox(optionsth)
+        theme_container = HBox()
+        theme_label = Label("Thème de jeu :")
+        plus_setting = HBox()
+        plus_container = HBox()
         //ajout elements
         type_game.children.addAll(local_game,online_game)
         player_number_container.children.addAll(number_label,player_number_game)
         setting_game.children.addAll(type_game,player_number_container)
         creation_menu.children.addAll(create_game,setting_game)
-        partie.children.addAll(creation_menu,join_menu)
+        partie.children.addAll(creation_menu,join_menu,plus_setting)
         container_id.children.addAll(label_id,number_id)
         container_key.children.addAll(label_key,number_key)
         join_setting_game.children.addAll(container_id,container_key)
         join_menu.children.addAll(join_game,join_setting_game)
         titre_container.children.addAll(titre)
+        theme_container.children.addAll(theme_label,theme)
+        plus_container.children.addAll(theme_container,regle)
+        plus_setting.children.addAll(plus_container)
         this.children.addAll(titre_container,partie)
         /////////////////////////////////////////////////////////////////////////////////////////////////
-        this.styleClass.add("vue")
-        titre_container.styleClass.add("titre_container")
-        titre.styleClass.add("titre")
-        partie.styleClass.add("partie")
-        creation_menu.styleClass.add("creation_menu")
-        join_menu.styleClass.add("join_menu")
-        setting_game.styleClass.add("setting_game")
-        create_game.styleClass.add("create_game")
-        type_game.styleClass.add("type_game")
-        player_number_container.styleClass.add("player_number_container")
-        number_label.styleClass.add("number_label")
-        player_number_game.styleClass.add("player_number_game")
-        local_game.styleClass.add("local_game")
-        online_game.styleClass.add("online_game")
-        join_game.styleClass.add("join_game")
-        join_setting_game.styleClass.add("join_setting_game")
-        container_id.styleClass.add("container_id")
-        container_key.styleClass.add("container_key")
-        label_id.styleClass.add("label_id")
-        number_id.styleClass.add("number_id")
-        label_key.styleClass.add("label_key")
-        number_key.styleClass.add("number_key")
+        this.styleClass.addAll("vue")
+        titre_container.styleClass.addAll("titre_container")
+        titre.styleClass.addAll("titre")
+        partie.styleClass.addAll("partie")
+        creation_menu.styleClass.addAll("creation_menu","border","section")
+        join_menu.styleClass.addAll("join_menu","border","section")
+        setting_game.styleClass.addAll("setting_game")
+        create_game.styleClass.addAll("create_game","button")
+        type_game.styleClass.addAll("type_game","sous_section")
+        player_number_container.styleClass.addAll("player_number_container","sous_section")
+        number_label.styleClass.addAll("number_label")
+        player_number_game.styleClass.addAll("player_number_game")
+        local_game.styleClass.addAll("local_game")
+        online_game.styleClass.addAll("online_game")
+        join_game.styleClass.addAll("join_game","button")
+        join_setting_game.styleClass.addAll("join_setting_game")
+        container_id.styleClass.addAll("container_id","sous_section")
+        container_key.styleClass.addAll("container_key","sous_section")
+        label_id.styleClass.addAll("label_id")
+        number_id.styleClass.addAll("number_id")
+        label_key.styleClass.addAll("label_key")
+        number_key.styleClass.addAll("number_key")
+        plus_setting.styleClass.addAll("plus_setting","border","section")
+        plus_container.styleClass.addAll("plus_container","sous_section")
+        regle.styleClass.addAll("regle","button")
+        theme.styleClass.addAll("theme")
+        theme_container.styleClass.addAll("theme_container")
+        theme_label.styleClass.addAll("theme_label")
     }
 }
