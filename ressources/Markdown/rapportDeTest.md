@@ -1,61 +1,61 @@
-# Point de vigilences de l'application
+# Point de vigilances de l'application
 
-## Niveau global
+## Librairie pickomino-jar
 
-Faire attention au fonctionnement de la librairie pickomino-jar et à sa bonne intégration(retours de fonctions, possibilités,...)
+Le mode debug nous permettra de simuler le serveur pour le besoin de nos tests.
 
-Faire attention a la bonne liaison de l'application avec le serveur(affichage,transferts de données,...)
 
-Faire attention à la synchronisation vue-serveur et modele-serveur
 
-## Niveau Vues
+Il nous permettra aussi de choisir les dés exacts que l'on veut obtenir pour nous permettre de tester nos méthodes dépendantes du résultat de ceux-ci sans avoir à subir l'aléatoire.
 
-### Vue menu
 
-Faire attention aux  liens entre nb_players et la vue qui sera affichée
 
-Créer une partie en ligne doit impérativement être bien lié au modele 
+Les exceptions du companion "factory" nous permettront également de récuperer les erreurs liées è la classe Connector plus facilement.
 
-Rejoindre une partie doit bien adapter la vue aux données du salon(nb_joueurs notamment)
 
-### Vue 2j,3j,4j
 
-Attention à la bonne intégration de tout les élements du jeu dans chaque vue
+La doc ne nous donne pas d'infos claires sur la privatisation des variables et méthodes ce qui reduit notre efficacité sur l'écriture de tests.  
 
-Faire attention à ce que nos fonctionnalités soient dépendantes des phases de la partie
 
-Faire attention à ce que les vues s'adaptent visuellement aux phases et au déroulé de la partie 
 
-## Niveau Modèle
+## Application Pickomino
 
-Vérifier que le modèle respece bien sa spécification et l'UML correspondant 
+### Modele
 
-S'assurer du bon typage de toutes les variables et des retours de méthodes
+Toutes les méthodes/variables du modèle citées auront besoin de getter/setter ou etre publiques ou avoir un stub pour pouvoir les moduler: 
 
-s'assurer de la bonne privatisation des variables/méthodes
 
-S'assurer de la bonne implémentation de toutes les méthodes 
 
-S'assurer IMPERATIVEMENT de la bonne intégration de la libraire pickomino-jar dans le modèle
+    la variable nb_joueurs
 
-## Niveau Controleur
 
-### Controleur Join_game
 
-vérifier l'existence et la disponibilité de l'id du salon que l'on essaie de rejoindre 
+    la variable est_local
 
-vérifier que la clé du salon est la bonne et est au bon format
 
-vérifier que la bonne partie est bien rejointe
 
-vérifier que le "lien de connexion est bien actif"
+    la variable key
 
-### Controleur Launch_game
 
-vérifier que l'id et la clé reçu sont bien ceux du salon réservé
 
-vérifier que le jeu se lance bien dans le mode choisi
+    la variable id
 
-vérifier que le jeu lance bien la partie avec le bon nombre de joueurs
 
-vérifier que le jeu ne démarre pas la partie si le nombre de joueurs n'est pas le bon
+
+En ce qui concerne les méthodes je ne peux pas encore en parler car pas encore totalement définis
+
+
+
+### Vue
+
+Les vues sont assez compliquées à tester à part visuellement donc les seules choses que l'on pourra tester sont les méthodes de celle-ci 
+
+
+
+### Controleur
+
+Les controleurs seront eux aussi assez compliqué à tester car pas encore définis et très variables de plus qu'ils agissent sur des évenements par exemple.
+
+
+
+
