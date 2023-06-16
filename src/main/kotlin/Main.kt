@@ -18,6 +18,9 @@ class Pickomino: Application() {
         val modmenu = Modele_menu(vue) //à gerer
         val scene = Scene(vue,960.0, 540.0)
         val modjeu = Modele_jeu(vue)
+        //CSS
+        scene.stylesheets.add("/CSS/menu.css")
+
         //binding
         //radio local
         vue.local_game.setOnAction {
@@ -25,7 +28,6 @@ class Pickomino: Application() {
             println("la partie sera en local: ${modmenu.isLocal}")
             vue.join_game.isDisable = true
             vue.create_game.isDisable = false
-
         }
         //radio online
         vue.online_game.setOnAction {
@@ -93,6 +95,7 @@ class Pickomino: Application() {
         //lancement application
         stage.title="Pickomino"
         stage.scene=scene
+        stage.isMaximized = true
         stage.isResizable = false
         stage.show()
     }
