@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-16T12:13:39.078Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0" etag="tGI4iz1xVtYIQNfPsOvy" version="21.4.0" type="device" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-06-16T12:20:47.654Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/114.0" etag="eHGa-h4zbct78TcCmNo-" version="21.4.0" type="device" pages="2">
   <diagram name="Maquette Vue" id="3M1TjJazwjPzEaw1W7R8">
-    <mxGraphModel dx="2514" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2261" dy="715" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -92,10 +92,10 @@
           <mxGeometry x="590" y="242" width="163" height="80" as="geometry" />
         </mxCell>
         <mxCell id="GEZhoIakjSCVFqgkyEvL-8" value="c&#39;est l&#39;id de la partie" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;" parent="1" vertex="1">
-          <mxGeometry x="323.00000000000006" y="602" width="110" height="60" as="geometry" />
+          <mxGeometry x="254.10000000000005" y="602" width="110" height="60" as="geometry" />
         </mxCell>
         <mxCell id="GEZhoIakjSCVFqgkyEvL-19" value="c&#39;est le &quot;mot de passe&quot; pour accéder à la partie" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;" parent="1" vertex="1">
-          <mxGeometry x="453" y="582" width="110" height="80" as="geometry" />
+          <mxGeometry x="590" y="450" width="110" height="80" as="geometry" />
         </mxCell>
         <mxCell id="GEZhoIakjSCVFqgkyEvL-23" value="&lt;div&gt;lorsqu&#39;on interragie avec les paramêtres de création le bouton rejoindre la partie est desactivé.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;et de même qu&#39;and on interragie avec les paramêtres pour rejoindre, le bouton création se désactive&lt;br&gt;&lt;/div&gt;" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;" parent="1" vertex="1">
           <mxGeometry x="36.620000000000005" y="498" width="210" height="164" as="geometry" />
@@ -283,7 +283,7 @@
             <mxPoint x="-237" y="222" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zNBf-Oi2fR06n1UITZC3-34" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="GEZhoIakjSCVFqgkyEvL-19" target="GEZhoIakjSCVFqgkyEvL-17" edge="1">
+        <mxCell id="zNBf-Oi2fR06n1UITZC3-34" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="GEZhoIakjSCVFqgkyEvL-19" target="GEZhoIakjSCVFqgkyEvL-17" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-120.5" y="552" as="sourcePoint" />
             <mxPoint x="-70.5" y="512" as="targetPoint" />
@@ -320,7 +320,19 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="9jdPGaZ8rIw836KiBpKW-1" value="règles" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="230" y="450" width="154.48" height="20" as="geometry" />
+          <mxGeometry x="172.1" y="450" width="127.9" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="9jdPGaZ8rIw836KiBpKW-3" value="thème" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="315.72" y="450" width="127.9" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="9jdPGaZ8rIw836KiBpKW-4" value="permet de selectionné l&#39;apparence des dés et des dominos dans la partie" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;" vertex="1" parent="1">
+          <mxGeometry x="400" y="540" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="9jdPGaZ8rIw836KiBpKW-5" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fontColor=default;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="9jdPGaZ8rIw836KiBpKW-4" target="9jdPGaZ8rIw836KiBpKW-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="500" as="sourcePoint" />
+            <mxPoint x="445" y="405" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
