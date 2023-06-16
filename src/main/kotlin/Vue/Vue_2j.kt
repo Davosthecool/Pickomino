@@ -72,11 +72,11 @@ class Vue_2j:BorderPane() {
         bottom = joueur1
         top = joueur2
 
-        joueur1.style = "-fx-background-color : #3355BB"
+        joueur1.style = "-fx-background-color : #FF3D3D"
         scoreJoueur1.style = "-fx-border-color : black"
         dominoJoueur1.style = "-fx-border-color : black"
 
-        joueur2.style = "-fx-background-color : gold;"
+        joueur2.style = "-fx-background-color : #4FB6F0;"
         scoreJoueur2.style = "-fx-border-color : black"
         dominoJoueur2.style = "-fx-border-color : black"
 

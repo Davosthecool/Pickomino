@@ -78,9 +78,9 @@ class Vue_3j:BorderPane() {
         left = joueur2
         right = joueur3
 
-        joueur1.style = "-fx-background-color : #3355BB; -fx-background-radius : 30px"
-        joueur2.style = "-fx-background-color : gold; -fx-background-radius : 30px"
-        joueur3.style = "-fx-background-color : #BB1212; -fx-background-radius : 30px"
+        joueur1.style = "-fx-background-color : #FF3D3D; -fx-background-radius : 30px"
+        joueur2.style = "-fx-background-color : #4FB6F0; -fx-background-radius : 30px"
+        joueur3.style = "-fx-background-color : #FFE159; -fx-background-radius : 30px"
         pouleCommune.style = "-fx-border-color : black; -fx-border-radius : 30px"
         des1.style = "-fx-border-color : black; -fx-border-radius : 30px"
         des2.style = "-fx-border-color : black; -fx-border-radius : 30px"
