@@ -3,7 +3,7 @@ package Modele
 import iut.info1.pickomino.Connector
 import iut.info1.pickomino.data.State
 
-class Jeu(modmenu:Menu,vue : Any,theme: String) {
+class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
     var vue = vue
     var isLocal = modmenu.isLocal
     var connect = modmenu.connector
@@ -14,8 +14,10 @@ class Jeu(modmenu:Menu,vue : Any,theme: String) {
     private var statut : State
     var listeDes : MutableList<Des> = mutableListOf()
         private set
-    private var desChoisis : MutableList<Des> = mutableListOf()
-    private var desActifs : MutableList<Des> = mutableListOf()
+    var desChoisis : MutableList<Des> = mutableListOf()
+        private set
+    var desActifs : MutableList<Des> = mutableListOf()
+        private set
     init {
         nbJoueur=connect.gameState(this.id,this.key).score().size
         this.statut=connect.gameState(this.id,this.key).current
