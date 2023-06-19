@@ -2,332 +2,117 @@ package Vue
 
 import javafx.scene.layout.*
 import javafx.scene.control.*
-import javafx.geometry.Insets
-import javafx.geometry.Pos
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import java.io.FileInputStream
 
-class Vue_4j(theme:String,id:Int,key:Int): BorderPane(),Vue_jeu {
-    var id = id
-    var key = key
-    var theme = theme
-    val jeu = BorderPane()
-    val des1 = GridPane()
-    val des2 = GridPane()
-    val pouleCommune = GridPane()
-    val joueur1 = BorderPane()
-    val joueur2 = BorderPane()
-    val joueur3 = BorderPane()
-    val joueur4 = BorderPane()
+class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
+    val theme = theme
 
-    val infoSalon = GridPane()
-    val numeroSalon = GridPane()
-    val cleSalon = GridPane()
+    //ligne principals
+    val ligneHaut = HBox()
+    val ligneMilieu = HBox()
+    val ligneBas = HBox()
 
-    val dominoJ1 = GridPane()
-    val scoreJ1 = GridPane()
-    val actionJ1 = GridPane()
 
-    val dominoJ2 = GridPane()
-    val scoreJ2 = GridPane()
-    val actionJ2 = GridPane()
+    //ligne haut
+    //joueur4
+    val joueur4 = HBox()
+    val domino4 : ImageView
+    val score4 = Label("40")
+    //info jeu
+    val container_info = VBox()
+    val salon = Label("ID du salon : ${id}")
+    val cle = Label("Clé du salon : ${key}")
+    //joueur3
+    val joueur3 = HBox()
+    val domino3 : ImageView
+    val score3 = Label("40")
 
-    val dominoJ3 = GridPane()
-    val scoreJ3 = GridPane()
-    val actionJ3 = GridPane()
+    //ligne milieu
+    val desChoisi = VBox()
+    val pouleCommune = FlowPane()
+    val desActif = VBox()
 
-    val dominoJ4 = GridPane()
-    val scoreJ4 = GridPane()
-    val actionJ4 = GridPane()
+    //ligne bas
 
-    val lancerDes1 = Button("Lancer les dés")
-
-    val lancerDes2 = Button("Lancer les dés")
-
-    val lancerDes3 = Button("Lancer les dés")
-
-    val lancerDes4 = Button("Lancer les dés")
-
+    //joueur2
+    val joueur2 = HBox()
+    val domino2 : ImageView
+    val score2 = Label("40")
+    //lancer des
+    val lanceDes = Button("Lancer le(s) dé(s)")
+    //joueur1
+    val joueur1 = HBox()
+    val domino1 : ImageView
+    val score1 = Label("40")
     init {
+        //init domino joueur
+        domino1= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
+        domino2= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
+        domino3= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
+        domino4= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
 
-        val numSalon = Label("Numéro du Salon : ${id}")
-        val clSalon = Label("Clé du Salon : ${key}")
+        domino1.fitWidth = 100.0
+        domino1.fitHeight = 200.0
+        domino2.fitWidth = 100.0
+        domino2.fitHeight = 200.0
+        domino3.fitWidth = 100.0
+        domino3.fitHeight = 200.0
+        domino4.fitWidth = 100.0
+        domino4.fitHeight = 200.0
+        //init domino poule commune
 
+        //ajout items
+        this.children.addAll(ligneHaut,ligneMilieu,ligneBas)
 
-        infoSalon.prefHeight = 40.0
+        joueur4.children.addAll(domino4,score4)
+        joueur3.children.addAll(domino3,score3)
+        joueur2.children.addAll(domino2,score2)
+        joueur1.children.addAll(domino1,score1)
 
-        numeroSalon.prefWidth = 1000.0
-        cleSalon.prefWidth = 1000.0
+        container_info.children.addAll(salon,cle)
 
-        numeroSalon.prefHeight = 40.0
-        cleSalon.prefHeight = 40.0
+        ligneHaut.children.addAll(joueur3,container_info,joueur4)
 
-        des1.prefWidth = 250.0
-        des2.prefWidth = 250.0
+        ligneMilieu.children.addAll(desChoisi,pouleCommune,desActif)
 
-        joueur1.prefHeight = 200.0
-        joueur2.prefWidth = 200.0
-        joueur3.prefHeight = 200.0
-        joueur4.prefWidth = 200.0
+        ligneBas.children.addAll(joueur2,lanceDes,joueur1)
 
-
-
-        dominoJ1.prefWidth = 300.0
-        scoreJ1.prefWidth = 300.0
-
-        dominoJ2.prefHeight = 300.0
-        scoreJ2.prefHeight = 300.0
-
-        dominoJ3.prefWidth = 300.0
-        scoreJ3.prefWidth = 300.0
-
-        dominoJ4.prefHeight = 300.0
-        scoreJ4.prefHeight = 300.0
-
-        infoSalon.hgap = 10.0
-
-
-
-        numeroSalon.alignment = Pos.CENTER
-        cleSalon.alignment = Pos.CENTER
-
-        pouleCommune.alignment = Pos.CENTER
-        des1.alignment = Pos.CENTER
-        des2.alignment = Pos.CENTER
-
-        dominoJ1.alignment = Pos.CENTER
-        dominoJ2.alignment = Pos.CENTER
-        dominoJ3.alignment = Pos.CENTER
-        dominoJ4.alignment = Pos.CENTER
-
-        actionJ1.alignment = Pos.CENTER
-        actionJ2.alignment = Pos.CENTER
-        actionJ3.alignment = Pos.CENTER
-        actionJ4.alignment = Pos.CENTER
-
-        des2.hgap = 10.0
-        des2.vgap = 10.0
-
-        des1.hgap = 10.0
-        des1.vgap = 10.0
-
-        numeroSalon.children.add(numSalon)
-        cleSalon.children.add(clSalon)
-
-        infoSalon.add(numeroSalon, 0, 0)
-        infoSalon.add(cleSalon, 1, 0)
-
-        actionJ1.add(lancerDes1, 0, 0)
-
-        actionJ2.add(lancerDes2, 0, 0)
-
-        actionJ3.add(lancerDes3, 0, 0)
-
-        actionJ4.add(lancerDes4, 0, 0)
-
-        val margins = Insets(10.0)
-        setMargin(jeu, margins)
-        setMargin(pouleCommune, margins)
-        setMargin(des1, margins)
-        setMargin(des2, margins)
-        setMargin(joueur1, margins)
-        setMargin(joueur3, margins)
-
-        val marginsJoueur2 = Insets(20.0, 10.0, 20.0, 20.0)
-        setMargin(joueur2, marginsJoueur2)
-
-        val marginsJoueur4 = Insets(20.0, 20.0, 20.0, 10.0)
-        setMargin(joueur4, marginsJoueur4)
-
-        val marginHaut = Insets(20.0, 20.0, 0.0, 20.0)
-        setMargin(infoSalon, marginHaut)
-
-        pouleCommune.hgap = 10.0
-        pouleCommune.vgap = 10.0
-
-        lancerDes1.styleClass.addAll("button-action")
-
-        lancerDes2.styleClass.addAll("button-action")
-
-        lancerDes3.styleClass.addAll("button-action")
-
-        lancerDes4.styleClass.addAll("button-action")
-
-        dominoJ1.styleClass.addAll("joueur1", "joueur", "bordure")
-        dominoJ2.styleClass.addAll("joueur2", "joueur", "bordure")
-        dominoJ3.styleClass.addAll("joueur3", "joueur", "bordure")
-        dominoJ4.styleClass.addAll("joueur4", "joueur", "bordure")
-
-        scoreJ1.styleClass.addAll("joueur1", "joueur", "bordure")
-        scoreJ2.styleClass.addAll("joueur2", "joueur", "bordure")
-        scoreJ3.styleClass.addAll("joueur3", "joueur", "bordure")
-        scoreJ4.styleClass.addAll("joueur4", "joueur", "bordure")
-
-        actionJ1.styleClass.addAll("joueur1", "joueur", "bordure","action")
-        actionJ2.styleClass.addAll("joueur2", "joueur", "bordure","action")
-        actionJ3.styleClass.addAll("joueur3", "joueur", "bordure","action")
-        actionJ4.styleClass.addAll("joueur4", "joueur", "bordure","action")
-
-        pouleCommune.styleClass.add("bordure")
-        des1.styleClass.add("bordure")
-        des2.styleClass.add("bordure")
-
-        numeroSalon.styleClass.add("bordure")
-        cleSalon.styleClass.add("bordure")
-
-        numSalon.styleClass.add("domino")
-        clSalon.styleClass.add("domino")
-
-        center = jeu
-        left = joueur2
-        right = joueur4
-        top = infoSalon
-
-        jeu.left = des1
-        jeu.center = pouleCommune
-        jeu.right = des2
-        jeu.bottom = joueur1
-        jeu.top = joueur3
-
-        joueur1.left = dominoJ1
-        joueur1.right = scoreJ1
-        joueur1.center = actionJ1
-
-        joueur2.top = dominoJ2
-        joueur2.bottom = scoreJ2
-        joueur2.center = actionJ2
-
-        joueur3.left = dominoJ3
-        joueur3.right = scoreJ3
-        joueur3.center = actionJ3
-
-        joueur4.top = dominoJ4
-        joueur4.bottom = scoreJ4
-        joueur4.center = actionJ4
-
-
-        pouleCommune.styleClass.addAll("bgwhite")
-        numeroSalon.styleClass.addAll("bgwhite")
-        cleSalon.styleClass.addAll("bgwhite")
-        des1.styleClass.addAll("bgwhite")
-        des2.styleClass.addAll("bgwhite")
-
-        //affichage pickomino poule commune
-        val simulatedPouleCommune = mutableListOf(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36)
-        updatePouleCommune(simulatedPouleCommune)
-        //lance dés (simulé)
-        val simulatedDice = mutableListOf(1,2,3,4,5,6)//MutableList(8) { (1..6).random() }
-        updateDice(simulatedDice,des2)
-
-        //Attribution Domino joueur (simulé)
-        val simulatedDominoPlayer = mutableListOf(21,23,36)
-        val simulatedDominoPlayer1 = mutableListOf(28,24,32)
-        val simulatedDominoAll= mutableListOf(simulatedDominoPlayer,simulatedDominoPlayer1,simulatedDominoPlayer,simulatedDominoPlayer1)
-
-        updateDomino(simulatedDominoAll)
-
+        //style
+        ligneHaut.styleClass.addAll("ligneHaut")
+        ligneMilieu.styleClass.addAll("ligneMilieu")
+        ligneBas.styleClass.addAll("ligneBas")
+        joueur4.styleClass.addAll("joueur4","joueur")
+        domino4.styleClass.addAll("domino4","domino")
+        score4.styleClass.addAll("score4","score")
+        container_info.styleClass.addAll("container_info")
+        salon.styleClass.addAll("salon")
+        cle.styleClass.addAll("cle")
+        joueur3.styleClass.addAll("joueur3","joueur")
+        domino3.styleClass.addAll("domino3","domino")
+        score3.styleClass.addAll("score3","score")
+        desChoisi.styleClass.addAll("desChoisi")
+        pouleCommune.styleClass.addAll("pouleCommune")
+        desActif.styleClass.addAll("desActif")
+        joueur2.styleClass.addAll("joueur2","joueur")
+        domino2.styleClass.addAll("domino2","domino")
+        score2.styleClass.addAll("score2","score")
+        lanceDes.styleClass.addAll("lanceDes")
+        joueur1.styleClass.addAll("joueur1","joueur")
+        domino1.styleClass.addAll("domino1","domino")
+        score1.styleClass.addAll("score1","score")
     }
-    override fun updatePouleCommune(listDomino:MutableList<Int>) {
-        val imagePathsPickominos = mutableListOf<String>()
 
-        for (i in listDomino) {
-            val imagePath = "src/main/resources/GameAssets/${this.theme}/Pickomino/$i.png"
-            imagePathsPickominos.add(imagePath)
-        }
-
-        var columnIndexPickominos = 0
-        var rowIndexPickominos = 0
-
-        for (i in imagePathsPickominos.indices) {
-            val input = FileInputStream(imagePathsPickominos[i])
-            val image = Image(input)
-            val imageView = ImageView(image)
-
-            imageView.fitWidth = 100.0
-            imageView.fitHeight = 200.0
-
-            pouleCommune.add(imageView, columnIndexPickominos, rowIndexPickominos) // ajoute pouleCommune au GridPane
-
-            columnIndexPickominos++
-            if (columnIndexPickominos == 8) {
-                rowIndexPickominos++
-                columnIndexPickominos = 0
-            }
-        }
+    override fun updatePouleCommune(listDomino: MutableList<Int>) {
+        TODO("Not yet implemented")
     }
-    override fun updateDice(listDe:MutableList<Int>,target : GridPane) {
-        val row_coordonee = arrayOfNulls<Int>(8)
-        val col_coordonee = arrayOfNulls<Int>(8)
 
-        var columnIndexDice2 = 0
-        var rowIndexDice2 = 0
-
-        for (i in listDe.indices) {
-            val input = FileInputStream("src/main/resources/GameAssets/${this.theme}/Dice/${listDe[i]}.png")
-            val image = Image(input)
-            val imageView1 = ImageView(image)
-
-            imageView1.styleClass.add("imageView")
-            imageView1.fitWidth = 90.0
-            imageView1.fitHeight = 90.0
-
-            target.add(imageView1, columnIndexDice2, rowIndexDice2) // ajoute les image de des dans des2 colonne ou les des sont lancés
-
-            col_coordonee[i] = columnIndexDice2
-            row_coordonee[i] = rowIndexDice2
-
-            rowIndexDice2++
-            if (rowIndexDice2 == 4) {
-                columnIndexDice2++
-                rowIndexDice2 = 0
-            }
-
-
-            val imageView2 = ImageView(imageView1.image)
-
-            imageView2.styleClass.add("imageView")
-            imageView2.fitWidth = 90.0
-            imageView2.fitHeight = 90.0
-        }
+    override fun updateDice(listDe: MutableList<Int>, target: GridPane) {
+        TODO("Not yet implemented")
     }
+
     override fun updateDomino(listDomino: MutableList<MutableList<Int>>) {
-        var dominoTop = listDomino[0][listDomino[0].size - 1]
-        var image = Image(FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/${dominoTop}.png"))
-
-        val imageView1 = ImageView(image)
-        imageView1.styleClass.addAll("imageView")
-        imageView1.fitWidth = 100.0
-        imageView1.fitHeight = 200.0
-        dominoJ1.add(imageView1, 0, 0)
-
-        dominoTop = listDomino[1][listDomino[1].size - 1]
-        image = Image(FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/${dominoTop}.png"))
-
-        val imageView2 = ImageView(image)
-        imageView2.styleClass.addAll("imageView")
-        imageView2.fitWidth = 100.0
-        imageView2.fitHeight = 200.0
-        dominoJ2.add(imageView2, 0, 0)
-
-        dominoTop = listDomino[2][listDomino[2].size - 1]
-        image = Image(FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/${dominoTop}.png"))
-
-
-        val imageView3 = ImageView(image)
-        imageView3.styleClass.addAll("imageView")
-        imageView3.fitWidth = 100.0
-        imageView3.fitHeight = 200.0
-        dominoJ3.add(imageView3, 0, 0)
-
-        dominoTop = listDomino[3][listDomino[3].size - 1]
-        image = Image(FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/${dominoTop}.png"))
-
-
-        val imageView4 = ImageView(image)
-        imageView4.styleClass.addAll("imageView")
-        imageView4.fitWidth = 100.0
-        imageView4.fitHeight = 200.0
-        dominoJ4.add(imageView4, 0, 0)
+        TODO("Not yet implemented")
     }
 }

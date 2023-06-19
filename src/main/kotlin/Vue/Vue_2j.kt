@@ -93,6 +93,8 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane(),Vue_jeu {
         des1.hgap = 10.0
         des1.vgap = 10.0
 
+        this.styleClass.addAll("vue-jeu")
+
         lancerDes1.styleClass.addAll("button-action")
 
         lancerDes2.styleClass.addAll("button-action")
@@ -115,6 +117,9 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane(),Vue_jeu {
 
         numSalon.styleClass.add("domino")
         clSalon.styleClass.add("domino")
+
+        numeroSalon.styleClass.addAll("bgwhite")
+        cleSalon.styleClass.addAll("bgwhite")
 
         //ajout éléments
         numeroSalon.children.add(numSalon)

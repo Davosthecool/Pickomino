@@ -155,9 +155,7 @@ class Vue_3j(theme:String,id:Int,key:Int): BorderPane(),Vue_jeu {
         des1.hgap = 10.0
         des1.vgap = 10.0
 
-        joueur3.styleClass.addAll("joueurv")
-        joueur2.styleClass.addAll("joueurv")
-        joueur1.styleClass.addAll("joueurh")
+        this.styleClass.addAll("vue-jeu")
 
         lancerDes1.styleClass.addAll("button-action")
 
@@ -186,6 +184,12 @@ class Vue_3j(theme:String,id:Int,key:Int): BorderPane(),Vue_jeu {
 
         numSalon.styleClass.add("domino")
         clSalon.styleClass.add("domino")
+
+        pouleCommune.styleClass.addAll("bgwhite")
+        numeroSalon.styleClass.addAll("bgwhite")
+        cleSalon.styleClass.addAll("bgwhite")
+        des1.styleClass.addAll("bgwhite")
+        des2.styleClass.addAll("bgwhite")
 
         //affichage pickomino poule commune
         val simulatedPouleCommune = mutableListOf(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36)

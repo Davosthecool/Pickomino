@@ -1,59 +1,113 @@
-.joueur{
-    -fx-background-radius: 30px;
+* {
+    -fx-border-color: magenta;
 }
-.joueur1{
-    -fx-background-color : #FF3D3D;
+
+.ligneHaut{
+    -fx-alignment: center;
+    -fx-min-height: 150;
 }
-.joueur2{
-    -fx-background-color : #4FB6F0;
+.ligneMilieu{
+    -fx-alignment: center;
+    -fx-min-height: 600;
+}
+.ligneBas{
+    -fx-alignment: center;
+    -fx-min-height: 150;
+}
+
+
+
+
+
+
+.joueur4{
+
+}
+.domino4{
+
+}
+.score4{
+
+}
+.container_info{
+    -fx-background-color: white;
+    -fx-alignment: center;
+    -fx-min-width: 800;
+}
+.salon{
+    -fx-min-width: 780;
+}
+.cle{
+    -fx-min-width: 780;
 }
 .joueur3{
-    -fx-background-color : #FFE159;
+
 }
-.joueur4{
-    -fx-background-color : #58C24A;
+.domino3{
+
+}
+.score3{
+
 }
 
-.bordure{-fx-border-color : black; -fx-border-radius: 30px}
 
-.imageview{
-    -fx-border-color: black; -fx-border-width: 20px;
+
+
+
+.desChoisi{
+    -fx-min-width: 250;
 }
-.domino{
-    -fx-font-weight: bold;
-    -fx-font-size:20px;
+.pouleCommune{
+    -fx-min-width: 1420;
 }
-.score{
-    -fx-border-color : black
-}
-.dominojoueur{
-    -fx-border-color : black
+.desActif{
+    -fx-min-width: 250;
 }
 
-.button-action {
-    -fx-text-alignment: center;
-    -fx-border-color: white;
-    -fx-border-radius: 20.0;
 
-    -fx-background-radius : 20.0;
-    -fx-background-color: linear-gradient(to top, rgba(255,165,0,1), rgba(255,218,0,1));
-    -fx-font-size: 20.0;
-    -fx-max-width: 200.0;
+
+
+
+.joueur2{
+
+}
+.domino2{
+
+}
+.score2{
+
+}
+.lanceDes{
+    -fx-min-width: 800;
+}
+.joueur1{
+
+}
+.domino1{
+
+}
+.score1{
+
 }
 
-.button-action:hover {
-    -fx-background-color: linear-gradient(to top, rgba(219, 142, 1), rgba(255,218,0,1));
-}
 
-.action {
+
+
+
+.joueur {
+    -fx-min-width: 560;
     -fx-alignment: center;
-    -fx-vgap: 40.0;
+    -fx-spacing: 10;
 }
 
-.bgwhite {
-    -fx-background-color: #ffffff;
+.domino {
+    -fx-min-width: 280;
+    -fx-min-height: 200;
+    -fx-alignment: center;
 }
 
-.vue {
-    -fx-background-color: black;
+.score {
+    -fx-min-width: 280;
+    -fx-min-height: 200;
+    -fx-text-alignment: right;
 }

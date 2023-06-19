@@ -1,6 +1,7 @@
 package Modele
 
 import iut.info1.pickomino.Connector
+import iut.info1.pickomino.data.DICE
 import iut.info1.pickomino.data.State
 
 class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
@@ -16,7 +17,7 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         private set
     var desChoisis : MutableList<Des> = mutableListOf()
         private set
-    var desActifs : MutableList<Des> = mutableListOf()
+    var desActifs : MutableList<DICE> = mutableListOf()
         private set
     init {
         nbJoueur=connect.gameState(this.id,this.key).score().size

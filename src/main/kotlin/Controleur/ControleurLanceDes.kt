@@ -1,7 +1,6 @@
 package Controleur
 
 import Modele.Jeu
-import io.ktor.network.sockets.*
 import iut.info1.pickomino.Connector
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
@@ -11,7 +10,11 @@ class ControleurLanceDes(vue : Any,modele: Jeu,connect:Connector):EventHandler<A
     private val vue = vue
     private val modele = modele
     override fun handle(event: ActionEvent?) {
+        TODO("prout")
+        /*
         modele.desActifs=connect.rollDices(modele.id,modele.key)
         print(connect.rollDices(modele.id,modele.key))
+        */
     }
+
 }
