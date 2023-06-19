@@ -16,6 +16,7 @@ class ControleurJoinGame(vue:Vue_menu,stage: Stage,modjeu : Modele_jeu):EventHan
     val modjeu = modjeu
     val connect = modjeu.connector
     override fun handle(event: ActionEvent?) {
+        modjeu.nbjoueur=connect.gameState(modjeu.id.value,modjeu.key.value).score().size
         if (modjeu.isLocal==false) {
             stage.hide()
             //set view

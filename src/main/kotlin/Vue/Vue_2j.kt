@@ -7,11 +7,13 @@ import javafx.geometry.Pos
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import java.io.FileInputStream
+import java.util.*
+import kotlin.random.Random
 
 class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
     val id = id
     val key = key
-    var theme = theme
+    val theme = theme
     val jeu = BorderPane()
     val des1 = GridPane()
     val des2 = GridPane()
@@ -40,13 +42,9 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
     val validerChoixDes2 = Button("Valider le choix\n des dés")
 
     init {
-
         val numSalon = Label("Numéro du Salon : ${this.id}")
         val clSalon = Label("Clé du Salon : ${this.key}")
         //style
-        numeroSalon.children.add(numSalon)
-        cleSalon.children.add(clSalon)
-
         infoSalon.prefHeight = 40.0
 
         numeroSalon.prefWidth = 1000.0
@@ -126,6 +124,9 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
         clSalon.styleClass.add("domino")
 
         //ajout éléments
+        numeroSalon.children.add(numSalon)
+        cleSalon.children.add(clSalon)
+
         haut.top = infoSalon
         haut.bottom = joueur2
 
@@ -160,11 +161,12 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
         //lance dés (simulé)
         val simulatedDice = mutableListOf(1,2,3,4,5,6)//MutableList(8) { (1..6).random() }
         updateDice(simulatedDice,des2)
-        bindDes()
 
         //Attribution Domino joueur (simulé)
-        val simulatedDominoPlayer = mutableListOf(24,36,34,32)
-        val simulatedDominoAll = MutableList(4) { simulatedDominoPlayer }
+        val simulatedDominoPlayer = mutableListOf(21,23,36)
+        val simulatedDominoPlayer1 = mutableListOf(28,24,32)
+        val simulatedDominoAll= mutableListOf(simulatedDominoPlayer,simulatedDominoPlayer1)
+
         updateDomino(simulatedDominoAll)
 
     }
@@ -231,43 +233,23 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
             imageView2.fitHeight = 90.0
         }
     }
-    fun bindDes() {
-        for (i in des2.children) {
-            if (i is ImageView) { //si c'est un dés on le bind
-                i.setOnMouseClicked {
-                    val alert = Alert(Alert.AlertType.CONFIRMATION)
-                    alert.title = "Confirmation Dialog"
-                    alert.headerText = "Voulez vous prendre le(s) dé(s) de valeur ${GridPane.getRowIndex(i)+(GridPane.getColumnIndex(i)*4)}"
-                    alert.contentText = "Cliquez sur Oui pour confirmer le choix"
-
-                    val yesButton = ButtonType.YES
-                    val noButton = ButtonType.NO
-                    alert.buttonTypes.setAll(yesButton, noButton)
-                    val result = alert.showAndWait()
-                    if (result.isPresent && result.get() == yesButton) {
-                    }
-                }
-            }
-        }
-    }
-
     fun updateDomino(listDomino:MutableList<MutableList<Int>>) {
-        for (i in listDomino.indices) {
-            val dominoTop = listDomino[i][listDomino[i].size - 1]
-            val input = FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/${dominoTop}.png")
-            val image = Image(input)
+        var dominoTop = listDomino[0][listDomino[0].size - 1]
+        var image = Image(FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/${dominoTop}.png"))
 
-            val imageView1 = ImageView(image)
-            imageView1.styleClass.addAll("imageView")
-            imageView1.fitWidth = 100.0
-            imageView1.fitHeight = 200.0
-            dominoJ1.add(imageView1, 0, 0)
+        val imageView1 = ImageView(image)
+        imageView1.styleClass.addAll("imageView")
+        imageView1.fitWidth = 100.0
+        imageView1.fitHeight = 200.0
+        dominoJ1.add(imageView1, 0, 0)
 
-            val imageView2 = ImageView(image)
-            imageView2.styleClass.addAll("imageView")
-            imageView2.fitWidth = 100.0
-            imageView2.fitHeight = 200.0
-            dominoJ2.add(imageView2, 0, 0)
-        }
+        dominoTop = listDomino[1][listDomino[1].size - 1]
+        image = Image(FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/${dominoTop}.png"))
+
+        val imageView2 = ImageView(image)
+        imageView2.styleClass.addAll("imageView")
+        imageView2.fitWidth = 100.0
+        imageView2.fitHeight = 200.0
+        dominoJ2.add(imageView2, 0, 0)
     }
 }

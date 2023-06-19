@@ -11,7 +11,7 @@ import java.io.FileInputStream
 class Vue_3j(theme:String,id:Int,key:Int): BorderPane() {
     val id = id
     val key = key
-    var theme = theme
+    val theme = theme
     var jeu = BorderPane()
     var des = GridPane()
     var des1 = GridPane()
