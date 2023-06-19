@@ -2,23 +2,78 @@
     -fx-border-color: magenta;
 }
 
+/*container | static*/
+
 .ligneHaut{
     -fx-alignment: center;
     -fx-min-height: 150;
+    -fx-pref-height: 150;
+    -fx-max-height: 150;
+    -fx-padding: 10;
+    -fx-spacing: 10;
 }
 .ligneMilieu{
     -fx-alignment: center;
     -fx-min-height: 600;
+    -fx-pref-height: 600;
+    -fx-max-height: 600;
+    -fx-padding: 10;
+    -fx-spacing: 10;
 }
 .ligneBas{
     -fx-alignment: center;
     -fx-min-height: 150;
+    -fx-pref-height: 150;
+    -fx-max-height: 150;
+    -fx-padding: 10;
+    -fx-spacing: 10;
 }
 
 
 
+/*ligne haut (info) | variable*/
+
+/*4J*/
+.container_info-4j{
+    -fx-background-color: white;
+    -fx-alignment: center;
+    -fx-min-width: 780; 
+    -fx-min-height: 120;
+    -fx-spacing: 10;
+}
+.salon-4j{ 
+    -fx-min-width: 780; 
+    -fx-min-height: 60; 
+}
+.cle-4j{
+    -fx-min-width: 780; 
+    -fx-min-height: 60; 
+}
 
 
+/*3J*/
+
+.salon-3j{ 
+    -fx-min-width: 665; 
+    -fx-min-height: 130; 
+}
+.cle-3j{
+    -fx-min-width: 665; 
+    -fx-min-height: 130; 
+}
+
+/*2J*/
+
+.salon-2j{ 
+    -fx-min-width: 945; 
+    -fx-min-height: 130; 
+}
+.cle-2j{
+    -fx-min-width: 945; 
+    -fx-min-height: 130; 
+}
+
+/*ligne haut (joueurs) | static*/
 
 .joueur4{
 
@@ -28,17 +83,6 @@
 }
 .score4{
 
-}
-.container_info{
-    -fx-background-color: white;
-    -fx-alignment: center;
-    -fx-min-width: 800;
-}
-.salon{
-    -fx-min-width: 780;
-}
-.cle{
-    -fx-min-width: 780;
 }
 .joueur3{
 
@@ -51,21 +95,24 @@
 }
 
 
-
+/*ligne milieu | static*/
 
 
 .desChoisi{
-    -fx-min-width: 250;
+    -fx-min-width: 240; 
+    -fx-min-height: 580; 
 }
 .pouleCommune{
-    -fx-min-width: 1420;
+    -fx-min-width: 1400; 
+    -fx-min-height: 580; 
 }
 .desActif{
-    -fx-min-width: 250;
+    -fx-min-width: 240;
+    -fx-min-height: 580;
 }
 
 
-
+/*ligne bas | static*/
 
 
 .joueur2{
@@ -78,7 +125,7 @@
 
 }
 .lanceDes{
-    -fx-min-width: 800;
+    -fx-min-width: 780;
 }
 .joueur1{
 
@@ -91,23 +138,23 @@
 }
 
 
-
+/*espace joueur | static*/
 
 
 .joueur {
-    -fx-min-width: 560;
+    -fx-min-width: 550;
     -fx-alignment: center;
     -fx-spacing: 10;
 }
 
 .domino {
-    -fx-min-width: 280;
-    -fx-min-height: 200;
+    -fx-min-width: 270;
+    -fx-min-height: 130;
     -fx-alignment: center;
 }
 
 .score {
-    -fx-min-width: 280;
-    -fx-min-height: 200;
+    -fx-min-width: 270;
+    -fx-min-height: 130;
     -fx-text-alignment: right;
 }

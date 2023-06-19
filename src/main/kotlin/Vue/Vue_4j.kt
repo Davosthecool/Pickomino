@@ -53,14 +53,14 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         domino3= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
         domino4= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
 
-        domino1.fitWidth = 100.0
-        domino1.fitHeight = 200.0
-        domino2.fitWidth = 100.0
-        domino2.fitHeight = 200.0
-        domino3.fitWidth = 100.0
-        domino3.fitHeight = 200.0
-        domino4.fitWidth = 100.0
-        domino4.fitHeight = 200.0
+        domino1.fitWidth = 65.0
+        domino1.fitHeight = 130.0
+        domino2.fitWidth = 65.0
+        domino2.fitHeight = 130.0
+        domino3.fitWidth = 65.0
+        domino3.fitHeight = 130.0
+        domino4.fitWidth = 65.0
+        domino4.fitHeight = 130.0
         //init domino poule commune
 
         //ajout items
@@ -86,9 +86,9 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         joueur4.styleClass.addAll("joueur4","joueur")
         domino4.styleClass.addAll("domino4","domino")
         score4.styleClass.addAll("score4","score")
-        container_info.styleClass.addAll("container_info")
-        salon.styleClass.addAll("salon")
-        cle.styleClass.addAll("cle")
+        container_info.styleClass.addAll("container_info-4j")
+        salon.styleClass.addAll("salon-4j")
+        cle.styleClass.addAll("cle-4j")
         joueur3.styleClass.addAll("joueur3","joueur")
         domino3.styleClass.addAll("domino3","domino")
         score3.styleClass.addAll("score3","score")

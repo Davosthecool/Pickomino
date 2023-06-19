@@ -10,242 +10,87 @@ import java.io.FileInputStream
 import java.util.*
 import kotlin.random.Random
 
-class Vue_2j(theme:String,id:Int,key:Int): BorderPane(),Vue_jeu {
-    val id = id
-    val key = key
+class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     val theme = theme
-    val jeu = BorderPane()
-    val des1 = GridPane()
-    val des2 = GridPane()
-    val pouleCommune = GridPane()
-    val joueur1 = BorderPane()
-    var joueur2 = BorderPane()
 
-    val haut = BorderPane()
+    //ligne principals
+    val ligneHaut = HBox()
+    val ligneMilieu = HBox()
+    val ligneBas = HBox()
 
-    val infoSalon = GridPane()
-    val numeroSalon = GridPane()
-    val cleSalon = GridPane()
 
-    var dominoJ1 = GridPane()
-    var scoreJ1 = GridPane()
-    var actionJ1 = GridPane()
+    //ligne haut
+    //info jeu
+    val container_info = VBox()
+    val salon = Label("ID du salon : ${id}")
+    val cle = Label("Clé du salon : ${key}")
 
-    var dominoJ2 = GridPane()
-    var scoreJ2 = GridPane()
-    var actionJ2 = GridPane()
+    //ligne milieu
+    val desChoisi = VBox()
+    val pouleCommune = FlowPane()
+    val desActif = VBox()
 
-    val lancerDes1 = Button("Lancer les dés")
-
-    val lancerDes2 = Button("Lancer les dés")
-
+    //ligne bas
+    //joueur2
+    val joueur2 = HBox()
+    val domino2 : ImageView
+    val score2 = Label("40")
+    //lancer des
+    val lanceDes = Button("Lancer le(s) dé(s)")
+    //joueur1
+    val joueur1 = HBox()
+    val domino1 : ImageView
+    val score1 = Label("40")
     init {
-        val numSalon = Label("Numéro du Salon : ${this.id}")
-        val clSalon = Label("Clé du Salon : ${this.key}")
+        //init domino joueur
+        domino1= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
+        domino2= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
+
+        domino1.fitWidth = 65.0
+        domino1.fitHeight = 130.0
+        domino2.fitWidth = 65.0
+        domino2.fitHeight = 130.0
+        //init domino poule commune
+
+        //ajout items
+        this.children.addAll(ligneHaut,ligneMilieu,ligneBas)
+
+        joueur2.children.addAll(domino2,score2)
+        joueur1.children.addAll(domino1,score1)
+
+        ligneHaut.children.addAll(salon,cle)
+
+        ligneMilieu.children.addAll(desChoisi,pouleCommune,desActif)
+
+        ligneBas.children.addAll(joueur2,lanceDes,joueur1)
+
         //style
-        infoSalon.prefHeight = 40.0
-
-        numeroSalon.prefWidth = 1000.0
-        cleSalon.prefWidth = 1000.0
-
-        numeroSalon.prefHeight = 40.0
-        cleSalon.prefHeight = 40.0
-
-        joueur1.prefHeight = 200.0
-        joueur2.prefHeight = 200.0
-
-        des1.prefWidth = 250.0
-        des2.prefWidth = 250.0
-
-        infoSalon.hgap = 10.0
-
-        pouleCommune.hgap = 10.0
-        pouleCommune.vgap = 10.0
-
-        dominoJ1.prefWidth = 300.0
-        scoreJ1.prefWidth = 300.0
-
-        dominoJ2.prefWidth = 300.0
-        scoreJ2.prefWidth = 300.0
-
-        numeroSalon.alignment = Pos.CENTER
-        cleSalon.alignment = Pos.CENTER
-
-        pouleCommune.alignment = Pos.CENTER
-        des1.alignment = Pos.CENTER
-        des2.alignment = Pos.CENTER
-
-        dominoJ1.alignment = Pos.CENTER
-        dominoJ2.alignment = Pos.CENTER
-
-        actionJ1.alignment = Pos.CENTER
-        actionJ2.alignment = Pos.CENTER
-
-        setMargin(jeu, Insets(20.0, 20.0, 20.0, 20.0))
-        setMargin(pouleCommune, Insets(0.0, 20.0, 0.0, 20.0))
-        setMargin(joueur1, Insets(0.0, 20.0, 20.0, 20.0))
-        setMargin(joueur2, Insets(20.0, 0.0, 0.0, 0.0))
-        setMargin(haut, Insets(20.0, 20.0, 0.0, 20.0))
-
-        des2.hgap = 10.0
-        des2.vgap = 10.0
-
-        des1.hgap = 10.0
-        des1.vgap = 10.0
-
-        this.styleClass.addAll("vue-jeu")
-
-        lancerDes1.styleClass.addAll("button-action")
-
-        lancerDes2.styleClass.addAll("button-action")
-
-        dominoJ1.styleClass.addAll("joueur1", "joueur", "bordure")
-        dominoJ2.styleClass.addAll("joueur2", "joueur", "bordure")
-
-        scoreJ1.styleClass.addAll("joueur1", "joueur", "bordure")
-        scoreJ2.styleClass.addAll("joueur2", "joueur", "bordure")
-
-        actionJ1.styleClass.addAll("joueur1", "joueur", "bordure","action","joueurh")
-        actionJ2.styleClass.addAll("joueur2", "joueur", "bordure","action","joueurh")
-
-        pouleCommune.styleClass.add("bordure")
-        des1.styleClass.add("bordure")
-        des2.styleClass.add("bordure")
-
-        numeroSalon.styleClass.add("bordure")
-        cleSalon.styleClass.add("bordure")
-
-        numSalon.styleClass.add("domino")
-        clSalon.styleClass.add("domino")
-
-        numeroSalon.styleClass.addAll("bgwhite")
-        cleSalon.styleClass.addAll("bgwhite")
-
-        //ajout éléments
-        numeroSalon.children.add(numSalon)
-        cleSalon.children.add(clSalon)
-
-        haut.top = infoSalon
-        haut.bottom = joueur2
-
-        jeu.left = des1
-        jeu.center = pouleCommune
-        jeu.right = des2
-
-        joueur1.left = dominoJ1
-        joueur1.right = scoreJ1
-        joueur1.center = actionJ1
-
-        joueur2.left = dominoJ2
-        joueur2.right = scoreJ2
-        joueur2.center = actionJ2
-
-        center = jeu
-        bottom = joueur1
-        top = haut
-
-        infoSalon.add(numeroSalon, 0, 0)
-        infoSalon.add(cleSalon, 1, 0)
-
-        actionJ1.add(lancerDes1, 0, 0)
-
-        actionJ2.add(lancerDes2, 0, 0)
-
-        //affichage pickomino poule commune
-        val simulatedPouleCommune = mutableListOf(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36)
-        updatePouleCommune(simulatedPouleCommune)
-        //lance dés (simulé)
-        val simulatedDice = mutableListOf(1,2,3,4,5,6)//MutableList(8) { (1..6).random() }
-        updateDice(simulatedDice,des2)
-
-        //Attribution Domino joueur (simulé)
-        val simulatedDominoPlayer = mutableListOf(21,23,36)
-        val simulatedDominoPlayer1 = mutableListOf(28,24,32)
-        val simulatedDominoAll= mutableListOf(simulatedDominoPlayer,simulatedDominoPlayer1)
-
-        updateDomino(simulatedDominoAll)
-
+        ligneHaut.styleClass.addAll("ligneHaut")
+        ligneMilieu.styleClass.addAll("ligneMilieu")
+        ligneBas.styleClass.addAll("ligneBas")
+        salon.styleClass.addAll("salon-2j")
+        cle.styleClass.addAll("cle-2j")
+        desChoisi.styleClass.addAll("desChoisi")
+        pouleCommune.styleClass.addAll("pouleCommune")
+        desActif.styleClass.addAll("desActif")
+        joueur2.styleClass.addAll("joueur2","joueur")
+        domino2.styleClass.addAll("domino2","domino")
+        score2.styleClass.addAll("score2","score")
+        lanceDes.styleClass.addAll("lanceDes")
+        joueur1.styleClass.addAll("joueur1","joueur")
+        domino1.styleClass.addAll("domino1","domino")
+        score1.styleClass.addAll("score1","score")
     }
-    override fun updatePouleCommune(listDomino:MutableList<Int>) {
-        val imagePathsPickominos = mutableListOf<String>()
 
-        for (i in listDomino) {
-            val imagePath = "src/main/resources/GameAssets/${this.theme}/Pickomino/$i.png"
-            imagePathsPickominos.add(imagePath)
-        }
-
-        var columnIndexPickominos = 0
-        var rowIndexPickominos = 0
-
-        for (i in imagePathsPickominos.indices) {
-            val input = FileInputStream(imagePathsPickominos[i])
-            val image = Image(input)
-            val imageView = ImageView(image)
-
-            imageView.fitWidth = 100.0
-            imageView.fitHeight = 200.0
-
-            pouleCommune.add(imageView, columnIndexPickominos, rowIndexPickominos) // ajoute pouleCommune au GridPane
-
-            columnIndexPickominos++
-            if (columnIndexPickominos == 8) {
-                rowIndexPickominos++
-                columnIndexPickominos = 0
-            }
-        }
+    override fun updatePouleCommune(listDomino: MutableList<Int>) {
+        TODO("Not yet implemented")
     }
-    override fun updateDice(listDe:MutableList<Int>,target : GridPane) {
-        val row_coordonee = arrayOfNulls<Int>(8)
-        val col_coordonee = arrayOfNulls<Int>(8)
 
-        var columnIndexDice2 = 0
-        var rowIndexDice2 = 0
-
-        for (i in listDe.indices) {
-            val input = FileInputStream("src/main/resources/GameAssets/${this.theme}/Dice/${listDe[i]}.png")
-            val image = Image(input)
-            val imageView1 = ImageView(image)
-
-            imageView1.styleClass.add("imageView")
-            imageView1.fitWidth = 90.0
-            imageView1.fitHeight = 90.0
-
-            target.add(imageView1, columnIndexDice2, rowIndexDice2) // ajoute les image de des dans des2 colonne ou les des sont lancés
-
-            col_coordonee[i] = columnIndexDice2
-            row_coordonee[i] = rowIndexDice2
-
-            rowIndexDice2++
-            if (rowIndexDice2 == 4) {
-                columnIndexDice2++
-                rowIndexDice2 = 0
-            }
-
-
-            val imageView2 = ImageView(imageView1.image)
-
-            imageView2.styleClass.add("imageView")
-            imageView2.fitWidth = 90.0
-            imageView2.fitHeight = 90.0
-        }
+    override fun updateDice(listDe: MutableList<Int>, target: GridPane) {
+        TODO("Not yet implemented")
     }
-    override fun updateDomino(listDomino:MutableList<MutableList<Int>>) {
-        var dominoTop = listDomino[0][listDomino[0].size - 1]
-        var image = Image(FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/${dominoTop}.png"))
 
-        val imageView1 = ImageView(image)
-        imageView1.styleClass.addAll("imageView")
-        imageView1.fitWidth = 100.0
-        imageView1.fitHeight = 200.0
-        dominoJ1.add(imageView1, 0, 0)
-
-        dominoTop = listDomino[1][listDomino[1].size - 1]
-        image = Image(FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/${dominoTop}.png"))
-
-        val imageView2 = ImageView(image)
-        imageView2.styleClass.addAll("imageView")
-        imageView2.fitWidth = 100.0
-        imageView2.fitHeight = 200.0
-        dominoJ2.add(imageView2, 0, 0)
+    override fun updateDomino(listDomino: MutableList<MutableList<Int>>) {
+        TODO("Not yet implemented")
     }
 }
