@@ -95,9 +95,6 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
         des1.hgap = 10.0
         des1.vgap = 10.0
 
-        joueur2.styleClass.addAll("joueurh")
-        joueur1.styleClass.addAll("joueurh")
-
         lancerDes1.styleClass.addAll("button-action")
         validerChoixDes1.styleClass.addAll("button-action")
 
@@ -110,8 +107,8 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
         scoreJ1.styleClass.addAll("joueur1", "joueur", "bordure")
         scoreJ2.styleClass.addAll("joueur2", "joueur", "bordure")
 
-        actionJ1.styleClass.addAll("joueur1", "joueur", "bordure","action")
-        actionJ2.styleClass.addAll("joueur2", "joueur", "bordure","action")
+        actionJ1.styleClass.addAll("joueur1", "joueur", "bordure","action","joueurh")
+        actionJ2.styleClass.addAll("joueur2", "joueur", "bordure","action","joueurh")
 
         pouleCommune.styleClass.add("bordure")
         des1.styleClass.add("bordure")
