@@ -33,6 +33,8 @@ class ControleurLaunchGame(vue:Vue_menu,modmenu:Modele_menu,stage: Stage,modjeu 
         } else {
             println("Lancement de la partie en local pour ${modmenu.nbjoueur} joueurs")
         }
+        modjeu.key=key
+        modjeu.id=id
         //changement vue
         if (modmenu.nbjoueur==4) {
             stage.scene.root=Vue_4j(vue.theme_value,modjeu.id,modjeu.key)
@@ -42,8 +44,6 @@ class ControleurLaunchGame(vue:Vue_menu,modmenu:Modele_menu,stage: Stage,modjeu 
             stage.scene.root= Vue_2j(vue.theme_value,modjeu.id,modjeu.key)
         }
         //update Modele_Jeu
-        modjeu.key=key
-        modjeu.id=id
         modjeu.isLocal=modmenu.isLocal
         modjeu.nbjoueur=modmenu.nbjoueur
         modjeu.vue=stage.scene.root

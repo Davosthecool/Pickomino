@@ -277,6 +277,8 @@ class Vue_3j(theme:String,id:Int,key:Int): BorderPane() {
             }
         }
 
+
+        //Attribution Domino joueur (décoratif)
         val aleaDominos = List(4) { (21..36).random() }
 
         for (i in aleaDominos.indices) {

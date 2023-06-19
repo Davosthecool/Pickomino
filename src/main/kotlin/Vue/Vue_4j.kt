@@ -9,8 +9,8 @@ import javafx.scene.image.ImageView
 import java.io.FileInputStream
 
 class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
-    val id = id
-    val key = key
+    var id = id
+    var key = key
     var theme = theme
     val jeu = BorderPane()
     val des1 = GridPane()
@@ -55,8 +55,8 @@ class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
 
     init {
 
-        val numSalon = Label("Numéro du Salon : ${this.id}")
-        val clSalon = Label("Clé du Salon : ${this.key}")
+        val numSalon = Label("Numéro du Salon : ${id}")
+        val clSalon = Label("Clé du Salon : ${key}")
 
         numeroSalon.children.add(numSalon)
         cleSalon.children.add(clSalon)
@@ -151,10 +151,10 @@ class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
         actionJ4.add(lancerDes4, 0, 0)
         actionJ4.add(validerChoixDes4, 0, 1)
 
-        joueur4.styleClass.addAll("joueurv")
-        joueur3.styleClass.addAll("joueurh")
-        joueur2.styleClass.addAll("joueurv")
-        joueur1.styleClass.addAll("joueurh")
+        joueur4.styleClass.addAll("joueurhv")
+        joueur3.styleClass.addAll("joueurhv")
+        joueur2.styleClass.addAll("joueurhv")
+        joueur1.styleClass.addAll("joueurhv")
 
         lancerDes1.styleClass.addAll("button-action")
         validerChoixDes1.styleClass.addAll("button-action")
@@ -300,6 +300,11 @@ class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
             }
         }
 
+
+
+
+
+        //Attribution Domino joueur (décoratif)
         val aleaDominos = List(4) { (21..36).random() }
 
         for (i in aleaDominos.indices) {

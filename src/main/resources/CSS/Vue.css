@@ -50,10 +50,6 @@
     -fx-hgap : 40.0
 }
 
-.joueurh {
-    -fx-hgap : 20.0
-}
-
-.joueurv {
-    -fx-vgap : 20.0
+.joueurhv {
+    -fx-spacing : 20.0
 }
