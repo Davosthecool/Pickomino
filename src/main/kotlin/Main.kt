@@ -108,7 +108,6 @@ class Pickomino: Application() {
         stage.title="Pickomino"
         stage.scene=scene
         stage.isMaximized = true
-        stage.isResizable = false
         stage.show()
     }
 }

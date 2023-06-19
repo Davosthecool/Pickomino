@@ -47,11 +47,13 @@
 
 .action {
     -fx-alignment: center;
-    -fx-hgap : 40.0;
+    -fx-vgap: 40.0;
 }
 
-.joueurhv {
-    -fx-spacing : 20.0;
-    -fx-hgap: 20.0;
-    -fx-vgap: 20.0;
+.bgwhite {
+    -fx-background-color: #ffffff;
+}
+
+.vue {
+    -fx-background-color: black;
 }
