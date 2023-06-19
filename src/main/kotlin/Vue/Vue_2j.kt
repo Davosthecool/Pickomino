@@ -166,6 +166,7 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
         val simulatedDominoPlayer = mutableListOf(24,36,34,32)
         val simulatedDominoAll = MutableList(4) { simulatedDominoPlayer }
         updateDomino(simulatedDominoAll)
+
     }
     fun updatePouleCommune(listDomino:MutableList<Int>) {
         val imagePathsPickominos = mutableListOf<String>()
@@ -203,7 +204,7 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
         var rowIndexDice2 = 0
 
         for (i in listDe.indices) {
-            val input = FileInputStream("src/main/resources/GameAssets/${this.theme}/Dice/"+listDe[i]+".png")
+            val input = FileInputStream("src/main/resources/GameAssets/${this.theme}/Dice/${listDe[i]}.png")
             val image = Image(input)
             val imageView1 = ImageView(image)
 
@@ -231,7 +232,23 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
         }
     }
     fun bindDes() {
+        for (i in des2.children) {
+            if (i is ImageView) { //si c'est un dés on le bind
+                i.setOnMouseClicked {
+                    val alert = Alert(Alert.AlertType.CONFIRMATION)
+                    alert.title = "Confirmation Dialog"
+                    alert.headerText = "Voulez vous prendre le(s) dé(s) de valeur ${GridPane.getRowIndex(i)+(GridPane.getColumnIndex(i)*4)}"
+                    alert.contentText = "Cliquez sur Oui pour confirmer le choix"
 
+                    val yesButton = ButtonType.YES
+                    val noButton = ButtonType.NO
+                    alert.buttonTypes.setAll(yesButton, noButton)
+                    val result = alert.showAndWait()
+                    if (result.isPresent && result.get() == yesButton) {
+                    }
+                }
+            }
+        }
     }
 
     fun updateDomino(listDomino:MutableList<MutableList<Int>>) {

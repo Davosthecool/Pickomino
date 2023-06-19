@@ -6,6 +6,7 @@ import javafx.stage.Stage
 import Controleur.*
 import Vue.*
 import Modele.*
+import iut.info1.pickomino.Connector
 import javafx.application.Platform
 import javafx.scene.control.TextFormatter
 import javafx.util.converter.NumberStringConverter
@@ -15,12 +16,10 @@ import javafx.scene.*
 class Pickomino: Application() {
 
     override fun start(stage: Stage) {
-
-
-        val vue = Vue_menu() //à gerer
-        val modmenu = Modele_menu(vue) //à gerer
+        val connect = Connector.factory("172.26.82.76", "8080")
+        val vue = Vue_menu()
         val scene = Scene(vue,960.0, 540.0)
-        val modjeu = Modele_jeu(vue)
+        val modjeu = Modele_jeu(connect)
         //CSS
         scene.stylesheets.add("/CSS/menu.css")
         scene.stylesheets.add("/CSS/Vue.css")
@@ -28,23 +27,23 @@ class Pickomino: Application() {
         //binding
         //radio local
         vue.local_game.setOnAction {
-            modmenu.isLocal=true
+            modjeu.isLocal=true
             vue.join_game.isDisable = true
             vue.create_game.isDisable = false
         }
         //radio online
         vue.online_game.setOnAction {
-            modmenu.isLocal=false
+            modjeu.isLocal=false
             vue.join_game.isDisable = true
             vue.create_game.isDisable = false
         }
         //nbjoueur
         vue.player_number_game.setOnAction {
-            modmenu.nbjoueur=vue.player_number_game.value
+            modjeu.nbjoueur=vue.player_number_game.value
             vue.join_game.isDisable = true
             vue.create_game.isDisable = false
             //get which radio is selected
-            modmenu.isLocal=vue.local_game.isSelected
+            modjeu.isLocal=vue.local_game.isSelected
         }
         //salon clé et id////////////////////////
         //formatters
@@ -64,20 +63,20 @@ class Pickomino: Application() {
         }
         val converter = NumberStringConverter()
         vue.number_id.textFormatter = textFormatterid
-        vue.number_id.textProperty().bindBidirectional(modmenu.inputid, converter)
+        vue.number_id.textProperty().bindBidirectional(modjeu.id, converter)
         vue.number_id.textProperty().addListener { _, _, _ ->
             // This event will be triggered whenever the text in the TextField changes
             vue.join_game.isDisable = false
             vue.create_game.isDisable = true
-            modmenu.isLocal=false
+            modjeu.isLocal=false
         }
         vue.number_key.textFormatter = textFormatterkey
-        vue.number_key.textProperty().bindBidirectional(modmenu.inputkey, converter)
+        vue.number_key.textProperty().bindBidirectional(modjeu.key, converter)
         vue.number_key.textProperty().addListener { _, _, _ ->
             // This event will be triggered whenever the text in the TextField changes
             vue.join_game.isDisable = false
             vue.create_game.isDisable = true
-            modmenu.isLocal=false
+            modjeu.isLocal=false
         }
 
         //theme
@@ -89,15 +88,15 @@ class Pickomino: Application() {
         }
         /////////////////////////////////////////
         //bouton launch
-        val contlaunch = ControleurLaunchGame(vue,modmenu,stage,modjeu)
+        val contlaunch = ControleurLaunchGame(vue,stage,modjeu)
         vue.create_game.onAction = contlaunch
         //bouton join
-        val contjoin = ControleurJoinGame(vue,modmenu,stage,modjeu)
+        val contjoin = ControleurJoinGame(vue,stage,modjeu)
         vue.join_game.onAction = contjoin
         //default
         vue.join_game.isDisable = true
         vue.local_game.isSelected = true
-        modmenu.isLocal=true
+        modjeu.isLocal=true
         vue.join_game.isDisable = true
         vue.player_number_game.selectionModel.selectFirst()
         vue.theme.selectionModel.selectFirst()

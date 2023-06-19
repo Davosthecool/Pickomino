@@ -1,11 +1,6 @@
 package Vue
-import Modele.Modele_menu
 import javafx.collections.FXCollections
-import javafx.collections.ObservableArray
 import javafx.collections.ObservableList
-import javafx.css.converter.StringConverter
-import javafx.geometry.Insets
-import javafx.geometry.Pos
 import javafx.scene.layout.*
 import javafx.scene.control.*
 
@@ -13,13 +8,6 @@ import javafx.scene.control.RadioButton
 import javafx.scene.control.ToggleGroup
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
-import javafx.scene.input.KeyEvent
-import javafx.scene.paint.Color
-import javafx.scene.paint.CycleMethod
-import javafx.scene.paint.LinearGradient
-import javafx.scene.paint.Stop
-import javafx.scene.text.Font
-import javafx.scene.text.TextAlignment
 import java.io.FileInputStream
 
 class Vue_menu():VBox() {
