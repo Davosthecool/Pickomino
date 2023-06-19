@@ -10,4 +10,6 @@ class Modele_jeu(co : Connector) {
     var isLocal = false
     var key = SimpleIntegerProperty()
     var id = SimpleIntegerProperty()
+
+
 }
