@@ -222,6 +222,21 @@ class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
         joueur4.top = dominoJ4
         joueur4.bottom = scoreJ4
         joueur4.center = actionJ4
+
+        //affichage pickomino poule commune
+        val simulatedPouleCommune = mutableListOf(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36)
+        updatePouleCommune(simulatedPouleCommune)
+        //lance dés (simulé)
+        val simulatedDice = mutableListOf(1,2,3,4,5,6)//MutableList(8) { (1..6).random() }
+        updateDice(simulatedDice,des2)
+
+        //Attribution Domino joueur (simulé)
+        val simulatedDominoPlayer = mutableListOf(21,23,36)
+        val simulatedDominoPlayer1 = mutableListOf(28,24,32)
+        val simulatedDominoAll= mutableListOf(simulatedDominoPlayer,simulatedDominoPlayer1,simulatedDominoPlayer,simulatedDominoPlayer1)
+
+        updateDomino(simulatedDominoAll)
+
     }
     fun updatePouleCommune(listDomino:MutableList<Int>) {
         val imagePathsPickominos = mutableListOf<String>()
