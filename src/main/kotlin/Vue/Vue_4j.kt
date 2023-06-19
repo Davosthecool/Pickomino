@@ -8,7 +8,7 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import java.io.FileInputStream
 
-class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
+class Vue_4j(theme:String,id:Int,key:Int): BorderPane(),Vue_jeu {
     var id = id
     var key = key
     var theme = theme
@@ -42,16 +42,12 @@ class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
     val actionJ4 = GridPane()
 
     val lancerDes1 = Button("Lancer les dés")
-    val validerChoixDes1 = Button("Valider le choix\n des dés")
 
     val lancerDes2 = Button("Lancer les dés")
-    val validerChoixDes2 = Button("Valider le choix\n des dés")
 
     val lancerDes3 = Button("Lancer les dés")
-    val validerChoixDes3 = Button("Valider le choix\n des dés")
 
     val lancerDes4 = Button("Lancer les dés")
-    val validerChoixDes4 = Button("Valider le choix\n des dés")
 
     init {
 
@@ -123,16 +119,12 @@ class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
         infoSalon.add(cleSalon, 1, 0)
 
         actionJ1.add(lancerDes1, 0, 0)
-        actionJ1.add(validerChoixDes1, 0, 1)
 
         actionJ2.add(lancerDes2, 0, 0)
-        actionJ2.add(validerChoixDes2, 0, 1)
 
         actionJ3.add(lancerDes3, 0, 0)
-        actionJ3.add(validerChoixDes3, 0, 1)
 
         actionJ4.add(lancerDes4, 0, 0)
-        actionJ4.add(validerChoixDes4, 0, 1)
 
         val margins = Insets(10.0)
         setMargin(jeu, margins)
@@ -154,22 +146,13 @@ class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
         pouleCommune.hgap = 10.0
         pouleCommune.vgap = 10.0
 
-        joueur4.styleClass.addAll("joueurhv")
-        joueur3.styleClass.addAll("joueurhv")
-        joueur2.styleClass.addAll("joueurhv")
-        joueur1.styleClass.addAll("joueurhv")
-
         lancerDes1.styleClass.addAll("button-action")
-        validerChoixDes1.styleClass.addAll("button-action")
 
         lancerDes2.styleClass.addAll("button-action")
-        validerChoixDes2.styleClass.addAll("button-action")
 
         lancerDes3.styleClass.addAll("button-action")
-        validerChoixDes3.styleClass.addAll("button-action")
 
         lancerDes4.styleClass.addAll("button-action")
-        validerChoixDes4.styleClass.addAll("button-action")
 
         dominoJ1.styleClass.addAll("joueur1", "joueur", "bordure")
         dominoJ2.styleClass.addAll("joueur2", "joueur", "bordure")
@@ -223,6 +206,13 @@ class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
         joueur4.bottom = scoreJ4
         joueur4.center = actionJ4
 
+
+        pouleCommune.styleClass.addAll("bgwhite")
+        numeroSalon.styleClass.addAll("bgwhite")
+        cleSalon.styleClass.addAll("bgwhite")
+        des1.styleClass.addAll("bgwhite")
+        des2.styleClass.addAll("bgwhite")
+
         //affichage pickomino poule commune
         val simulatedPouleCommune = mutableListOf(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36)
         updatePouleCommune(simulatedPouleCommune)
@@ -238,7 +228,7 @@ class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
         updateDomino(simulatedDominoAll)
 
     }
-    fun updatePouleCommune(listDomino:MutableList<Int>) {
+    override fun updatePouleCommune(listDomino:MutableList<Int>) {
         val imagePathsPickominos = mutableListOf<String>()
 
         for (i in listDomino) {
@@ -266,7 +256,7 @@ class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
             }
         }
     }
-    fun updateDice(listDe:MutableList<Int>,target : GridPane) {
+    override fun updateDice(listDe:MutableList<Int>,target : GridPane) {
         val row_coordonee = arrayOfNulls<Int>(8)
         val col_coordonee = arrayOfNulls<Int>(8)
 
@@ -301,7 +291,7 @@ class Vue_4j(theme:String,id:Int,key:Int): BorderPane() {
             imageView2.fitHeight = 90.0
         }
     }
-    fun updateDomino(listDomino: MutableList<MutableList<Int>>) {
+    override fun updateDomino(listDomino: MutableList<MutableList<Int>>) {
         var dominoTop = listDomino[0][listDomino[0].size - 1]
         var image = Image(FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/${dominoTop}.png"))
 

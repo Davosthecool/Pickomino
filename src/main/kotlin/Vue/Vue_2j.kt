@@ -10,7 +10,7 @@ import java.io.FileInputStream
 import java.util.*
 import kotlin.random.Random
 
-class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
+class Vue_2j(theme:String,id:Int,key:Int): BorderPane(),Vue_jeu {
     val id = id
     val key = key
     val theme = theme
@@ -36,10 +36,8 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
     var actionJ2 = GridPane()
 
     val lancerDes1 = Button("Lancer les dés")
-    val validerChoixDes1 = Button("Valider le choix\n des dés")
 
     val lancerDes2 = Button("Lancer les dés")
-    val validerChoixDes2 = Button("Valider le choix\n des dés")
 
     init {
         val numSalon = Label("Numéro du Salon : ${this.id}")
@@ -96,10 +94,8 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
         des1.vgap = 10.0
 
         lancerDes1.styleClass.addAll("button-action")
-        validerChoixDes1.styleClass.addAll("button-action")
 
         lancerDes2.styleClass.addAll("button-action")
-        validerChoixDes2.styleClass.addAll("button-action")
 
         dominoJ1.styleClass.addAll("joueur1", "joueur", "bordure")
         dominoJ2.styleClass.addAll("joueur2", "joueur", "bordure")
@@ -147,10 +143,8 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
         infoSalon.add(cleSalon, 1, 0)
 
         actionJ1.add(lancerDes1, 0, 0)
-        actionJ1.add(validerChoixDes1, 0, 1)
 
         actionJ2.add(lancerDes2, 0, 0)
-        actionJ2.add(validerChoixDes2, 0, 1)
 
         //affichage pickomino poule commune
         val simulatedPouleCommune = mutableListOf(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36)
@@ -167,7 +161,7 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
         updateDomino(simulatedDominoAll)
 
     }
-    fun updatePouleCommune(listDomino:MutableList<Int>) {
+    override fun updatePouleCommune(listDomino:MutableList<Int>) {
         val imagePathsPickominos = mutableListOf<String>()
 
         for (i in listDomino) {
@@ -195,7 +189,7 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
             }
         }
     }
-    fun updateDice(listDe:MutableList<Int>,target : GridPane) {
+    override fun updateDice(listDe:MutableList<Int>,target : GridPane) {
         val row_coordonee = arrayOfNulls<Int>(8)
         val col_coordonee = arrayOfNulls<Int>(8)
 
@@ -230,7 +224,7 @@ class Vue_2j(theme:String,id:Int,key:Int): BorderPane() {
             imageView2.fitHeight = 90.0
         }
     }
-    fun updateDomino(listDomino:MutableList<MutableList<Int>>) {
+    override fun updateDomino(listDomino:MutableList<MutableList<Int>>) {
         var dominoTop = listDomino[0][listDomino[0].size - 1]
         var image = Image(FileInputStream("src/main/resources/GameAssets/${this.theme}/Pickomino/${dominoTop}.png"))
 
