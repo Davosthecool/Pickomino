@@ -1,7 +1,7 @@
 * {
     -fx-border-color : none ;
 }
-.vue  {
+.vue-menu {
     -fx-background-color : #00D4FF;
     -fx-background-image: url("../GameAssets/Menu_BG.jpg");
     -fx-alignment: center;

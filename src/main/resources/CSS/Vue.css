@@ -2,6 +2,10 @@
     -fx-border-color: magenta;
 }
 
+.vue-jeu {
+    -fx-alignment: center;
+}
+
 /*container | static*/
 
 .ligneHaut{
@@ -14,9 +18,9 @@
 }
 .ligneMilieu{
     -fx-alignment: center;
-    -fx-min-height: 600;
-    -fx-pref-height: 600;
-    -fx-max-height: 600;
+    -fx-min-height: 660;
+    -fx-pref-height: 660;
+    -fx-max-height: 660;
     -fx-padding: 10;
     -fx-spacing: 10;
 }
@@ -37,9 +41,10 @@
 .container_info-4j{
     -fx-background-color: white;
     -fx-alignment: center;
-    -fx-min-width: 780; 
+    -fx-min-width: 780;
     -fx-min-height: 120;
     -fx-spacing: 10;
+    -fx-background-radius: 20;
 }
 .salon-4j{ 
     -fx-min-width: 780; 
@@ -66,11 +71,13 @@
 
 .salon-2j{ 
     -fx-min-width: 945; 
-    -fx-min-height: 130; 
+    -fx-min-height: 130;
+    -fx-text-fill: white;
 }
 .cle-2j{
     -fx-min-width: 945; 
-    -fx-min-height: 130; 
+    -fx-min-height: 130;
+    -fx-text-fill: white;
 }
 
 /*ligne haut (joueurs) | static*/
@@ -100,15 +107,25 @@
 
 .desChoisi{
     -fx-min-width: 240; 
-    -fx-min-height: 580; 
+    -fx-min-height: 640;
+    -fx-padding: 20;
+    -fx-alignment: center;
+    -fx-spacing: 10;
 }
 .pouleCommune{
-    -fx-min-width: 1400; 
-    -fx-min-height: 580; 
+    -fx-min-width: 1400;
+    -fx-min-height: 640;
+    -fx-padding: 20;
+    -fx-hgap: 20;
+    -fx-vgap: 20;
+    -fx-alignment: center;
 }
 .desActif{
     -fx-min-width: 240;
-    -fx-min-height: 580;
+    -fx-min-height: 640;
+    -fx-padding: 20;
+    -fx-alignment: center;
+    -fx-spacing: 10;
 }
 
 
@@ -126,6 +143,8 @@
 }
 .lanceDes{
     -fx-min-width: 780;
+    -fx-min-height: 130;
+    -fx-text-fill: black;
 }
 .joueur1{
 
@@ -157,4 +176,19 @@
     -fx-min-width: 270;
     -fx-min-height: 130;
     -fx-text-alignment: right;
+    -fx-text-fill: white;
+}
+
+.tapisMilieu {
+    -fx-border-color: #FFDA00;
+    -fx-border-width: 5;
+    -fx-border-radius: 20;
+    -fx-background-color: #0279BB;
+    -fx-background-radius: 20;
+}
+
+.grosTexte{
+    -fx-font-size: 40;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
 }

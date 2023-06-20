@@ -44,9 +44,9 @@ class Vue_3j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     val score1 = Label("40")
     init {
         //init domino joueur
-        domino1= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
-        domino2= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
-        domino3= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
+        domino1= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
+        domino2= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
+        domino3= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
 
         domino1.fitWidth = 65.0
         domino1.fitHeight = 130.0
@@ -70,31 +70,32 @@ class Vue_3j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         ligneBas.children.addAll(joueur2,lanceDes,joueur1)
 
         //style
+        this.styleClass.addAll("vue-jeu")
         ligneHaut.styleClass.addAll("ligneHaut")
         ligneMilieu.styleClass.addAll("ligneMilieu")
         ligneBas.styleClass.addAll("ligneBas")
-        salon.styleClass.addAll("salon-3j")
-        cle.styleClass.addAll("cle-3j")
+        salon.styleClass.addAll("salon-3j","grosTexte")
+        cle.styleClass.addAll("cle-3j","grosTexte")
         joueur3.styleClass.addAll("joueur3","joueur")
         domino3.styleClass.addAll("domino3","domino")
-        score3.styleClass.addAll("score3","score")
-        desChoisi.styleClass.addAll("desChoisi")
-        pouleCommune.styleClass.addAll("pouleCommune")
-        desActif.styleClass.addAll("desActif")
+        score3.styleClass.addAll("score3","score","grosTexte")
+        desChoisi.styleClass.addAll("desChoisi","tapisMilieu")
+        pouleCommune.styleClass.addAll("pouleCommune","tapisMilieu")
+        desActif.styleClass.addAll("desActif","tapisMilieu")
         joueur2.styleClass.addAll("joueur2","joueur")
         domino2.styleClass.addAll("domino2","domino")
-        score2.styleClass.addAll("score2","score")
-        lanceDes.styleClass.addAll("lanceDes")
+        score2.styleClass.addAll("score2","score","grosTexte")
+        lanceDes.styleClass.addAll("lanceDes","grosTexte")
         joueur1.styleClass.addAll("joueur1","joueur")
         domino1.styleClass.addAll("domino1","domino")
-        score1.styleClass.addAll("score1","score")
+        score1.styleClass.addAll("score1","score","grosTexte")
     }
 
     override fun updatePouleCommune(listDomino: MutableList<Int>) {
         TODO("Not yet implemented")
     }
 
-    override fun updateDice(listDe: MutableList<Int>, target: GridPane) {
+    override fun updateDice(listDe: MutableList<String>, target: VBox) {
         TODO("Not yet implemented")
     }
 

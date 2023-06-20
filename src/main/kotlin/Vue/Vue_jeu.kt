@@ -1,12 +1,10 @@
 package Vue
 
-import javafx.scene.image.Image
-import javafx.scene.image.ImageView
-import javafx.scene.layout.GridPane
-import java.io.FileInputStream
+import javafx.scene.layout.HBox
+import javafx.scene.layout.VBox
 
 interface Vue_jeu {
     fun updatePouleCommune(listDomino:MutableList<Int>)
-    fun updateDice(listDe:MutableList<Int>,target : GridPane)
+    fun updateDice(listDe:MutableList<String>,target : VBox)
     fun updateDomino(listDomino:MutableList<MutableList<Int>>)
 }

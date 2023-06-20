@@ -1,10 +1,16 @@
 package Vue
 
+import javafx.geometry.Orientation
 import javafx.scene.layout.*
 import javafx.scene.control.*
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
+import javafx.scene.paint.Color
+import javafx.scene.paint.CycleMethod
+import javafx.scene.paint.RadialGradient
+import javafx.scene.paint.Stop
 import java.io.FileInputStream
+
 
 class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     val theme = theme
@@ -48,10 +54,10 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     val score1 = Label("40")
     init {
         //init domino joueur
-        domino1= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
-        domino2= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
-        domino3= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
-        domino4= ImageView(Image(FileInputStream("src/main/resources/EmptyPicko.png")))
+        domino1= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
+        domino2= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
+        domino3= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
+        domino4= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
 
         domino1.fitWidth = 65.0
         domino1.fitHeight = 130.0
@@ -61,7 +67,13 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         domino3.fitHeight = 130.0
         domino4.fitWidth = 65.0
         domino4.fitHeight = 130.0
+        //init dés
+        val simulatedDice = mutableListOf("d1","d2","d3","d4","d5","worm","worm","d5")
+        updateDice(simulatedDice,desActif)
         //init domino poule commune
+        val simulatedDomino = MutableList(16) { index -> index + 21 }
+        updatePouleCommune(simulatedDomino)
+        //init dés poule commune
 
         //ajout items
         this.children.addAll(ligneHaut,ligneMilieu,ligneBas)
@@ -80,36 +92,63 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         ligneBas.children.addAll(joueur2,lanceDes,joueur1)
 
         //style
+        val gradient = RadialGradient(
+            0.0, 0.0, 0.5, 0.5, 0.5, true,
+            CycleMethod.NO_CYCLE,
+            Stop(0.0, Color.rgb(38, 133, 0)),
+            Stop(1.0, Color.rgb(25, 84, 1))
+        )
+
+        this.background = Background(BackgroundFill(gradient, null, null))
+
+        this.styleClass.addAll("vue-jeu")
         ligneHaut.styleClass.addAll("ligneHaut")
         ligneMilieu.styleClass.addAll("ligneMilieu")
         ligneBas.styleClass.addAll("ligneBas")
         joueur4.styleClass.addAll("joueur4","joueur")
         domino4.styleClass.addAll("domino4","domino")
-        score4.styleClass.addAll("score4","score")
+        score4.styleClass.addAll("score4","score","grosTexte")
         container_info.styleClass.addAll("container_info-4j")
-        salon.styleClass.addAll("salon-4j")
-        cle.styleClass.addAll("cle-4j")
+        salon.styleClass.addAll("salon-4j","grosTexte")
+        cle.styleClass.addAll("cle-4j","grosTexte")
         joueur3.styleClass.addAll("joueur3","joueur")
         domino3.styleClass.addAll("domino3","domino")
-        score3.styleClass.addAll("score3","score")
-        desChoisi.styleClass.addAll("desChoisi")
-        pouleCommune.styleClass.addAll("pouleCommune")
-        desActif.styleClass.addAll("desActif")
+        score3.styleClass.addAll("score3","score","grosTexte")
+        desChoisi.styleClass.addAll("desChoisi","tapisMilieu")
+        pouleCommune.styleClass.addAll("pouleCommune","tapisMilieu")
+        desActif.styleClass.addAll("desActif","tapisMilieu")
         joueur2.styleClass.addAll("joueur2","joueur")
         domino2.styleClass.addAll("domino2","domino")
-        score2.styleClass.addAll("score2","score")
-        lanceDes.styleClass.addAll("lanceDes")
+        score2.styleClass.addAll("score2","score","grosTexte")
+        lanceDes.styleClass.addAll("lanceDes","grosTexte")
         joueur1.styleClass.addAll("joueur1","joueur")
         domino1.styleClass.addAll("domino1","domino")
-        score1.styleClass.addAll("score1","score")
+        score1.styleClass.addAll("score1","score","grosTexte")
     }
 
     override fun updatePouleCommune(listDomino: MutableList<Int>) {
-        TODO("Not yet implemented")
+        println(listDomino)
+        var cpt=0
+        for (i in listDomino) {
+            val picko = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/$i.png")))
+            picko.userData=cpt
+            picko.fitWidth = 100.0
+            picko.fitHeight = 200.0
+            pouleCommune.children.add(picko)
+            cpt++
+        }
     }
 
-    override fun updateDice(listDe: MutableList<Int>, target: GridPane) {
-        TODO("Not yet implemented")
+    override fun updateDice(listDe: MutableList<String>, target: VBox) {
+        var cpt = 0
+        for (i in listDe) {
+            val de = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Dice/$i.png")))
+            de.userData=cpt
+            de.fitWidth = 65.0
+            de.fitHeight = 65.0
+            desActif.children.add(de)
+            cpt++
+        }
     }
 
     override fun updateDomino(listDomino: MutableList<MutableList<Int>>) {

@@ -107,7 +107,7 @@ class Vue_menu():VBox() {
         plus_setting.children.addAll(plus_container)
         this.children.addAll(titre_container,partie)
         /////////////////////////////////////////////////////////////////////////////////////////////////
-        this.styleClass.addAll("vue")
+        this.styleClass.addAll("vue-menu")
         titre_container.styleClass.addAll("titre_container")
         titre.styleClass.addAll("titre")
         partie.styleClass.addAll("partie")
