@@ -29,7 +29,7 @@ class Vue_3j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     //ligne milieu
     val desChoisi = VBox()
     val pouleCommune = FlowPane()
-    val desActif = VBox()
+    override val desActif = VBox()
 
     //ligne bas
     //joueur2
@@ -37,7 +37,7 @@ class Vue_3j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     val domino2 : ImageView
     val score2 = Label("40")
     //lancer des
-    val lanceDes = Button("Lancer le(s) dé(s)")
+    override val lanceDes = Button("Lancer le(s) dé(s)")
     //joueur1
     val joueur1 = HBox()
     val domino1 : ImageView

@@ -10,7 +10,7 @@ import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.stage.Stage
 
-class ControleurLaunchGame(vue:Vue_menu,stage: Stage,modmenu : Menu):EventHandler<ActionEvent> {
+class ControleurLaunchGame(vue:Vue_menu, stage: Stage,modmenu : Menu):EventHandler<ActionEvent> {
     val vue = vue
     val stage = stage
 
@@ -33,12 +33,13 @@ class ControleurLaunchGame(vue:Vue_menu,stage: Stage,modmenu : Menu):EventHandle
         }
         modmenu.key.value=key
         modmenu.id.value=id
+
         //changement vue
         if (modmenu.nbjoueur==4) {
             val v = Vue_4j(vue.theme_value,modmenu.id.value,modmenu.key.value)
             val modjeu = Jeu(modmenu,v)
+            v.fixeBouton(v.lanceDes, ControleurLanceDes(v, modjeu, connect))
             stage.scene.root=v
-
         } else if (modmenu.nbjoueur==3) {
             val v = Vue_3j(vue.theme_value,modmenu.id.value,modmenu.key.value)
             val modjeu = Jeu(modmenu,v)
@@ -48,6 +49,8 @@ class ControleurLaunchGame(vue:Vue_menu,stage: Stage,modmenu : Menu):EventHandle
             val modjeu = Jeu(modmenu,v)
             stage.scene.root=v
         }
+
+
         stage.isMaximized = true
         stage.show()
     }

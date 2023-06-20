@@ -8,8 +8,8 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
     var vue = vue
     var isLocal = modmenu.isLocal
     var connect = modmenu.connector
-    private var id = modmenu.id.value
-    private var key = modmenu.key.value
+    var id = modmenu.id.value
+    var key = modmenu.key.value
     private var nbJoueur : Int
     private var theme : String
     private var statut : State
@@ -17,7 +17,7 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         private set
     var desChoisis : MutableList<Des> = mutableListOf()
         private set
-    var desActifs : MutableList<DICE> = mutableListOf()
+    var desActifs : MutableList<Des> = mutableListOf()
         private set
     init {
         nbJoueur=connect.gameState(this.id,this.key).score().size
@@ -26,7 +26,7 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         for (i in 0 until 8){
             listeDes.add(Des(i, theme=this.theme ))
         }
-        print(nbJoueur)
+        desActifs.addAll(listeDes)
     }
 
     fun selectionnerDesUnique(i : Des){
@@ -39,4 +39,11 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
             }
         }
     }
+
+    fun assignDes(list: List<DICE>, desActif : MutableList<Des>){
+        for (i in 0..list.size - 1) {
+            desActif[i].assignDe(list[i])
+        }
+    }
+
 }

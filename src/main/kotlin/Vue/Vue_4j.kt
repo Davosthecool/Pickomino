@@ -1,5 +1,7 @@
 package Vue
 
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 import javafx.geometry.Orientation
 import javafx.scene.layout.*
 import javafx.scene.control.*
@@ -38,7 +40,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     //ligne milieu
     val desChoisi = VBox()
     val pouleCommune = FlowPane()
-    val desActif = VBox()
+    override val desActif = VBox()
 
     //ligne bas
 
@@ -47,7 +49,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     val domino2 : ImageView
     val score2 = Label("SCORE : 40")
     //lancer des
-    val lanceDes = Button("Lancer le(s) dé(s)")
+    override val lanceDes = Button("Lancer le(s) dé(s)")
     //joueur1
     val joueur1 = HBox()
     val domino1 : ImageView
@@ -67,9 +69,6 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         domino3.fitHeight = 140.0
         domino4.fitWidth = 70.0
         domino4.fitHeight = 140.0
-        //init dés
-        val simulatedDice = mutableListOf("d1","d2","d3","d4","d5","worm","worm","d5")
-        updateDice(simulatedDice,desActif)
         //init domino poule commune
         val simulatedDomino = MutableList(16) { index -> index + 21 }
         updatePouleCommune(simulatedDomino)
@@ -139,9 +138,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
 
     override fun updateDice(listDe: MutableList<String>, target: VBox) {
         var cpt = 0
-        for (j in target.children) {
-            pouleCommune.children.remove(j)
-        }
+        desActif.children.removeAll(target.children)
         for (i in listDe) {
             val de = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Dice/$i.png")))
             de.userData=cpt
@@ -161,5 +158,9 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         domino3.image=Image(FileInputStream(url))
         url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[3]}.png"
         domino4.image=Image(FileInputStream(url))
+    }
+
+    fun fixeBouton(bouton : Button,ecouteur : EventHandler<ActionEvent>){
+        bouton.onAction=ecouteur
     }
 }
