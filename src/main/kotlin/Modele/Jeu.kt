@@ -33,6 +33,14 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         desChoisis.add(i)
     }
     fun selectionnerDes(valeur : Int){
+        for (i in desActifs){
+            if (i.valeur==valeur){
+                i.select()
+            }
+        }
+    }
+
+    fun choisirDes(valeur : Int){
         for (i in listeDes){
             if (i.valeur==valeur){
                 desChoisis.add(i)

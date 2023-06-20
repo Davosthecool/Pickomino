@@ -8,7 +8,7 @@ class Des(id : Int, face : DICE = DICE.worm, theme : String) {
     var face : DICE
     var valeur : Int
 
-    var selected = false
+    private var selected = false
 
     init {
         this.face=face
@@ -23,7 +23,7 @@ class Des(id : Int, face : DICE = DICE.worm, theme : String) {
         valeur = face.ordinal
     }
 
-    fun selectDe() {
+    fun select() {
         selected = !selected
     }
 }
