@@ -41,15 +41,27 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     val domino1 : ImageView
     val score1 = Label("40")
     init {
-        //init domino joueur
         domino1= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
         domino2= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
 
-        domino1.fitWidth = 65.0
-        domino1.fitHeight = 130.0
-        domino2.fitWidth = 65.0
-        domino2.fitHeight = 130.0
+        domino1.fitWidth = 70.0
+        domino1.fitHeight = 140.0
+        domino2.fitWidth = 70.0
+        domino2.fitHeight = 140.0
+        //init dés
+        val simulatedDice = mutableListOf("d1","d2","d3","d4","d5","worm","worm","d5")
+        updateDice(simulatedDice,desActif)
         //init domino poule commune
+        val simulatedDomino = MutableList(16) { index -> index + 21 }
+        updatePouleCommune(simulatedDomino)
+        //init dés poule commune
+
+
+        /////////////////////
+        //test domino joueur nouvel valeur
+        updateDomino(mutableListOf(21,22))
+        /////////////////////
+
 
         //ajout items
         this.children.addAll(ligneHaut,ligneMilieu,ligneBas)
@@ -62,7 +74,6 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         ligneMilieu.children.addAll(desChoisi,pouleCommune,desActif)
 
         ligneBas.children.addAll(joueur2,lanceDes,joueur1)
-
         //style
         this.styleClass.addAll("vue-jeu")
         ligneHaut.styleClass.addAll("ligneHaut")
@@ -83,14 +94,34 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     }
 
     override fun updatePouleCommune(listDomino: MutableList<Int>) {
-        TODO("Not yet implemented")
+        println(listDomino)
+        var cpt=0
+        for (i in listDomino) {
+            val picko = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/$i.png")))
+            picko.userData=cpt
+            picko.fitWidth = 80.0
+            picko.fitHeight = 160.0
+            pouleCommune.children.add(picko)
+            cpt++
+        }
     }
 
     override fun updateDice(listDe: MutableList<String>, target: VBox) {
-        TODO("Not yet implemented")
+        var cpt = 0
+        for (i in listDe) {
+            val de = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Dice/$i.png")))
+            de.userData=cpt
+            de.fitWidth = 60.0
+            de.fitHeight = 60.0
+            desActif.children.add(de)
+            cpt++
+        }
     }
 
-    override fun updateDomino(listDomino: MutableList<MutableList<Int>>) {
-        TODO("Not yet implemented")
+    override fun updateDomino(listDomino: MutableList<Int>) {
+        var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[0]}.png"
+        domino1.image=Image(FileInputStream(url))
+        url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[1]}.png"
+        domino2.image=Image(FileInputStream(url))
     }
 }

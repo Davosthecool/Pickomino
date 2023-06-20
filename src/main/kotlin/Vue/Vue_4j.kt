@@ -25,7 +25,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     //joueur4
     val joueur4 = HBox()
     val domino4 : ImageView
-    val score4 = Label("40")
+    val score4 = Label("SCORE : 40")
     //info jeu
     val container_info = VBox()
     val salon = Label("ID du salon : ${id}")
@@ -33,7 +33,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     //joueur3
     val joueur3 = HBox()
     val domino3 : ImageView
-    val score3 = Label("40")
+    val score3 = Label("SCORE : 40")
 
     //ligne milieu
     val desChoisi = VBox()
@@ -45,13 +45,13 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     //joueur2
     val joueur2 = HBox()
     val domino2 : ImageView
-    val score2 = Label("40")
+    val score2 = Label("SCORE : 40")
     //lancer des
     val lanceDes = Button("Lancer le(s) dé(s)")
     //joueur1
     val joueur1 = HBox()
     val domino1 : ImageView
-    val score1 = Label("40")
+    val score1 = Label("SCORE : 40")
     init {
         //init domino joueur
         domino1= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
@@ -59,21 +59,27 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         domino3= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
         domino4= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
 
-        domino1.fitWidth = 65.0
-        domino1.fitHeight = 130.0
-        domino2.fitWidth = 65.0
-        domino2.fitHeight = 130.0
-        domino3.fitWidth = 65.0
-        domino3.fitHeight = 130.0
-        domino4.fitWidth = 65.0
-        domino4.fitHeight = 130.0
+        domino1.fitWidth = 70.0
+        domino1.fitHeight = 140.0
+        domino2.fitWidth = 70.0
+        domino2.fitHeight = 140.0
+        domino3.fitWidth = 70.0
+        domino3.fitHeight = 140.0
+        domino4.fitWidth = 70.0
+        domino4.fitHeight = 140.0
         //init dés
         val simulatedDice = mutableListOf("d1","d2","d3","d4","d5","worm","worm","d5")
         updateDice(simulatedDice,desActif)
         //init domino poule commune
         val simulatedDomino = MutableList(16) { index -> index + 21 }
         updatePouleCommune(simulatedDomino)
-        //init dés poule commune
+
+
+        /////////////////////
+        //test domino joueur nouvel valeur
+        updateDomino(mutableListOf(21,22,23,24))
+        /////////////////////
+
 
         //ajout items
         this.children.addAll(ligneHaut,ligneMilieu,ligneBas)
@@ -90,17 +96,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         ligneMilieu.children.addAll(desChoisi,pouleCommune,desActif)
 
         ligneBas.children.addAll(joueur2,lanceDes,joueur1)
-
         //style
-        val gradient = RadialGradient(
-            0.0, 0.0, 0.5, 0.5, 0.5, true,
-            CycleMethod.NO_CYCLE,
-            Stop(0.0, Color.rgb(38, 133, 0)),
-            Stop(1.0, Color.rgb(25, 84, 1))
-        )
-
-        this.background = Background(BackgroundFill(gradient, null, null))
-
         this.styleClass.addAll("vue-jeu")
         ligneHaut.styleClass.addAll("ligneHaut")
         ligneMilieu.styleClass.addAll("ligneMilieu")
@@ -125,15 +121,17 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         domino1.styleClass.addAll("domino1","domino")
         score1.styleClass.addAll("score1","score","grosTexte")
     }
-
     override fun updatePouleCommune(listDomino: MutableList<Int>) {
         println(listDomino)
         var cpt=0
+        for (j in pouleCommune.children) {
+            pouleCommune.children.remove(j)
+        }
         for (i in listDomino) {
             val picko = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/$i.png")))
             picko.userData=cpt
-            picko.fitWidth = 100.0
-            picko.fitHeight = 200.0
+            picko.fitWidth = 80.0
+            picko.fitHeight = 160.0
             pouleCommune.children.add(picko)
             cpt++
         }
@@ -141,17 +139,27 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
 
     override fun updateDice(listDe: MutableList<String>, target: VBox) {
         var cpt = 0
+        for (j in target.children) {
+            pouleCommune.children.remove(j)
+        }
         for (i in listDe) {
             val de = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Dice/$i.png")))
             de.userData=cpt
-            de.fitWidth = 65.0
-            de.fitHeight = 65.0
+            de.fitWidth = 60.0
+            de.fitHeight = 60.0
             desActif.children.add(de)
             cpt++
         }
     }
 
-    override fun updateDomino(listDomino: MutableList<MutableList<Int>>) {
-        TODO("Not yet implemented")
+    override fun updateDomino(listDomino: MutableList<Int>) {
+        var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[0]}.png"
+        domino1.image=Image(FileInputStream(url))
+        url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[1]}.png"
+        domino2.image=Image(FileInputStream(url))
+        url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[2]}.png"
+        domino3.image=Image(FileInputStream(url))
+        url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[3]}.png"
+        domino4.image=Image(FileInputStream(url))
     }
 }
