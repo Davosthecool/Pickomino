@@ -1,5 +1,8 @@
 package Vue
 
+import Controleur.ControleurChoisirDes
+import Modele.Jeu
+import iut.info1.pickomino.Connector
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.scene.layout.*
@@ -8,6 +11,7 @@ import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
+import javafx.scene.input.MouseEvent
 import java.io.FileInputStream
 import java.util.*
 import kotlin.random.Random
@@ -27,7 +31,7 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     val cle = Label("Clé du salon : ${key}")
 
     //ligne milieu
-    val desChoisi = VBox()
+    override val desChoisi = VBox()
     val pouleCommune = FlowPane()
     override val desActif = VBox()
 
@@ -129,5 +133,11 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
 
     override fun fixeBouton(bouton : Button,ecouteur : EventHandler<ActionEvent>){
         bouton.onAction=ecouteur
+    }
+
+    override fun fixeVbox(box : VBox, ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector){
+        box.children.forEach{
+            it.onMouseClicked= ControleurChoisirDes(this,modele,connect)
+        }
     }
 }

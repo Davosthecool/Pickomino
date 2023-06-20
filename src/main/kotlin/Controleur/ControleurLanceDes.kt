@@ -16,17 +16,12 @@ class ControleurLanceDes(vue : Vue_jeu, modele: Jeu, connect : Connector):EventH
     override fun handle(event: ActionEvent?) {
         if (connect.gameState(modele.id, modele.key).current.status == STATUS.ROLL_DICE){
             connect.rollDices(modele.id, modele.key)
+
             modele.assignDes(connect.gameState(modele.id, modele.key).current.rolls, modele.desActifs)
 
-            var list = mutableListOf<String>()
-
-            for (i in modele.desActifs) {
-                list.add(i.face.toString())
-            }
-
-            vue.updateDice(list, vue.desActif)
+            vue.updateDice(modele.listeDesStr(modele.desActifs), vue.desActif)
+            vue.fixeVbox(vue.desActif,ControleurChoisirDes(vue,modele,connect),modele,connect)
             vue.lanceDes.isDisable = true
-
         }else {
            throw BadStepException()
         }

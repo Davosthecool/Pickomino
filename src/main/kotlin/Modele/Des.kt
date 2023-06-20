@@ -2,13 +2,16 @@ package Modele
 
 import iut.info1.pickomino.data.DICE
 
-class Des(id : Int, face : DICE = DICE.worm, theme : String) {
+class Des(id : Int, face : DICE = DICE.worm, theme : String = "Light") {
     var id : Int
     var image : String
     var face : DICE
+        private set
     var valeur : Int
 
-    private var selected = false
+    var selected = false
+        private set
+
 
     init {
         this.face=face
@@ -23,7 +26,7 @@ class Des(id : Int, face : DICE = DICE.worm, theme : String) {
         valeur = face.ordinal
     }
 
-    fun select() {
-        selected = !selected
+    fun select(a : Boolean = true) {
+        selected = a
     }
 }

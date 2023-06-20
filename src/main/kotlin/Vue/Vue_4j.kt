@@ -1,5 +1,9 @@
 package Vue
 
+import Controleur.ControleurChoisirDes
+import Modele.Jeu
+import io.ktor.network.sockets.*
+import iut.info1.pickomino.Connector
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.geometry.Orientation
@@ -7,6 +11,7 @@ import javafx.scene.layout.*
 import javafx.scene.control.*
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
+import javafx.scene.input.MouseEvent
 import javafx.scene.paint.Color
 import javafx.scene.paint.CycleMethod
 import javafx.scene.paint.RadialGradient
@@ -38,7 +43,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     val score3 = Label("SCORE : 40")
 
     //ligne milieu
-    val desChoisi = VBox()
+    override val desChoisi = VBox()
     val pouleCommune = FlowPane()
     override val desActif = VBox()
 
@@ -120,6 +125,10 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         domino1.styleClass.addAll("domino1","domino")
         score1.styleClass.addAll("score1","score","grosTexte")
     }
+
+    fun select(obj : ImageView){
+        obj.opacity=1.0
+    }
     override fun updatePouleCommune(listDomino: MutableList<Int>) {
         println(listDomino)
         var cpt=0
@@ -131,6 +140,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
             picko.userData=cpt
             picko.fitWidth = 80.0
             picko.fitHeight = 160.0
+            picko.opacity=0.3
             pouleCommune.children.add(picko)
             cpt++
         }
@@ -138,14 +148,15 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
 
     override fun updateDice(listDe: MutableList<String>, target: VBox) {
         var cpt = 0
-        desActif.children.removeAll(target.children)
+        target.children.removeAll(target.children)
 
         for (i in listDe) {
             val de = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Dice/$i.png")))
             de.userData=cpt
             de.fitWidth = 60.0
             de.fitHeight = 60.0
-            desActif.children.add(de)
+            de.opacity=0.3
+            target.children.add(de)
             cpt++
         }
     }
@@ -163,5 +174,11 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
 
     override fun fixeBouton(bouton : Button,ecouteur : EventHandler<ActionEvent>){
         bouton.onAction=ecouteur
+    }
+
+    override fun fixeVbox(box : VBox,ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector){
+        box.children.forEach{
+             it.onMouseClicked=ControleurChoisirDes(this,modele,connect)
+        }
     }
 }

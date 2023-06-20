@@ -29,11 +29,23 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         desActifs.addAll(listeDes)
     }
 
-    fun selectionnerDesUnique(i : Des){
-        desChoisis.add(i)
+    fun ajouteDes(i : Des,liste : MutableList<Des>){
+        liste.add(i)
     }
+
+    fun listeDesStr(liste : MutableList<Des>) : MutableList<String>{
+
+        var list = mutableListOf<String>()
+        for (i in liste) {
+            list.add(i.face.toString())
+        }
+        return list
+    }
+
     fun selectionnerDes(valeur : Int){
+
         for (i in desActifs){
+            i.select(false)
             if (i.valeur==valeur){
                 i.select()
             }
@@ -44,14 +56,20 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         for (i in listeDes){
             if (i.valeur==valeur){
                 desChoisis.add(i)
+                desActifs.remove(i)
             }
         }
     }
+
 
     fun assignDes(list: List<DICE>, desActif : MutableList<Des>){
         for (i in 0..list.size - 1) {
             desActif[i].assignDe(list[i])
         }
+    }
+
+    fun resetListe(liste: MutableList<Des>){
+        liste.removeAll(liste)
     }
 
 }
