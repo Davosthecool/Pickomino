@@ -16,7 +16,7 @@ interface Vue_jeu {
     val desChoisi : VBox
     fun updatePouleCommune(listDomino:MutableList<Int>)
     fun updateDice(listDe:MutableList<String>,target : VBox)
-    fun updateDomino(listDomino:MutableList<Int>)
+    fun updateDominoJoueurs(listDomino:MutableList<Int>)
     fun fixeBouton(bouton : Button, ecouteur : EventHandler<ActionEvent>)
     fun fixeVbox(box : VBox, ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector)
 }

@@ -21,51 +21,55 @@ class ControleurChoisirDes(vue : Vue_jeu, modele: Jeu, connect : Connector) : Ev
     private val vue = vue
     private val modele = modele
     override fun handle(event: MouseEvent?) {
-        var de = Des(0)
-        //Selectionner valeur choisie
-        if (connect.gameState(modele.id, modele.key).current.status == STATUS.KEEP_DICE){
+        if (connect.gameState(modele.id, modele.key).current.status == STATUS.KEEP_DICE) {
+            //Selectionner valeur choisie
             var ev = event?.source as ImageView
-            for (i in modele.desActifs){
-                if (i.id==ev.userData){
+            var de = Des(0)
+            for (i in modele.desActifs) {
+                if (i.id == ev.userData) {
                     de = i
                 }
             }
-            println("id du dé : ${de.id}")
-            println("listeDes")
-            println(modele.listeDes.forEach{ println(it.valeur)})
-            println("desActifs")
-            println(modele.desActifs.forEach{ println(it.valeur)})
-            println("desChoisis")
-            println(modele.desChoisis.forEach{ println(it.valeur)})
+
             //Mettre a jour modele et vue en consequence
-            modele.selectionnerDes(de.valeur)
-            modele.desActifs.forEach{
-                vue.desActif.children.get(it.id).opacity=0.3
-                if (it.selected){
-                    vue.desActif.children.get(it.id).opacity=1.0
+            if (!modele.valeursChoisis.contains(de.face)) {
+                modele.selectionnerDes(de.valeur)
+
+                modele.desActifs.forEach {
+                    vue.desActif.children.get(it.id).opacity = 0.3
+                    if (it.selected) {
+                        vue.desActif.children.get(it.id).opacity = 1.0
+                    }
+                }
+
+
+                //Boite de dialogue
+                var al = Alert(Alert.AlertType.CONFIRMATION)
+                al.contentText = "Etes vous sur de vouloir ces dés"
+                al.showAndWait()
+
+                if (al.result == ButtonType.OK) {
+                    //Deplacement dés en consequence
+                    connect.keepDices(modele.id, modele.key, de.face)
+
+                    modele.choisirDes(de.valeur)
+
+                    vue.updateDice(modele.listeDesStr(modele.desActifs), vue.desActif)
+                    vue.updateDice(modele.listeDesStr(modele.desChoisis), vue.desChoisi)
+                    vue.lanceDes.isDisable = false
+                    modele.valeursChoisis.add(de.face)
+
+                    //reset index
+                    for (i in modele.desActifs.indices) {
+                        modele.desActifs[i].id = i
+                    }
+
+                    //transparence après roll
+                    modele.desActifs.forEach {
+                        vue.desActif.children.get(it.id).opacity = 0.3
+                    }
                 }
             }
-
-            //Boite de dialogue et deplacement dés
-
-            var al = Alert(Alert.AlertType.CONFIRMATION)
-            al.contentText="Etes vous sur de vouloir ces dés"
-            al.showAndWait()
-            if (al.result== ButtonType.OK){
-                connect.keepDices(modele.id,modele.key,de.face)
-
-                modele.choisirDes(de.valeur)
-
-                vue.updateDice(modele.listeDesStr(modele.desActifs),vue.desActif)
-                vue.updateDice(modele.listeDesStr(modele.desChoisis),vue.desChoisi)
-            }
-            vue.lanceDes.isDisable=false
-
-            //reset index
-            for (i in modele.desActifs.indices) {
-                modele.desActifs[i].id=i
-            }
-
         }
     }
 }

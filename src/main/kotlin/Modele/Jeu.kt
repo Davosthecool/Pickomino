@@ -19,6 +19,8 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         private set
     var desActifs : MutableList<Des> = mutableListOf()
         private set
+    var valeursChoisis : MutableList<DICE> = mutableListOf()
+        private set
     init {
         nbJoueur=connect.gameState(this.id,this.key).score().size
         this.statut=connect.gameState(this.id,this.key).current
@@ -27,10 +29,6 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
             listeDes.add(Des(i, theme=this.theme ))
         }
         desActifs.addAll(listeDes)
-    }
-
-    fun ajouteDes(i : Des,liste : MutableList<Des>){
-        liste.add(i)
     }
 
     fun listeDesStr(liste : MutableList<Des>) : MutableList<String>{
@@ -67,9 +65,4 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
             desActif[i].assignDe(list[i])
         }
     }
-
-    fun resetListe(liste: MutableList<Des>){
-        liste.removeAll(liste)
-    }
-
 }

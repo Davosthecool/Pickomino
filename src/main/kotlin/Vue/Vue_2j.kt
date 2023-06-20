@@ -63,7 +63,7 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
 
         /////////////////////
         //test domino joueur nouvel valeur
-        updateDomino(mutableListOf(21,22))
+        updateDominoJoueurs(mutableListOf(21,22))
         /////////////////////
 
 
@@ -112,19 +112,19 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
 
     override fun updateDice(listDe: MutableList<String>, target: VBox) {
         var cpt = 0
-        desActif.children.removeAll(target.children)
+        target.children.removeAll(target.children)
 
         for (i in listDe) {
             val de = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Dice/$i.png")))
             de.userData=cpt
             de.fitWidth = 60.0
             de.fitHeight = 60.0
-            desActif.children.add(de)
+            target.children.add(de)
             cpt++
         }
     }
 
-    override fun updateDomino(listDomino: MutableList<Int>) {
+    override fun updateDominoJoueurs(listDomino: MutableList<Int>) {
         var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[0]}.png"
         domino1.image=Image(FileInputStream(url))
         url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[1]}.png"
@@ -135,9 +135,9 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         bouton.onAction=ecouteur
     }
 
-    override fun fixeVbox(box : VBox, ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector){
+    override fun fixeVbox(box : VBox,ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector){
         box.children.forEach{
-            it.onMouseClicked= ControleurChoisirDes(this,modele,connect)
+            it.onMouseClicked=ControleurChoisirDes(this,modele,connect)
         }
     }
 }

@@ -14,23 +14,26 @@ class ControleurLanceDes(vue : Vue_jeu, modele: Jeu, connect : Connector):EventH
     private val vue = vue
     private val modele = modele
     override fun handle(event: ActionEvent?) {
-        if (connect.gameState(modele.id, modele.key).current.status == STATUS.ROLL_DICE){
+        //Lancement des
+        if (connect.gameState(modele.id, modele.key).current.status == STATUS.ROLL_DICE || connect.gameState(modele.id, modele.key).current.status == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO){
             connect.rollDices(modele.id, modele.key)
-
+            //changement modele et vue en conqequence
             modele.assignDes(connect.gameState(modele.id, modele.key).current.rolls, modele.desActifs)
 
             vue.updateDice(modele.listeDesStr(modele.desActifs), vue.desActif)
+            modele.desActifs.forEach{
+                if (modele.valeursChoisis.contains(it.face)){
+                    vue.desActif.children.get(it.id).opacity=0.3
+                }
+            }
+            //bind des des
             vue.fixeVbox(vue.desActif,ControleurChoisirDes(vue,modele,connect),modele,connect)
             vue.lanceDes.isDisable = true
+
+            //si tour perdu changement de joueur
+
         }else {
            throw BadStepException()
         }
-
-
-        /*
-        modele.desActifs=connect.rollDices(modele.id,modele.key)
-        print(connect.rollDices(modele.id,modele.key))
-        */
     }
-
 }

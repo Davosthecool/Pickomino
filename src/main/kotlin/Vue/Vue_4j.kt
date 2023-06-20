@@ -81,7 +81,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
 
         /////////////////////
         //test domino joueur nouvel valeur
-        updateDomino(mutableListOf(21,22,23,24))
+        updateDominoJoueurs(mutableListOf(21,22,23,24))
         /////////////////////
 
 
@@ -155,13 +155,12 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
             de.userData=cpt
             de.fitWidth = 60.0
             de.fitHeight = 60.0
-            de.opacity=0.3
             target.children.add(de)
             cpt++
         }
     }
 
-    override fun updateDomino(listDomino: MutableList<Int>) {
+    override fun updateDominoJoueurs(listDomino: MutableList<Int>) {
         var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[0]}.png"
         domino1.image=Image(FileInputStream(url))
         url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[1]}.png"
