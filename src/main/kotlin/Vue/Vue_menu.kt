@@ -88,7 +88,7 @@ class Vue_menu():VBox() {
         optionsth = FXCollections.observableArrayList("Clair️","Sombre")
         theme = ChoiceBox(optionsth)
         theme_container = HBox()
-        theme_label = Label("Thème de jeu :")
+        theme_label = Label("Thème des pièces :")
         plus_setting = HBox()
         plus_container = HBox()
         //ajout elements
