@@ -4,7 +4,7 @@
 
 .vue-jeu {
     -fx-alignment: center;
-    -fx-background-color: #826340;
+    -fx-background-color: #8c6e44;
 }
 
 /*container | static*/
@@ -46,6 +46,11 @@
     -fx-min-height: 160;
     -fx-spacing: 10;
     -fx-background-radius: 20;
+
+    -fx-border-color: #000000;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+
 }
 .salon-4j{ 
     -fx-min-width: 780; 
@@ -84,7 +89,7 @@
 /*ligne haut (joueurs) | static*/
 
 .joueur4{
-    -fx-background-color: #D9AF00;
+    -fx-background-color: #FAE06B;
 }
 .domino4{
 
@@ -93,7 +98,7 @@
 
 }
 .joueur3{
-    -fx-background-color: #13A100;
+    -fx-background-color: #58D938;
 }
 .domino3{
 
@@ -134,7 +139,7 @@
 
 
 .joueur2{
-    -fx-background-color: #FF3D3D;
+    -fx-background-color: #F73434;
 }
 .domino2{
 
@@ -145,9 +150,11 @@
     -fx-min-width: 780;
     -fx-min-height: 160;
     -fx-text-fill: black;
+
+    -fx-border-width: 2;
 }
 .joueur1{
- -fx-background-color: #1887C4;
+    -fx-background-color: #69C5FF;
 }
 .domino1{
 
@@ -182,7 +189,7 @@
 
 .tapisMilieu {
     -fx-border-color: #FFDA00;
-    -fx-border-width: 5;
+    -fx-border-width: 3;
     -fx-border-radius: 20;
     -fx-background-color: #0279BB;
     -fx-background-radius: 30;
