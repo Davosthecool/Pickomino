@@ -139,6 +139,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     override fun updateDice(listDe: MutableList<String>, target: VBox) {
         var cpt = 0
         desActif.children.removeAll(target.children)
+
         for (i in listDe) {
             val de = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Dice/$i.png")))
             de.userData=cpt
@@ -160,7 +161,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         domino4.image=Image(FileInputStream(url))
     }
 
-    fun fixeBouton(bouton : Button,ecouteur : EventHandler<ActionEvent>){
+    override fun fixeBouton(bouton : Button,ecouteur : EventHandler<ActionEvent>){
         bouton.onAction=ecouteur
     }
 }

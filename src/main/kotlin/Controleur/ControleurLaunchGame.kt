@@ -2,10 +2,7 @@ package Controleur
 
 import Modele.Jeu
 import Modele.Menu
-import Vue.Vue_2j
-import Vue.Vue_3j
-import Vue.Vue_4j
-import Vue.Vue_menu
+import Vue.*
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.stage.Stage
@@ -35,6 +32,7 @@ class ControleurLaunchGame(vue:Vue_menu, stage: Stage,modmenu : Menu):EventHandl
         modmenu.id.value=id
 
         //changement vue
+        val v : Vue_jeu
         if (modmenu.nbjoueur==4) {
             val v = Vue_4j(vue.theme_value,modmenu.id.value,modmenu.key.value)
             val modjeu = Jeu(modmenu,v)
@@ -43,10 +41,12 @@ class ControleurLaunchGame(vue:Vue_menu, stage: Stage,modmenu : Menu):EventHandl
         } else if (modmenu.nbjoueur==3) {
             val v = Vue_3j(vue.theme_value,modmenu.id.value,modmenu.key.value)
             val modjeu = Jeu(modmenu,v)
+            v.fixeBouton(v.lanceDes, ControleurLanceDes(v, modjeu, connect))
             stage.scene.root=v
         } else if (modmenu.nbjoueur==2) {
             val v = Vue_2j(vue.theme_value,modmenu.id.value,modmenu.key.value)
             val modjeu = Jeu(modmenu,v)
+            v.fixeBouton(v.lanceDes, ControleurLanceDes(v, modjeu, connect))
             stage.scene.root=v
         }
 

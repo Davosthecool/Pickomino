@@ -1,5 +1,7 @@
 package Vue
 
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 import javafx.scene.layout.*
 import javafx.scene.control.*
 import javafx.geometry.Insets
@@ -53,9 +55,7 @@ class Vue_3j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         domino2.fitHeight = 140.0
         domino3.fitWidth = 70.0
         domino3.fitHeight = 140.0
-        //init dés
-        val simulatedDice = mutableListOf("d1","d2","d3","d4","d5","worm","worm","d5")
-        updateDice(simulatedDice,desActif)
+
         //init domino poule commune
         val simulatedDomino = MutableList(16) { index -> index + 21 }
         updatePouleCommune(simulatedDomino)
@@ -116,6 +116,8 @@ class Vue_3j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
 
     override fun updateDice(listDe: MutableList<String>, target: VBox) {
         var cpt = 0
+        desActif.children.removeAll(target.children)
+
         for (i in listDe) {
             val de = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Dice/$i.png")))
             de.userData=cpt
@@ -133,5 +135,9 @@ class Vue_3j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         domino2.image=Image(FileInputStream(url))
         url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[2]}.png"
         domino3.image=Image(FileInputStream(url))
+    }
+
+    override fun fixeBouton(bouton : Button,ecouteur : EventHandler<ActionEvent>){
+        bouton.onAction=ecouteur
     }
 }
