@@ -129,3 +129,7 @@
 .button:hover {
     -fx-background-color: linear-gradient(to top, rgba(219, 142, 1), rgba(255,218,0,1));
 }
+
+.buttonFin {
+    -fx-font-size : 50.0;
+}
