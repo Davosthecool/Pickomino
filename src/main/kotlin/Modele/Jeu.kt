@@ -13,7 +13,8 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
     var id = modmenu.id.value
     var key = modmenu.key.value
     private var nbJoueur : Int
-    private var theme : String
+    var theme : String
+        private set
     private var statut : State
     var listePickomino : MutableList<Int> = mutableListOf()
         private set
@@ -101,7 +102,7 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
     }
 
     fun assignDes(list: List<DICE>, desActif : MutableList<Des>){
-        for (i in 0..list.size - 1) {
+        for (i in list.indices) {
             desActif[i].assignDe(list[i])
         }
     }
@@ -112,13 +113,21 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
     }
 
     fun retirerPickomino(joueur : Int) : Int?{
-        if (joueursPickosTop[joueur]==0){
-            throw TODO("exception a throw quand le joueur n'a pas de picko mais qu'on veut retirer")
-        }
+        if (joueursPickosTop[joueur]==0){null}
         var pick = joueursPickosTop[joueur]
         joueursScores[joueur]-=dicoPickos[joueursPickosTop[joueur]]!!
         joueursPickosTop[joueur]=0
         TODO("retirer pickomino quand il y en a un autre en dessous")
         return pick
+    }
+
+    fun nouveau_tour(){
+        listeDes.clear()
+        desActifs.clear()
+        desChoisis.clear()
+        valeursChoisis.clear()
+        //Initialise listeDes
+        for (i in 0 until 8){ listeDes.add(Des(i, theme=this.theme )) }
+        desActifs.addAll(listeDes)
     }
 }

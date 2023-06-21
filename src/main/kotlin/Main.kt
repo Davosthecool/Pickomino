@@ -15,7 +15,7 @@ import javafx.scene.*
 class Pickomino: Application() {
 
     override fun start(stage: Stage) {
-        val connect = Connector.factory("172.26.82.76", "8080")
+        val connect = Connector.factory("172.26.82.76", "8080",true)
         val vue = Vue_menu()
         val scene = Scene(vue,960.0, 540.0)
         val modmenu = Menu(connect)

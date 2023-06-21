@@ -7,16 +7,11 @@ import io.ktor.network.sockets.*
 import iut.info1.pickomino.Connector
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
-import javafx.geometry.Orientation
 import javafx.scene.layout.*
 import javafx.scene.control.*
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.input.MouseEvent
-import javafx.scene.paint.Color
-import javafx.scene.paint.CycleMethod
-import javafx.scene.paint.RadialGradient
-import javafx.scene.paint.Stop
 import java.io.FileInputStream
 
 
@@ -33,7 +28,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     //joueur4
     val joueur4 = HBox()
     val domino4 : ImageView
-    val score4 = Label("SCORE : 40")
+    val score4 = Label("SCORE : 0")
     //info jeu
     val container_info = VBox()
     val salon = Label("ID du salon : ${id}")
@@ -41,7 +36,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     //joueur3
     val joueur3 = HBox()
     val domino3 : ImageView
-    val score3 = Label("SCORE : 40")
+    val score3 = Label("SCORE : 0")
 
     //ligne milieu
     override val desChoisi = VBox()
@@ -53,13 +48,13 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     //joueur2
     val joueur2 = HBox()
     val domino2 : ImageView
-    val score2 = Label("SCORE : 40")
+    val score2 = Label("SCORE : 0")
     //lancer des
     override val lanceDes = Button("Lancer le(s) dé(s)")
     //joueur1
     val joueur1 = HBox()
     val domino1 : ImageView
-    val score1 = Label("SCORE : 40")
+    val score1 = Label("SCORE : 0")
     init {
         //init domino joueur
         domino1= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
@@ -125,16 +120,28 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     }
     override fun updatePouleCommune(listDomino: MutableList<Int>) {
         println(listDomino)
-        var cpt=21
         pouleCommune.children.removeAll(pouleCommune.children)
         for (i in listDomino) {
             val picko = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/$i.png")))
-            picko.userData=cpt
+            picko.userData=i
             picko.fitWidth = 80.0
             picko.fitHeight = 160.0
             picko.opacity=0.3
             pouleCommune.children.add(picko)
-            cpt++
+        }
+    }
+
+    override fun updatePouleCommune(listDomino: MutableList<Int>,modele: Jeu ,connect: Connector ) {
+        println(listDomino)
+        pouleCommune.children.removeAll(pouleCommune.children)
+        for (i in listDomino) {
+            val picko = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/$i.png")))
+            picko.userData=i
+            picko.fitWidth = 80.0
+            picko.fitHeight = 160.0
+            picko.opacity=0.3
+            pouleCommune.children.add(picko)
+            fixePickos(pouleCommune,ControleurPrendrePickomino(this,modele, connect),modele,connect)
         }
     }
 
@@ -173,6 +180,13 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
             var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[3]}.png"
             domino4.image=Image(FileInputStream(url))
         }
+    }
+
+    override fun updateScoresJoueurs(listeScores : MutableList<Int>){
+        score1.text="Score : ${listeScores[0]}"
+        score2.text="Score : ${listeScores[1]}"
+        score3.text="Score : ${listeScores[2]}"
+        score4.text="Score : ${listeScores[3]}"
     }
 
     override fun fixeBouton(bouton : Button,ecouteur : EventHandler<ActionEvent>){

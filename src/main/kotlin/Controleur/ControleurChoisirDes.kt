@@ -22,6 +22,7 @@ class ControleurChoisirDes(vue : Vue_jeu, modele: Jeu, connect : Connector) : Ev
     private val vue = vue
     private val modele = modele
     override fun handle(event: MouseEvent?) {
+//        println(connect.gameState(modele.id,modele.key).current)
         if (connect.gameState(modele.id, modele.key).current.status == STATUS.KEEP_DICE) {
             //Selectionner valeur choisie
             var ev = event?.source as ImageView
@@ -72,13 +73,14 @@ class ControleurChoisirDes(vue : Vue_jeu, modele: Jeu, connect : Connector) : Ev
 
                     //Mettre a jour vue PouleCommune
                     var pick = 0
-                    if (modele.sommeDes(modele.desChoisis) >= 21){
+                    if (modele.sommeDes(modele.desChoisis) >= 21) {
                         pick = modele.listePickomino.maxByOrNull { number -> if (number <= modele.sommeDes(modele.desChoisis)) number else 0 }!!
-                    }
-                    modele.listePickomino.forEach {
-                        vue.pouleCommune.children.get(it-21).opacity = 0.3
-                        if (it == pick) {
-                            vue.pouleCommune.children.get(it-21).opacity = 1.0
+
+                        vue.pouleCommune.children.forEach {
+                            it.opacity = 0.3
+                            if (it.userData == pick) {
+                                it.opacity = 1.0
+                            }
                         }
                     }
                 }

@@ -8,14 +8,10 @@ import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.scene.layout.*
 import javafx.scene.control.*
-import javafx.geometry.Insets
-import javafx.geometry.Pos
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.input.MouseEvent
 import java.io.FileInputStream
-import java.util.*
-import kotlin.random.Random
 
 class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     val theme = theme
@@ -40,13 +36,13 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     //joueur2
     val joueur2 = HBox()
     val domino2 : ImageView
-    val score2 = Label("40")
+    val score2 = Label("0")
     //lancer des
     override val lanceDes = Button("Lancer le(s) dé(s)")
     //joueur1
     val joueur1 = HBox()
     val domino1 : ImageView
-    val score1 = Label("40")
+    val score1 = Label("0")
     init {
         domino1= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
         domino2= ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png")))
@@ -99,7 +95,24 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
             picko.userData=cpt
             picko.fitWidth = 80.0
             picko.fitHeight = 160.0
+            picko.opacity=0.3
             pouleCommune.children.add(picko)
+            cpt++
+        }
+    }
+
+    override fun updatePouleCommune(listDomino: MutableList<Int>,modele: Jeu ,connect: Connector ) {
+        println(listDomino)
+        var cpt=21
+        pouleCommune.children.removeAll(pouleCommune.children)
+        for (i in listDomino) {
+            val picko = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/$i.png")))
+            picko.userData=cpt
+            picko.fitWidth = 80.0
+            picko.fitHeight = 160.0
+            picko.opacity=0.3
+            pouleCommune.children.add(picko)
+            fixePickos(pouleCommune,ControleurPrendrePickomino(this,modele, connect),modele,connect)
             cpt++
         }
     }
@@ -129,6 +142,11 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
             var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[1]}.png"
             domino2.image=Image(FileInputStream(url))
         }
+    }
+
+    override fun updateScoresJoueurs(listeScores : MutableList<Int>){
+        score1.text="Score : ${listeScores[0]}"
+        score2.text="Score : ${listeScores[1]}"
     }
 
     override fun fixeBouton(bouton : Button,ecouteur : EventHandler<ActionEvent>){

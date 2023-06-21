@@ -7,7 +7,6 @@ import javafx.event.EventHandler
 import javafx.scene.control.Button
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.FlowPane
-import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 
 interface Vue_jeu {
@@ -16,9 +15,12 @@ interface Vue_jeu {
     val lanceDes : Button
     val desChoisi : VBox
     val pouleCommune : FlowPane
+
     fun updatePouleCommune(listDomino:MutableList<Int>)
+    fun updatePouleCommune(listDomino:MutableList<Int>,modele: Jeu,connect: Connector)
     fun updateDice(listDe:MutableList<String>,target : VBox)
     fun updateDominoJoueurs(listDomino:MutableList<Int>)
+    fun updateScoresJoueurs(listeScores : MutableList<Int>)
     fun fixeBouton(bouton : Button, ecouteur : EventHandler<ActionEvent>)
     fun fixeDes(box : VBox, ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector)
 

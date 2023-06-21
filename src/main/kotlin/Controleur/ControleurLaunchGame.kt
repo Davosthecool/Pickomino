@@ -3,6 +3,10 @@ package Controleur
 import Modele.Jeu
 import Modele.Menu
 import Vue.*
+import iut.info1.pickomino.data.DICE
+import javafx.beans.property.SimpleIntegerProperty
+import javafx.beans.value.ChangeListener
+import javafx.beans.value.ObservableValue
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.stage.Stage
@@ -14,24 +18,28 @@ class ControleurLaunchGame(vue:Vue_menu, stage: Stage,modmenu : Menu):EventHandl
     val modmenu = modmenu
     val connect = modmenu.connector
     override fun handle(event: ActionEvent?) {
-        stage.hide()
         //lancement partie
-        println("Parties actives sur le serveur = ${connect.listOfGameIds()}")
+        stage.hide()
+        //println("Parties actives sur le serveur = ${connect.listOfGameIds()}")
         val identification = connect.newGame(modmenu.nbjoueur)
         val id = identification.first
         val key = identification.second
         val currentGame = connect.gameState(id, key)
-        println("Nouvelle partie : $currentGame")
-        println("id : ${id} clé : ${key}")
+
+       // println("Nouvelle partie : $currentGame")
+       // println("id : ${id} clé : ${key}")
+
         if (modmenu.isLocal==false) {
             println("Lancement de la partie en ligne pour ${modmenu.nbjoueur} joueurs")
         } else {
             println("Lancement de la partie en local pour ${modmenu.nbjoueur} joueurs")
         }
+
         modmenu.key.value=key
         modmenu.id.value=id
 
-        //changement vue
+        //changement vue et binds
+        val chgmntJoueur : SimpleIntegerProperty = SimpleIntegerProperty(connect.gameState(id, key).current.player)
         val v : Vue_jeu
         if (modmenu.nbjoueur==4) {
             val v = Vue_4j(vue.theme_value,modmenu.id.value,modmenu.key.value)
@@ -52,7 +60,6 @@ class ControleurLaunchGame(vue:Vue_menu, stage: Stage,modmenu : Menu):EventHandl
             v.fixePickos(v.pouleCommune,ControleurPrendrePickomino(v,modjeu,connect),modjeu,connect)
             stage.scene.root=v
         }
-
 
         stage.isMaximized = true
         stage.show()
