@@ -36,7 +36,7 @@ class Vue_fin2J : BorderPane(){
         menu = Button("Retourner au menu")
 
 
-        val label = Label("Score")
+        val label = Label("Scores")
 
         title.add(label, 0, 0)
 
