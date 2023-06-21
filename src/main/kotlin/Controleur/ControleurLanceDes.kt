@@ -21,13 +21,13 @@ class ControleurLanceDes(vue : Vue_jeu, modele: Jeu, connect : Connector):EventH
             modele.assignDes(connect.gameState(modele.id, modele.key).current.rolls, modele.desActifs)
 
             vue.updateDice(modele.listeDesStr(modele.desActifs), vue.desActif)
-            modele.desActifs.forEach{
-                if (modele.valeursChoisis.contains(it.face)){
-                    vue.desActif.children.get(it.id).opacity=0.3
+            modele.desActifs.forEach {
+                if (modele.valeursChoisis.contains(it.face)) {
+                    vue.desActif.children.get(it.id).opacity = 0.3
                 }
             }
             //bind des des
-            vue.fixeVbox(vue.desActif,ControleurChoisirDes(vue,modele,connect),modele,connect)
+            vue.fixeDes(vue.desActif,ControleurChoisirDes(vue,modele,connect),modele,connect)
             vue.lanceDes.isDisable = true
 
             //si tour perdu changement de joueur

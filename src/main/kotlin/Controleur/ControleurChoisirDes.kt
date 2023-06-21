@@ -6,6 +6,7 @@ import Vue.Vue_jeu
 import iut.info1.pickomino.Connector
 import iut.info1.pickomino.data.DICE
 import iut.info1.pickomino.data.STATUS
+import iut.info1.pickomino.exceptions.BadStepException
 import javafx.event.EventHandler
 import javafx.scene.control.Alert
 import javafx.scene.control.ButtonType
@@ -31,7 +32,7 @@ class ControleurChoisirDes(vue : Vue_jeu, modele: Jeu, connect : Connector) : Ev
                 }
             }
 
-            //Mettre a jour modele et vue en consequence
+            //Mettre a jour modele et vue en consequence(desChoisis,desActifs)
             if (!modele.valeursChoisis.contains(de.face)) {
                 modele.selectionnerDes(de.valeur)
 
@@ -68,8 +69,22 @@ class ControleurChoisirDes(vue : Vue_jeu, modele: Jeu, connect : Connector) : Ev
                     modele.desActifs.forEach {
                         vue.desActif.children.get(it.id).opacity = 0.3
                     }
+
+                    //Mettre a jour vue PouleCommune
+                    var pick = 0
+                    if (modele.sommeDes(modele.desChoisis) >= 21){
+                        pick = modele.listePickomino.maxByOrNull { number -> if (number <= modele.sommeDes(modele.desChoisis)) number else 0 }!!
+                    }
+                    modele.listePickomino.forEach {
+                        vue.pouleCommune.children.get(it-21).opacity = 0.3
+                        if (it == pick) {
+                            vue.pouleCommune.children.get(it-21).opacity = 1.0
+                        }
+                    }
                 }
             }
+        }else {
+            throw BadStepException()
         }
     }
 }

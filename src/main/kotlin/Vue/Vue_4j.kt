@@ -1,6 +1,7 @@
 package Vue
 
 import Controleur.ControleurChoisirDes
+import Controleur.ControleurPrendrePickomino
 import Modele.Jeu
 import io.ktor.network.sockets.*
 import iut.info1.pickomino.Connector
@@ -44,7 +45,7 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
 
     //ligne milieu
     override val desChoisi = VBox()
-    val pouleCommune = FlowPane()
+    override val pouleCommune = FlowPane()
     override val desActif = VBox()
 
     //ligne bas
@@ -77,13 +78,6 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         //init domino poule commune
         val simulatedDomino = MutableList(16) { index -> index + 21 }
         updatePouleCommune(simulatedDomino)
-
-
-        /////////////////////
-        //test domino joueur nouvel valeur
-        updateDominoJoueurs(mutableListOf(21,22,23,24))
-        /////////////////////
-
 
         //ajout items
         this.children.addAll(ligneHaut,ligneMilieu,ligneBas)
@@ -131,10 +125,8 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     }
     override fun updatePouleCommune(listDomino: MutableList<Int>) {
         println(listDomino)
-        var cpt=0
-        for (j in pouleCommune.children) {
-            pouleCommune.children.remove(j)
-        }
+        var cpt=21
+        pouleCommune.children.removeAll(pouleCommune.children)
         for (i in listDomino) {
             val picko = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/$i.png")))
             picko.userData=cpt
@@ -161,23 +153,41 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     }
 
     override fun updateDominoJoueurs(listDomino: MutableList<Int>) {
-        var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[0]}.png"
-        domino1.image=Image(FileInputStream(url))
-        url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[1]}.png"
-        domino2.image=Image(FileInputStream(url))
-        url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[2]}.png"
-        domino3.image=Image(FileInputStream(url))
-        url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[3]}.png"
-        domino4.image=Image(FileInputStream(url))
+        if (listDomino[0]==0){
+        }else{
+            var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[0]}.png"
+            domino1.image=Image(FileInputStream(url))
+        }
+        if (listDomino[1]==0){
+        }else{
+            var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[1]}.png"
+            domino2.image=Image(FileInputStream(url))
+        }
+        if (listDomino[2]==0){
+        }else{
+            var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[2]}.png"
+            domino3.image=Image(FileInputStream(url))
+        }
+        if (listDomino[3]==0){
+        }else{
+            var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[3]}.png"
+            domino4.image=Image(FileInputStream(url))
+        }
     }
 
     override fun fixeBouton(bouton : Button,ecouteur : EventHandler<ActionEvent>){
         bouton.onAction=ecouteur
     }
 
-    override fun fixeVbox(box : VBox,ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector){
+    override fun fixeDes(box : VBox,ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector){
         box.children.forEach{
              it.onMouseClicked=ControleurChoisirDes(this,modele,connect)
+        }
+    }
+
+    override fun fixePickos(box : FlowPane,ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector){
+        box.children.forEach{
+            it.onMouseClicked=ControleurPrendrePickomino(this,modele,connect)
         }
     }
 }
