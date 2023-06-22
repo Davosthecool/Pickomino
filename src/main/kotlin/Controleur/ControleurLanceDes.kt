@@ -22,11 +22,13 @@ class ControleurLanceDes(vue : Vue_jeu, modele: Jeu, connect : Connector):EventH
 
             connect.rollDices(modele.id, modele.key)
 
+            //mise a jour vue en consequence
             vue.updateDice(connect.gameState(modele.id,modele.key).current.rolls, vue.desActif)
             vue.updatePouleCommune(connect.gameState(modele.id,modele.key).accessiblePickos(),modele, connect)
-            vue.updateDominoJoueurs(connect.gameState(modele.id,modele.key).pickosStackTops())
+            vue.updateDominoJoueurs(connect.gameState(modele.id,modele.key).pickosStackTops(),modele, connect)
             vue.updateScoresJoueurs(connect.gameState(modele.id,modele.key).score())
 
+            //surbrillance dés selectionnables
             vue.desActif.children.forEach{
                 if (modele.listeDesStr2(connect.gameState(modele.id,modele.key).current.keptDices).contains(it.userData)) {
                     it.opacity = 0.3

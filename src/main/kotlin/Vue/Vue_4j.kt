@@ -18,7 +18,7 @@ import java.io.FileInputStream
 
 class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
     val theme = theme
-
+    override lateinit var listeDominoJoueurs : List<ImageView>
     //ligne principals
     val ligneHaut = HBox()
     val ligneMilieu = HBox()
@@ -71,6 +71,9 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         domino3.fitHeight = 140.0
         domino4.fitWidth = 70.0
         domino4.fitHeight = 140.0
+
+        listeDominoJoueurs = listOf(domino1,domino2,domino3,domino4)
+
         //init domino poule commune
         val simulatedDomino = MutableList(16) { index -> index + 21 }
         updatePouleCommune(simulatedDomino)
@@ -158,43 +161,32 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
             cpt++
         }
     }
+    override fun updateDominoJoueurs(listDomino: List<Int>, modele: Jeu,connect: Connector) {
+        domino1.userData=listDomino[0]
+        domino2.userData=listDomino[1]
+        domino3.userData=listDomino[2]
+        domino4.userData=listDomino[3]
 
-    override fun updateDominoJoueurs(listDomino: List<Int>) {
-//        var picko : Image
-//        var listPickos : MutableList<Image> = mutableListOf()
-//        for (i in listDomino){
-//            if (listDomino[i]==0){
-//                picko = Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png"))
-//            }else{
-//                picko = Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/${listDomino[i]}.png"))
-//            }
-//            listPickos.add(picko)
-//        }
-//
-//        domino1.image=listPickos[0]
-//        domino2.image=listPickos[1]
-//        domino3.image=listPickos[2]
-//        domino4.image=listPickos[3]
-        if (listDomino[0]==0){
-        }else{
-            var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[0]}.png"
-            domino1.image=Image(FileInputStream(url))
+        var picko : Image
+        var listPickos : MutableList<Image> = mutableListOf()
+        for (i in listDomino.indices){
+            if (listDomino[i]==0){
+                picko = Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/EmptyPicko.png"))
+            }else{
+                picko = Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/${listDomino[i]}.png"))
+            }
+            listPickos.add(picko)
         }
-        if (listDomino[1]==0){
-        }else{
-            var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[1]}.png"
-            domino2.image=Image(FileInputStream(url))
-        }
-        if (listDomino[2]==0){
-        }else{
-            var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[2]}.png"
-            domino3.image=Image(FileInputStream(url))
-        }
-        if (listDomino[3]==0){
-        }else{
-            var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[3]}.png"
-            domino4.image=Image(FileInputStream(url))
-        }
+
+        domino1.image=listPickos[0]
+        domino2.image=listPickos[1]
+        domino3.image=listPickos[2]
+        domino4.image=listPickos[3]
+
+        fixePickos(domino1,ControleurPrendrePickomino(this,modele, connect),modele,connect)
+        fixePickos(domino2,ControleurPrendrePickomino(this,modele, connect),modele,connect)
+        fixePickos(domino3,ControleurPrendrePickomino(this,modele, connect),modele,connect)
+        fixePickos(domino4,ControleurPrendrePickomino(this,modele, connect),modele,connect)
     }
 
     override fun updateScoresJoueurs(listeScores : List<Int>){
@@ -218,5 +210,10 @@ class Vue_4j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         box.children.forEach{
             it.onMouseClicked=ControleurPrendrePickomino(this,modele,connect)
         }
+    }
+
+    override fun fixePickos(el : ImageView,ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector){
+        el.onMouseClicked=ControleurPrendrePickomino(this,modele,connect)
+
     }
 }

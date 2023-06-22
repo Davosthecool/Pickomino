@@ -22,6 +22,7 @@ class Pickomino: Application() {
         //CSS
         scene.stylesheets.add("/CSS/menu.css")
         scene.stylesheets.add("/CSS/Vue.css")
+        scene.stylesheets.add("/CSS/fin.css")
         //music
         //binding
         //radio local
