@@ -1,6 +1,7 @@
 package Modele
 
 import MusicPlayer
+import MusicPlayerOnce
 import Vue.Vue_Fin
 import Vue.Vue_menu
 import iut.info1.pickomino.Connector
@@ -149,7 +150,7 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         al.headerText="Jeu terminé"
         al.contentText="Appuyez sur OK pour voir les scores"
         al.showAndWait()
-        val mp3playerend=MusicPlayer("/src/main/resources/GameAssets/victory.mp3")
+        val mp3playerend=MusicPlayerOnce("src/main/resources/GameAssets/victory.mp3")
         mp3playerend.run()
         stage.setOnCloseRequest {
             mp3playerend.stopMusic()

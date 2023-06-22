@@ -134,7 +134,6 @@ class MusicPlayer(private val file : String) : Thread() {
         while (isPlaying) {
             try {
                 mp3player.play()
-                println("a")
             } catch (e: Exception) {
                 print("erreur lors de la lecture du mp3")
             }
@@ -142,6 +141,22 @@ class MusicPlayer(private val file : String) : Thread() {
     }
     fun stopMusic() {
         isPlaying=false
+        mp3player.close()
+        mp3.close()
+    }
+}
+
+class MusicPlayerOnce(private val file : String) : Thread() {
+    var mp3 = FileInputStream(file)
+    val mp3player = Player(mp3)
+    override fun run() {
+        try {
+            mp3player.play()
+        } catch (e: Exception) {
+            print("erreur lors de la lecture du mp3")
+        }
+    }
+    fun stopMusic() {
         mp3player.close()
         mp3.close()
     }
