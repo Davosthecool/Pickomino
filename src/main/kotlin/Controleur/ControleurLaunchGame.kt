@@ -2,22 +2,20 @@ package Controleur
 
 import Modele.Jeu
 import Modele.Menu
+import MusicPlayer
 import Vue.*
-import iut.info1.pickomino.data.DICE
-import javafx.beans.property.SimpleIntegerProperty
-import javafx.beans.value.ChangeListener
-import javafx.beans.value.ObservableValue
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.stage.Stage
 
-class ControleurLaunchGame(vue:Vue_menu, stage: Stage,modmenu : Menu):EventHandler<ActionEvent> {
+class ControleurLaunchGame(vue:Vue_menu, stage: Stage,modmenu : Menu,mu : MusicPlayer):EventHandler<ActionEvent> {
     val vue = vue
     val stage = stage
-
+    val mu = mu
     val modmenu = modmenu
     val connect = modmenu.connector
     override fun handle(event: ActionEvent?) {
+        mu.stopMusic()
         //lancement partie
         stage.hide()
         //println("Parties actives sur le serveur = ${connect.listOfGameIds()}")

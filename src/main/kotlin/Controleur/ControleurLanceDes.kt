@@ -1,9 +1,9 @@
 package Controleur
 
 import Modele.Jeu
+import MusicPlayerOnce
 import Vue.Vue_jeu
 import iut.info1.pickomino.Connector
-import iut.info1.pickomino.data.DICE
 import iut.info1.pickomino.data.STATUS
 import iut.info1.pickomino.exceptions.BadStepException
 import javafx.event.ActionEvent
@@ -21,7 +21,8 @@ class ControleurLanceDes(vue : Vue_jeu, modele: Jeu, connect : Connector, stage:
         //Lancement des
 
         if (connect.gameState(modele.id, modele.key).current.status == STATUS.ROLL_DICE || connect.gameState(modele.id, modele.key).current.status == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO){
-
+            val u = MusicPlayerOnce("src/main/resources/GameAssets/roll.mp3")
+            u.start()
             connect.rollDices(modele.id, modele.key)
 
             //mise a jour vue en consequence

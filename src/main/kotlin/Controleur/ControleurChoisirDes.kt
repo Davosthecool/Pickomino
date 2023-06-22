@@ -1,6 +1,5 @@
 package Controleur
 
-import Modele.Des
 import Modele.Jeu
 import Vue.Vue_jeu
 import iut.info1.pickomino.Connector
@@ -10,11 +9,8 @@ import iut.info1.pickomino.exceptions.BadStepException
 import javafx.event.EventHandler
 import javafx.scene.control.Alert
 import javafx.scene.control.ButtonType
-import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.input.MouseEvent
-import javafx.scene.layout.HBox
-import javafx.scene.layout.VBox
 import javafx.stage.Stage
 
 class ControleurChoisirDes(vue : Vue_jeu, modele: Jeu, connect : Connector, stage: Stage) : EventHandler<MouseEvent> {

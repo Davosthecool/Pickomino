@@ -2,6 +2,7 @@ package Controleur
 
 import Modele.Jeu
 import Modele.Menu
+import MusicPlayer
 import Vue.Vue_2j
 import Vue.Vue_3j
 import Vue.Vue_4j
@@ -10,12 +11,14 @@ import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.stage.Stage
 
-class ControleurJoinGame(vue:Vue_menu,stage: Stage,modmenu : Menu):EventHandler<ActionEvent> {
+class ControleurJoinGame(vue:Vue_menu,stage: Stage,modmenu : Menu,mu : MusicPlayer):EventHandler<ActionEvent> {
     var vue = vue
     val stage = stage
+    val mu = mu
     val modmenu = modmenu
     val connect = modmenu.connector
     override fun handle(event: ActionEvent?) {
+        mu.stopMusic()
         modmenu.nbjoueur=connect.gameState(modmenu.id.value,modmenu.key.value).score().size
         if (modmenu.isLocal==false) {
             stage.hide()

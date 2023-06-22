@@ -95,10 +95,10 @@ class Pickomino: Application() {
         }
         /////////////////////////////////////////
         //bouton launch
-        val contlaunch = ControleurLaunchGame(vue,stage,modmenu)
+        val contlaunch = ControleurLaunchGame(vue,stage,modmenu,mp3player)
         vue.create_game.onAction = contlaunch
         //bouton join
-        val contjoin = ControleurJoinGame(vue,stage,modmenu)
+        val contjoin = ControleurJoinGame(vue,stage,modmenu,mp3player)
         vue.join_game.onAction = contjoin
         //default
         vue.join_game.isDisable = true

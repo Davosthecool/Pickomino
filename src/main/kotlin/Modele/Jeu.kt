@@ -1,16 +1,11 @@
 package Modele
 
-import MusicPlayer
 import MusicPlayerOnce
 import Vue.Vue_Fin
-import Vue.Vue_menu
-import iut.info1.pickomino.Connector
 import iut.info1.pickomino.data.DICE
-import iut.info1.pickomino.data.Pickomino
 import iut.info1.pickomino.data.State
 import javafx.scene.control.Alert
 import javafx.stage.Stage
-import java.util.Dictionary
 
 class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
     var vue = vue
