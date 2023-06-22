@@ -17,6 +17,7 @@ import java.io.FileInputStream
 class Pickomino: Application() {
 
     override fun start(stage: Stage) {
+        val mp3player = MusicPlayer("src/main/resources/GameAssets/theme.mp3")
         val connect = Connector.factory("172.26.82.76", "8080",true)
         val vue = Vue_menu()
         val scene = Scene(vue,960.0, 540.0)
@@ -25,7 +26,6 @@ class Pickomino: Application() {
         scene.stylesheets.add("/CSS/menu.css")
         scene.stylesheets.add("/CSS/Vue.css")
         scene.stylesheets.add("/CSS/fin.css")
-        //music
         //binding
         //radio local
         vue.local_game.setOnAction {
@@ -100,13 +100,6 @@ class Pickomino: Application() {
         //bouton join
         val contjoin = ControleurJoinGame(vue,stage,modmenu)
         vue.join_game.onAction = contjoin
-        //music
-        val mp3player = MusicPlayer("/src/main/resources/GameAssets/theme.mp3")
-        mp3player.start()
-
-        stage.setOnCloseRequest {
-            mp3player.stopMusic()
-        }
         //default
         vue.join_game.isDisable = true
         vue.local_game.isSelected = true
@@ -114,6 +107,12 @@ class Pickomino: Application() {
         vue.join_game.isDisable = true
         vue.player_number_game.selectionModel.selectFirst()
         vue.theme.selectionModel.selectFirst()
+        //music
+        mp3player.start()
+        stage.setOnCloseRequest {
+            mp3player.stopMusic()
+            println("teehee")
+        }
         //lancement application
         stage.title="Pickomino"
         stage.scene=scene
@@ -127,7 +126,7 @@ fun main() {
 }
 
 //class qui joue de la musique
-class MusicPlayer(var file : String) : Thread() {
+class MusicPlayer(private val file : String) : Thread() {
     private var isPlaying = true
     var mp3 = FileInputStream(file)
     val mp3player = Player(mp3)
@@ -135,6 +134,7 @@ class MusicPlayer(var file : String) : Thread() {
         while (isPlaying) {
             try {
                 mp3player.play()
+                println("a")
             } catch (e: Exception) {
                 print("erreur lors de la lecture du mp3")
             }

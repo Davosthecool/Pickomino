@@ -150,7 +150,7 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         al.contentText="Appuyez sur OK pour voir les scores"
         al.showAndWait()
         val mp3playerend=MusicPlayer("/src/main/resources/GameAssets/victory.mp3")
-        mp3playerend.start()
+        mp3playerend.run()
         stage.setOnCloseRequest {
             mp3playerend.stopMusic()
         }
