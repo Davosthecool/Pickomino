@@ -1,9 +1,14 @@
 package Modele
 
+import MusicPlayer
+import Vue.Vue_Fin
+import Vue.Vue_menu
 import iut.info1.pickomino.Connector
 import iut.info1.pickomino.data.DICE
 import iut.info1.pickomino.data.Pickomino
 import iut.info1.pickomino.data.State
+import javafx.scene.control.Alert
+import javafx.stage.Stage
 import java.util.Dictionary
 
 class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
@@ -139,4 +144,16 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         desActifs.addAll(listeDes)
     }
 
+    fun jeu_termine(stage : Stage){
+        var al = Alert(Alert.AlertType.INFORMATION)
+        al.headerText="Jeu terminé"
+        al.contentText="Appuyez sur OK pour voir les scores"
+        al.showAndWait()
+        val mp3playerend=MusicPlayer("/src/main/resources/GameAssets/victory.mp3")
+        mp3playerend.start()
+        stage.setOnCloseRequest {
+            mp3playerend.stopMusic()
+        }
+        stage.scene.root= Vue_Fin(connect.finalScore(id,key),connect.gameState(id,key).pickosStackTops())
+    }
 }

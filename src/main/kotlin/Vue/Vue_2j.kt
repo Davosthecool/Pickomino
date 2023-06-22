@@ -12,11 +12,13 @@ import javafx.scene.control.*
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.input.MouseEvent
+import javafx.stage.Stage
 import java.io.FileInputStream
 
-class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
+class Vue_2j(theme:String,id:Int,key:Int,stage: Stage): VBox(),Vue_jeu {
     val theme = theme
     override lateinit var listeDominoJoueurs : List<ImageView>
+    private var stage = stage
 
     //ligne principals
     val ligneHaut = HBox()
@@ -111,7 +113,7 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
             picko.fitHeight = 160.0
             picko.opacity=0.3
             pouleCommune.children.add(picko)
-            fixePickos(pouleCommune,ControleurPrendrePickomino(this,modele, connect),modele,connect)
+            fixePickos(pouleCommune,ControleurPrendrePickomino(this,modele, connect, stage),modele,connect)
         }
     }
 
@@ -147,8 +149,8 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         domino1.image=listPickos[0]
         domino2.image=listPickos[1]
 
-        fixePickos(domino1,ControleurPrendrePickomino(this,modele, connect),modele,connect)
-        fixePickos(domino2,ControleurPrendrePickomino(this,modele, connect),modele,connect)
+        fixePickos(domino1,ControleurPrendrePickomino(this,modele, connect, stage),modele,connect)
+        fixePickos(domino2,ControleurPrendrePickomino(this,modele, connect, stage),modele,connect)
     }
 
     override fun updateScoresJoueurs(listeScores : List<Int>){
@@ -162,16 +164,16 @@ class Vue_2j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
 
     override fun fixeDes(box : VBox,ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector){
         box.children.forEach{
-            it.onMouseClicked=ControleurChoisirDes(this,modele,connect)
+            it.onMouseClicked=ControleurChoisirDes(this,modele,connect, stage)
         }
     }
 
     override fun fixePickos(box : FlowPane,ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector){
         box.children.forEach{
-            it.onMouseClicked= ControleurPrendrePickomino(this,modele,connect)
+            it.onMouseClicked= ControleurPrendrePickomino(this,modele,connect, stage)
         }
     }
     override fun fixePickos(el : ImageView,ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector){
-        el.onMouseClicked=ControleurPrendrePickomino(this,modele,connect)
+        el.onMouseClicked=ControleurPrendrePickomino(this,modele,connect, stage)
     }
 }

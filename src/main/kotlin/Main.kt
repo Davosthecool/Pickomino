@@ -10,6 +10,8 @@ import iut.info1.pickomino.Connector
 import javafx.scene.control.TextFormatter
 import javafx.util.converter.NumberStringConverter
 import javafx.scene.*
+import javazoom.jl.player.Player
+import java.io.FileInputStream
 
 
 class Pickomino: Application() {
@@ -98,6 +100,13 @@ class Pickomino: Application() {
         //bouton join
         val contjoin = ControleurJoinGame(vue,stage,modmenu)
         vue.join_game.onAction = contjoin
+        //music
+        val mp3player = MusicPlayer("/src/main/resources/GameAssets/theme.mp3")
+        mp3player.start()
+
+        stage.setOnCloseRequest {
+            mp3player.stopMusic()
+        }
         //default
         vue.join_game.isDisable = true
         vue.local_game.isSelected = true
@@ -115,4 +124,25 @@ class Pickomino: Application() {
 
 fun main() {
     Application.launch(Pickomino::class.java)
+}
+
+//class qui joue de la musique
+class MusicPlayer(var file : String) : Thread() {
+    private var isPlaying = true
+    var mp3 = FileInputStream(file)
+    val mp3player = Player(mp3)
+    override fun run() {
+        while (isPlaying) {
+            try {
+                mp3player.play()
+            } catch (e: Exception) {
+                print("erreur lors de la lecture du mp3")
+            }
+        }
+    }
+    fun stopMusic() {
+        isPlaying=false
+        mp3player.close()
+        mp3.close()
+    }
 }

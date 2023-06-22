@@ -41,32 +41,32 @@ class ControleurLaunchGame(vue:Vue_menu, stage: Stage,modmenu : Menu):EventHandl
         //changement vue et binds
         val v : Vue_jeu
         if (modmenu.nbjoueur==4) {
-            val v = Vue_4j(vue.theme_value,modmenu.id.value,modmenu.key.value)
+            val v = Vue_4j(vue.theme_value,modmenu.id.value,modmenu.key.value, stage)
             val modjeu = Jeu(modmenu,v)
-            v.fixeBouton(v.lanceDes, ControleurLanceDes(v, modjeu, connect))
-            v.fixePickos(v.pouleCommune,ControleurPrendrePickomino(v,modjeu,connect),modjeu,connect)
+            v.fixeBouton(v.lanceDes, ControleurLanceDes(v, modjeu, connect, stage))
+            v.fixePickos(v.pouleCommune,ControleurPrendrePickomino(v,modjeu,connect, stage),modjeu,connect)
 
-            v.fixePickos(v.domino1,ControleurPrendrePickomino(v,modjeu, connect),modjeu,connect)
-            v.fixePickos(v.domino2,ControleurPrendrePickomino(v,modjeu, connect),modjeu,connect)
-            v.fixePickos(v.domino3,ControleurPrendrePickomino(v,modjeu, connect),modjeu,connect)
-            v.fixePickos(v.domino4,ControleurPrendrePickomino(v,modjeu, connect),modjeu,connect)
+            v.fixePickos(v.domino1,ControleurPrendrePickomino(v,modjeu, connect, stage),modjeu,connect)
+            v.fixePickos(v.domino2,ControleurPrendrePickomino(v,modjeu, connect, stage),modjeu,connect)
+            v.fixePickos(v.domino3,ControleurPrendrePickomino(v,modjeu, connect, stage),modjeu,connect)
+            v.fixePickos(v.domino4,ControleurPrendrePickomino(v,modjeu, connect, stage),modjeu,connect)
             stage.scene.root=v
         } else if (modmenu.nbjoueur==3) {
-            val v = Vue_3j(vue.theme_value,modmenu.id.value,modmenu.key.value)
+            val v = Vue_3j(vue.theme_value,modmenu.id.value,modmenu.key.value, stage)
             val modjeu = Jeu(modmenu,v)
-            v.fixeBouton(v.lanceDes, ControleurLanceDes(v, modjeu, connect))
-            v.fixePickos(v.pouleCommune,ControleurPrendrePickomino(v,modjeu,connect),modjeu,connect)
-            v.fixePickos(v.domino1,ControleurPrendrePickomino(v,modjeu, connect),modjeu,connect)
-            v.fixePickos(v.domino2,ControleurPrendrePickomino(v,modjeu, connect),modjeu,connect)
-            v.fixePickos(v.domino3,ControleurPrendrePickomino(v,modjeu, connect),modjeu,connect)
+            v.fixeBouton(v.lanceDes, ControleurLanceDes(v, modjeu, connect, stage))
+            v.fixePickos(v.pouleCommune,ControleurPrendrePickomino(v,modjeu,connect, stage),modjeu,connect)
+            v.fixePickos(v.domino1,ControleurPrendrePickomino(v,modjeu, connect, stage),modjeu,connect)
+            v.fixePickos(v.domino2,ControleurPrendrePickomino(v,modjeu, connect, stage),modjeu,connect)
+            v.fixePickos(v.domino3,ControleurPrendrePickomino(v,modjeu, connect, stage),modjeu,connect)
             stage.scene.root=v
         } else if (modmenu.nbjoueur==2) {
-            val v = Vue_2j(vue.theme_value,modmenu.id.value,modmenu.key.value)
+            val v = Vue_2j(vue.theme_value,modmenu.id.value,modmenu.key.value, stage)
             val modjeu = Jeu(modmenu,v)
-            v.fixeBouton(v.lanceDes, ControleurLanceDes(v, modjeu, connect))
-            v.fixePickos(v.pouleCommune,ControleurPrendrePickomino(v,modjeu,connect),modjeu,connect)
-            v.fixePickos(v.domino1,ControleurPrendrePickomino(v,modjeu, connect),modjeu,connect)
-            v.fixePickos(v.domino2,ControleurPrendrePickomino(v,modjeu, connect),modjeu,connect)
+            v.fixeBouton(v.lanceDes, ControleurLanceDes(v, modjeu, connect, stage))
+            v.fixePickos(v.pouleCommune,ControleurPrendrePickomino(v,modjeu,connect, stage),modjeu,connect)
+            v.fixePickos(v.domino1,ControleurPrendrePickomino(v,modjeu, connect, stage),modjeu,connect)
+            v.fixePickos(v.domino2,ControleurPrendrePickomino(v,modjeu, connect, stage),modjeu,connect)
             stage.scene.root=v
         }
 

@@ -21,16 +21,16 @@ class ControleurJoinGame(vue:Vue_menu,stage: Stage,modmenu : Menu):EventHandler<
             stage.hide()
             //set view
             if (modmenu.nbjoueur==4) {
-                val v = Vue_4j(vue.theme_value,modmenu.id.value,modmenu.key.value)
+                val v = Vue_4j(vue.theme_value,modmenu.id.value,modmenu.key.value, stage)
                 val modjeu = Jeu(modmenu,v)
                 stage.scene.root=v
 
             } else if (modmenu.nbjoueur==3) {
-                val v = Vue_3j(vue.theme_value,modmenu.id.value,modmenu.key.value)
+                val v = Vue_3j(vue.theme_value,modmenu.id.value,modmenu.key.value, stage)
                 val modjeu = Jeu(modmenu,v)
                 stage.scene.root=v
             } else if (modmenu.nbjoueur==2) {
-                val v = Vue_2j(vue.theme_value,modmenu.id.value,modmenu.key.value)
+                val v = Vue_2j(vue.theme_value,modmenu.id.value,modmenu.key.value, stage)
                 val modjeu = Jeu(modmenu,v)
                 stage.scene.root=v
             }

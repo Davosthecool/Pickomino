@@ -11,16 +11,18 @@ import javafx.scene.control.Alert
 import javafx.scene.control.ButtonType
 import javafx.scene.image.ImageView
 import javafx.scene.input.MouseEvent
+import javafx.stage.Stage
 
 
-class ControleurPrendrePickomino(vue : Vue_jeu, modele: Jeu, connect : Connector) : EventHandler<MouseEvent> {
+class ControleurPrendrePickomino(vue : Vue_jeu, modele: Jeu, connect : Connector, stage : Stage) : EventHandler<MouseEvent> {
 
     private val connect = connect
     private val vue = vue
     private val modele = modele
+    private var stage = stage
     override fun handle(event: MouseEvent?) {
         if (connect.gameState(modele.id, modele.key).current.status == STATUS.TAKE_PICKOMINO || connect.gameState(modele.id, modele.key).current.status == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO) {
-            //Selectionner valeur clické
+            //Selectionner valeur clické dans pouleCommune
             var ev = event?.source as ImageView
             var pick = 0
             for (i in connect.gameState(modele.id,modele.key).accessiblePickos()) {
@@ -28,27 +30,40 @@ class ControleurPrendrePickomino(vue : Vue_jeu, modele: Jeu, connect : Connector
                     pick = i
                 }
             }
-            println(pick)
+
+            //s'il n'est pas dans PouleCommune cherche dans les PickosJoueurs
+            if((pick==0) and (connect.gameState(modele.id,modele.key).pickosStackTops().contains(ev.userData))){
+                pick = ev.userData as Int
+            }
 
             //choisis dans la pouleCommune la bonne valeur(exacte ou inferieure)
-            var picko = connect.gameState(modele.id,modele.key).accessiblePickos().maxByOrNull { number -> if (number <= modele.sommeDes(connect.gameState(modele.id,modele.key).current.keptDices) ) number else 0 }!!
+            var pickoPoule = connect.gameState(modele.id,modele.key).accessiblePickos().maxByOrNull { number -> if (number <= modele.sommeDes(connect.gameState(modele.id,modele.key).current.keptDices) ) number else 0 }!!
             //verifier si un joueur possede la valeur exacte de la somme des dés
-            if (connect.gameState(modele.id,modele.key).pickosStackTops().contains(modele.sommeDes(connect.gameState(modele.id,modele.key).current.keptDices))){ picko=modele.sommeDes(connect.gameState(modele.id,modele.key).current.keptDices) }
+            var pickoJoueur = 0
+            if (connect.gameState(modele.id,modele.key).pickosStackTops().contains(modele.sommeDes(connect.gameState(modele.id,modele.key).current.keptDices))){
+                if (connect.gameState(modele.id,modele.key).pickosStackTops().indexOf(pick)!=connect.gameState(modele.id,modele.key).current.player)
+                    pickoJoueur=modele.sommeDes(connect.gameState(modele.id,modele.key).current.keptDices)
+            }
 
+            //verifie que le picko selectionnable dans la main est superieur au picko dans le jeu
+            if ((pickoPoule>pickoJoueur) and (pickoJoueur!=0)){
+                pickoPoule=0
+            }
 
-            if (pick == picko){
+            //Si le picko clické est le bon a selectionner
+            if ( ((pick == pickoPoule) or (pick == pickoJoueur)) and (pick!=0)){
 
-                //Mettre a jour vue en consequence(surbrillance picko clické PouleCommune)
+                //Mettre a jour vue en consequence(surbrillance picko selectionnable PouleCommune)
                 vue.pouleCommune.children.forEach {
                     it.opacity = 0.3
                     if (it.userData.toString() == pick.toString()) {
                         it.opacity = 1.0
                     }
                 }
-                //Mettre a jour vue en consequence(surbrillance picko clické DominoJoueurs)
+                //Mettre a jour vue en consequence(surbrillance picko selectionnable DominoJoueurs)
                 vue.listeDominoJoueurs.forEach {
                     it.opacity = 0.3
-                    if ((it.userData.toString() == pick.toString()) and (it.userData==0) ) {
+                    if ((it.userData.toString() == pick.toString()) and (it.userData!=0) ) {
                         it.opacity = 1.0
                     }
                 }
@@ -60,7 +75,8 @@ class ControleurPrendrePickomino(vue : Vue_jeu, modele: Jeu, connect : Connector
 
                 if (al.result == ButtonType.OK){
                     var actual = connect.gameState(modele.id,modele.key).current.player
-                    var b = connect.takePickomino(modele.id,modele.key,picko)
+                    vue.listeDominoJoueurs.get(actual).opacity=0.3
+                    var b = connect.takePickomino(modele.id,modele.key,pick)
                     if (!b){ throw BadPickominoChosenException() }
 
                     modele.ajouteScore(connect.gameState(modele.id,modele.key).pickosStackTops(),actual)
@@ -68,6 +84,11 @@ class ControleurPrendrePickomino(vue : Vue_jeu, modele: Jeu, connect : Connector
                     vue.updatePouleCommune(connect.gameState(modele.id,modele.key).accessiblePickos(),modele, connect)
                     vue.updateDominoJoueurs(connect.gameState(modele.id,modele.key).pickosStackTops(),modele, connect)
                     vue.updateScoresJoueurs(connect.gameState(modele.id,modele.key).score())
+
+                    //Test si le jeu est fini
+                    if (connect.gameState(modele.id, modele.key).current.status == STATUS.GAME_FINISHED){
+                        modele.jeu_termine(stage)
+                    }
 
                     //Setup le tour du nouveau joueur
                     vue.updateDice(mutableListOf(), vue.desActif)
@@ -79,6 +100,21 @@ class ControleurPrendrePickomino(vue : Vue_jeu, modele: Jeu, connect : Connector
                     al.headerText="Vous avez récupéré un Pickomino au centre"
                     al.show()
 
+                }else{
+                    //Mettre a jour vue en consequence(surbrillance picko clické PouleCommune)
+                    vue.pouleCommune.children.forEach {
+                        it.opacity = 0.3
+                        if (it.userData.toString() == pickoPoule.toString()) {
+                            it.opacity = 1.0
+                        }
+                    }
+                    //Mettre a jour vue en consequence(surbrillance picko clické DominoJoueurs)
+                    vue.listeDominoJoueurs.forEach {
+                        it.opacity = 0.3
+                        if ((it.userData.toString() == pickoJoueur.toString()) and (it.userData!=0)) {
+                            it.opacity = 1.0
+                        }
+                    }
                 }
             }
         }else {

@@ -9,12 +9,14 @@ import iut.info1.pickomino.exceptions.BadStepException
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.scene.control.Alert
+import javafx.stage.Stage
 
-class ControleurLanceDes(vue : Vue_jeu, modele: Jeu, connect : Connector):EventHandler<ActionEvent> {
+class ControleurLanceDes(vue : Vue_jeu, modele: Jeu, connect : Connector, stage: Stage):EventHandler<ActionEvent> {
 
     private val connect = connect
     private val vue = vue
     private val modele = modele
+    private var stage = stage
     override fun handle(event: ActionEvent?) {
         //Lancement des
 
@@ -37,15 +39,21 @@ class ControleurLanceDes(vue : Vue_jeu, modele: Jeu, connect : Connector):EventH
                 }
             }
             //bind des des
-            vue.fixeDes(vue.desActif,ControleurChoisirDes(vue,modele,connect),modele,connect)
+            vue.fixeDes(vue.desActif,ControleurChoisirDes(vue,modele,connect, stage),modele,connect)
             vue.lanceDes.isDisable = true
+
+            //Test si le jeu est fini
+            if (connect.gameState(modele.id, modele.key).current.status == STATUS.GAME_FINISHED){
+                modele.jeu_termine(stage)
+            }
 
             //si tour perdu changement de joueur
             if (connect.gameState(modele.id,modele.key).current.keptDices.containsAll(connect.gameState(modele.id,modele.key).current.rolls)){
                 vue.lanceDes.isDisable = false
+                vue.updateDice(listOf(),vue.desChoisi)
                 val al = Alert(Alert.AlertType.INFORMATION)
                 al.contentText="Au tour du joueur ${connect.gameState(modele.id,modele.key).current.player+1}"
-                al.headerText="Vous n'aviez pas de dés avec un ver dessus"
+                al.headerText="Vous ne pouviez selectionné aucun dé"
                 al.show()
             }
 
