@@ -61,6 +61,15 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         return list
     }
 
+    fun listeDesStr2(liste : List<DICE>) : MutableList<String>{
+
+        var list = mutableListOf<String>()
+        for (i in liste) {
+            list.add(i.toString())
+        }
+        return list
+    }
+
     fun listePickosStr(liste : MutableList<Int>) : MutableList<String>{
 
         var list = mutableListOf<String>()
@@ -89,13 +98,13 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         }
     }
 
-    fun sommeDes(liste: MutableList<Des>) : Int{
+    fun sommeDes(liste: List<DICE>) : Int{
         var somme : Int =0
         liste.forEach {
-            if (it.valeur==5){
+            if (it.ordinal==5){
                 somme+=5
             }else{
-                somme+=it.valeur+1
+                somme+=it.ordinal+1
             }
         }
         return somme
@@ -106,17 +115,16 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
             desActif[i].assignDe(list[i])
         }
     }
-    fun prendrePickomino(pick : Int, joueur : Int){
-        joueursPickosTop[joueur]=pick
-        joueursScores[joueur]+=dicoPickos[pick]!!
-        listePickomino.remove(pick)
+    fun ajouteScore(pick : List<Int>, joueur : Int){
+        if (pick!=null){
+            joueursScores[joueur]+=dicoPickos[pick[joueur]]!!
+        }
+
     }
 
     fun retirerPickomino(joueur : Int) : Int?{
-        if (joueursPickosTop[joueur]==0){null}
-        var pick = joueursPickosTop[joueur]
+        var pick = connect.gameState(id,key).pickosStackTops()[joueur]
         joueursScores[joueur]-=dicoPickos[joueursPickosTop[joueur]]!!
-        joueursPickosTop[joueur]=0
         TODO("retirer pickomino quand il y en a un autre en dessous")
         return pick
     }
@@ -130,4 +138,5 @@ class Jeu(modmenu:Menu,vue : Any,theme: String= "Light") {
         for (i in 0 until 8){ listeDes.add(Des(i, theme=this.theme )) }
         desActifs.addAll(listeDes)
     }
+
 }

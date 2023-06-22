@@ -4,6 +4,7 @@ import Controleur.ControleurChoisirDes
 import Controleur.ControleurPrendrePickomino
 import Modele.Jeu
 import iut.info1.pickomino.Connector
+import iut.info1.pickomino.data.DICE
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.scene.layout.*
@@ -97,44 +98,39 @@ class Vue_3j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         score1.styleClass.addAll("score1","score","grosTexte")
     }
 
-    override fun updatePouleCommune(listDomino: MutableList<Int>) {
-        println(listDomino)
-        var cpt=21
+    override fun updatePouleCommune(listDomino: List<Int>) {
         pouleCommune.children.removeAll(pouleCommune.children)
         for (i in listDomino) {
             val picko = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/$i.png")))
-            picko.userData=cpt
+            picko.userData=i
             picko.fitWidth = 80.0
             picko.fitHeight = 160.0
             picko.opacity=0.3
             pouleCommune.children.add(picko)
-            cpt++
         }
     }
 
-    override fun updatePouleCommune(listDomino: MutableList<Int>,modele: Jeu ,connect: Connector ) {
+    override fun updatePouleCommune(listDomino: List<Int>,modele: Jeu ,connect: Connector ) {
         println(listDomino)
-        var cpt=21
         pouleCommune.children.removeAll(pouleCommune.children)
         for (i in listDomino) {
             val picko = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Pickomino/$i.png")))
-            picko.userData=cpt
+            picko.userData=i
             picko.fitWidth = 80.0
             picko.fitHeight = 160.0
             picko.opacity=0.3
             pouleCommune.children.add(picko)
             fixePickos(pouleCommune,ControleurPrendrePickomino(this,modele, connect),modele,connect)
-            cpt++
         }
     }
 
-    override fun updateDice(listDe: MutableList<String>, target: VBox) {
+    override fun updateDice(listDe: List<DICE>, target: VBox) {
         var cpt = 0
         target.children.removeAll(target.children)
 
         for (i in listDe) {
             val de = ImageView(Image(FileInputStream("src/main/resources/GameAssets/$theme/Dice/$i.png")))
-            de.userData=cpt
+            de.userData=i.name
             de.fitWidth = 60.0
             de.fitHeight = 60.0
             target.children.add(de)
@@ -142,7 +138,7 @@ class Vue_3j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         }
     }
 
-    override fun updateDominoJoueurs(listDomino: MutableList<Int>) {
+    override fun updateDominoJoueurs(listDomino: List<Int>) {
         if (listDomino[0]==0){
         }else{
             var url = "src/main/resources/GameAssets/$theme/Pickomino/${listDomino[0]}.png"
@@ -160,7 +156,7 @@ class Vue_3j(theme:String,id:Int,key:Int): VBox(),Vue_jeu {
         }
     }
 
-    override fun updateScoresJoueurs(listeScores : MutableList<Int>){
+    override fun updateScoresJoueurs(listeScores : List<Int>){
         score1.text="Score : ${listeScores[0]}"
         score2.text="Score : ${listeScores[1]}"
         score3.text="Score : ${listeScores[2]}"

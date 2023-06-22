@@ -8,6 +8,7 @@ import iut.info1.pickomino.data.STATUS
 import iut.info1.pickomino.exceptions.BadStepException
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
+import javafx.scene.control.Alert
 
 class ControleurLanceDes(vue : Vue_jeu, modele: Jeu, connect : Connector):EventHandler<ActionEvent> {
 
@@ -18,46 +19,33 @@ class ControleurLanceDes(vue : Vue_jeu, modele: Jeu, connect : Connector):EventH
         //Lancement des
 
         if (connect.gameState(modele.id, modele.key).current.status == STATUS.ROLL_DICE || connect.gameState(modele.id, modele.key).current.status == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO){
+
             connect.rollDices(modele.id, modele.key)
-            modele.assignDes(connect.gameState(modele.id, modele.key).current.rolls, modele.desActifs)
-            vue.updateDice(modele.listeDesStr(modele.desActifs), vue.desActif)
 
-//            //verification rolls
-//            var jouable = false
-//            for (i in modele.desActifs){
-//                if (!(i.face in modele.valeursChoisis)){
-//                    jouable=true
-//                }
-//            }
-//            //verification vers
-//            if (!modele.valeursChoisis.contains(DICE.worm) and modele.desActifs.isEmpty()){
-//                jouable=false
-//            }
-//            //situation tour perdu
-//            if (!jouable){
-//                var pickoRetire : Int? = modele.retirerPickomino(connect.gameState(modele.id, modele.key).current.player)
-//                if (pickoRetire != null) {
-//                    modele.listePickomino.add(pickoRetire!!)
-//                    if (pickoRetire!=modele.listePickomino[-1]) {
-//                        modele.listePickomino.removeAt(-1)
-//                    }
-//
-//                }
-            vue.updatePouleCommune(modele.listePickomino,modele, connect)
+            vue.updateDice(connect.gameState(modele.id,modele.key).current.rolls, vue.desActif)
+            vue.updatePouleCommune(connect.gameState(modele.id,modele.key).accessiblePickos(),modele, connect)
+            vue.updateDominoJoueurs(connect.gameState(modele.id,modele.key).pickosStackTops())
+            vue.updateScoresJoueurs(connect.gameState(modele.id,modele.key).score())
 
-
-
-
-            modele.desActifs.forEach {
-                if (modele.valeursChoisis.contains(it.face)) {
-                    vue.desActif.children.get(it.id).opacity = 0.3
+            vue.desActif.children.forEach{
+                if (modele.listeDesStr2(connect.gameState(modele.id,modele.key).current.keptDices).contains(it.userData)) {
+                    it.opacity = 0.3
+                }else{
+                    it.opacity = 1.0
                 }
             }
             //bind des des
             vue.fixeDes(vue.desActif,ControleurChoisirDes(vue,modele,connect),modele,connect)
             vue.lanceDes.isDisable = true
-            print(connect.gameState(modele.id,modele.key).current.status)
+
             //si tour perdu changement de joueur
+            if (connect.gameState(modele.id,modele.key).current.keptDices.containsAll(connect.gameState(modele.id,modele.key).current.rolls)){
+                vue.lanceDes.isDisable = false
+                val al = Alert(Alert.AlertType.INFORMATION)
+                al.contentText="Au tour du joueur ${connect.gameState(modele.id,modele.key).current.player+1}"
+                al.headerText="Vous n'aviez pas de dés avec un ver dessus"
+                al.show()
+            }
 
         }else {
            throw BadStepException()

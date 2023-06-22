@@ -2,6 +2,7 @@ package Vue
 
 import Modele.Jeu
 import iut.info1.pickomino.Connector
+import iut.info1.pickomino.data.DICE
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.scene.control.Button
@@ -16,11 +17,11 @@ interface Vue_jeu {
     val desChoisi : VBox
     val pouleCommune : FlowPane
 
-    fun updatePouleCommune(listDomino:MutableList<Int>)
-    fun updatePouleCommune(listDomino:MutableList<Int>,modele: Jeu,connect: Connector)
-    fun updateDice(listDe:MutableList<String>,target : VBox)
-    fun updateDominoJoueurs(listDomino:MutableList<Int>)
-    fun updateScoresJoueurs(listeScores : MutableList<Int>)
+    fun updatePouleCommune(listDomino:List<Int>)
+    fun updatePouleCommune(listDomino:List<Int>,modele: Jeu,connect: Connector)
+    fun updateDice(listDe:List<DICE>,target : VBox)
+    fun updateDominoJoueurs(listDomino:List<Int>)
+    fun updateScoresJoueurs(listeScores : List<Int>)
     fun fixeBouton(bouton : Button, ecouteur : EventHandler<ActionEvent>)
     fun fixeDes(box : VBox, ecouteur: EventHandler<MouseEvent>, modele : Jeu, connect : Connector)
 

@@ -39,7 +39,6 @@ class ControleurLaunchGame(vue:Vue_menu, stage: Stage,modmenu : Menu):EventHandl
         modmenu.id.value=id
 
         //changement vue et binds
-        val chgmntJoueur : SimpleIntegerProperty = SimpleIntegerProperty(connect.gameState(id, key).current.player)
         val v : Vue_jeu
         if (modmenu.nbjoueur==4) {
             val v = Vue_4j(vue.theme_value,modmenu.id.value,modmenu.key.value)

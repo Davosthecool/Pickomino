@@ -22,25 +22,23 @@ class ControleurChoisirDes(vue : Vue_jeu, modele: Jeu, connect : Connector) : Ev
     private val vue = vue
     private val modele = modele
     override fun handle(event: MouseEvent?) {
-//        println(connect.gameState(modele.id,modele.key).current)
         if (connect.gameState(modele.id, modele.key).current.status == STATUS.KEEP_DICE) {
             //Selectionner valeur choisie
             var ev = event?.source as ImageView
-            var de = Des(0)
-            for (i in modele.desActifs) {
-                if (i.id == ev.userData) {
+            var de : DICE = DICE.d1
+            for (i in connect.gameState(modele.id,modele.key).current.rolls) {
+                if (i.toString() == ev.userData.toString()) {
                     de = i
                 }
             }
 
             //Mettre a jour modele et vue en consequence(desChoisis,desActifs)
-            if (!modele.valeursChoisis.contains(de.face)) {
-                modele.selectionnerDes(de.valeur)
-
-                modele.desActifs.forEach {
-                    vue.desActif.children.get(it.id).opacity = 0.3
-                    if (it.selected) {
-                        vue.desActif.children.get(it.id).opacity = 1.0
+            if (!connect.gameState(modele.id,modele.key).current.keptDices.contains(de)) {
+                vue.desActif.children.forEach {
+                    if (it.userData.toString()==de.toString()){
+                        it.opacity = 1.0
+                    }else{
+                        it.opacity = 0.3
                     }
                 }
 
@@ -52,35 +50,30 @@ class ControleurChoisirDes(vue : Vue_jeu, modele: Jeu, connect : Connector) : Ev
 
                 if (al.result == ButtonType.OK) {
                     //Deplacement dés en consequence
-                    connect.keepDices(modele.id, modele.key, de.face)
+                    connect.keepDices(modele.id, modele.key, de)
 
-                    modele.choisirDes(de.valeur)
-
-                    vue.updateDice(modele.listeDesStr(modele.desActifs), vue.desActif)
-                    vue.updateDice(modele.listeDesStr(modele.desChoisis), vue.desChoisi)
+                    vue.updateDice(connect.gameState(modele.id,modele.key).current.rolls, vue.desActif)
+                    vue.updateDice(connect.gameState(modele.id,modele.key).current.keptDices, vue.desChoisi)
                     vue.lanceDes.isDisable = false
-                    modele.valeursChoisis.add(de.face)
-
-                    //reset index
-                    for (i in modele.desActifs.indices) {
-                        modele.desActifs[i].id = i
-                    }
-
-                    //transparence après roll
-                    modele.desActifs.forEach {
-                        vue.desActif.children.get(it.id).opacity = 0.3
-                    }
 
                     //Mettre a jour vue PouleCommune
                     var pick = 0
-                    if (modele.sommeDes(modele.desChoisis) >= 21) {
-                        pick = modele.listePickomino.maxByOrNull { number -> if (number <= modele.sommeDes(modele.desChoisis)) number else 0 }!!
+                    if (modele.sommeDes(connect.gameState(modele.id,modele.key).current.keptDices) >= 21) {
+                        pick = connect.gameState(modele.id,modele.key).accessiblePickos().maxByOrNull { number -> if (number <= modele.sommeDes(connect.gameState(modele.id,modele.key).current.keptDices)) number else 0 }!!
 
                         vue.pouleCommune.children.forEach {
                             it.opacity = 0.3
-                            if (it.userData == pick) {
+                            if (it.userData == pick && connect.gameState(modele.id,modele.key).current.keptDices.contains(DICE.worm)) {
                                 it.opacity = 1.0
                             }
+                        }
+                    }
+                }else{
+                    vue.desActif.children.forEach{
+                        if (modele.listeDesStr2(connect.gameState(modele.id,modele.key).current.keptDices).contains(it.userData)) {
+                            it.opacity = 0.3
+                        }else{
+                            it.opacity = 1.0
                         }
                     }
                 }
